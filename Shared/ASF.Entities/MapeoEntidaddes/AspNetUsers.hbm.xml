@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="ASF.Entities" namespace="ASF.Entities" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="AspNetUsers" table="AspNetUsers" lazy="true" schema="dbo" dynamic-insert="true" dynamic-update="true" >
+    <id name="Id" column="Id" />
+    <property name="Email">
+      <column name="Email" sql-type="nvarchar(256)" not-null="false" />
+    </property>
+    <property name="EmailConfirmed">
+      <column name="EmailConfirmed" sql-type="bit" not-null="true" />
+    </property>
+    <property name="PasswordHash">
+      <column name="PasswordHash" sql-type="nvarchar(MAX)" not-null="false" />
+    </property>
+    <property name="SecurityStamp">
+      <column name="SecurityStamp" sql-type="nvarchar(MAX)" not-null="false" />
+    </property>
+    <property name="PhoneNumber">
+      <column name="PhoneNumber" sql-type="nvarchar(MAX)" not-null="false" />
+    </property>
+    <property name="PhoneNumberConfirmed">
+      <column name="PhoneNumberConfirmed" sql-type="bit" not-null="true" />
+    </property>
+    <property name="TwoFactorEnabled">
+      <column name="TwoFactorEnabled" sql-type="bit" not-null="true" />
+    </property>
+    <property name="LockoutEndDateUtc">
+      <column name="LockoutEndDateUtc" sql-type="datetime" not-null="false" />
+    </property>
+    <property name="LockoutEnabled">
+      <column name="LockoutEnabled" sql-type="bit" not-null="true" />
+    </property>
+    <property name="AccessFailedCount">
+      <column name="AccessFailedCount" sql-type="int" precision="10" not-null="true" />
+    </property>
+    <property name="UserName">
+      <column name="UserName" sql-type="nvarchar(256)" not-null="true" />
+    </property>
+    <bag name="AspNetUserClaims" inverse="true">
+      <key column="UserId" />
+      <one-to-many class="AspNetUserClaims" />
+    </bag>
+    <bag name="AspNetUserLogins" inverse="true">
+      <key column="UserId" />
+      <one-to-many class="AspNetUserLogins" />
+    </bag>
+    <bag name="AspNetUserRoles" inverse="true">
+      <key column="UserId" />
+      <one-to-many class="AspNetUserRoles" />
+    </bag>
+  </class>
+</hibernate-mapping>

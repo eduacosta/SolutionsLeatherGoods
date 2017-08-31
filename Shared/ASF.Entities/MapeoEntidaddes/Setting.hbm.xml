@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="ASF.Entities" namespace="ASF.Entities" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="Setting" table="Setting" lazy="true" schema="dbo" dynamic-insert="true" dynamic-update="true" >
+    <id name="Id" column="Id">
+      <generator class="identity" />
+    </id>
+    <property name="Name">
+      <column name="Name" sql-type="nvarchar(30)" not-null="true" />
+    </property>
+    <property name="Value">
+      <column name="Value" sql-type="nvarchar(255)" not-null="true" />
+    </property>
+    <property name="Description">
+      <column name="Description" sql-type="nvarchar(MAX)" not-null="false" />
+    </property>
+    <property name="LastChangeDate" insert="false">
+      <column name="LastChangeDate" sql-type="datetime2" default="getdate" not-null="true" />
+    </property>
+    <property name="WebSiteName">
+      <column name="WebSiteName" sql-type="nvarchar(500)" not-null="false" />
+    </property>
+    <property name="WebSiteUrl">
+      <column name="WebSiteUrl" sql-type="nvarchar(500)" not-null="false" />
+    </property>
+    <property name="PageTitle">
+      <column name="PageTitle" sql-type="nvarchar(80)" not-null="false" />
+    </property>
+    <property name="AdminEmailAddress">
+      <column name="AdminEmailAddress" sql-type="nvarchar(100)" not-null="false" />
+    </property>
+    <property name="SMTP">
+      <column name="SMTP" sql-type="varchar(100)" not-null="false" />
+    </property>
+    <property name="SMTPUsername">
+      <column name="SMTPUsername" sql-type="nvarchar(100)" not-null="false" />
+    </property>
+    <property name="SMTPPassword">
+      <column name="SMTPPassword" sql-type="nvarchar(100)" not-null="false" />
+    </property>
+    <property name="SMTPPort">
+      <column name="SMTPPort" sql-type="nvarchar(10)" not-null="false" />
+    </property>
+    <property name="SMTPEnableSSL">
+      <column name="SMTPEnableSSL" sql-type="bit" not-null="false" />
+    </property>
+    <property name="Theme">
+      <column name="Theme" sql-type="nvarchar(100)" not-null="false" />
+    </property>
+    <property name="DefaultLanguageId">
+      <column name="DefaultLanguageId" sql-type="int" precision="10" not-null="true" />
+    </property>
+    <property name="CreatedOn" insert="false">
+      <column name="CreatedOn" sql-type="datetime2" default="getdate" not-null="true" />
+    </property>
+    <property name="CreatedBy">
+      <column name="CreatedBy" sql-type="int" precision="10" not-null="false" />
+    </property>
+    <property name="ChangedOn" insert="false">
+      <column name="ChangedOn" sql-type="datetime2" default="getdate" not-null="true" />
+    </property>
+    <property name="ChangedBy">
+      <column name="ChangedBy" sql-type="int" precision="10" not-null="false" />
+    </property>
+  </class>
+</hibernate-mapping>

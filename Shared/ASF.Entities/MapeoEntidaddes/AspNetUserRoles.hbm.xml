@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="ASF.Entities" namespace="ASF.Entities" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="AspNetUserRoles" table="AspNetUserRoles" lazy="true" schema="dbo" dynamic-insert="true" dynamic-update="true" >
+    <composite-id>
+      <key-many-to-one name="AspNetUsers" column="UserId" />
+      <key-many-to-one name="AspNetRoles" column="RoleId" />
+    </composite-id>
+  </class>
+</hibernate-mapping>

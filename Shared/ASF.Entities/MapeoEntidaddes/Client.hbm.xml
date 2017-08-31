@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="ASF.Entities" namespace="ASF.Entities" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="Client" table="Client" lazy="true" schema="dbo" dynamic-insert="true" dynamic-update="true" >
+    <id name="Id" column="Id">
+      <generator class="identity" />
+    </id>
+    <many-to-one name="Country">
+      <column name="CountryId" sql-type="int" precision="10" not-null="true" />
+    </many-to-one>
+    <property name="FirstName">
+      <column name="FirstName" sql-type="nvarchar(30)" not-null="true" />
+    </property>
+    <property name="LastName">
+      <column name="LastName" sql-type="nvarchar(30)" not-null="true" />
+    </property>
+    <property name="Email">
+      <column name="Email" sql-type="nvarchar(100)" not-null="true" />
+    </property>
+    <property name="AspNetUsers">
+      <column name="AspNetUsers" sql-type="nvarchar(128)" not-null="true" />
+    </property>
+    <property name="City">
+      <column name="City" sql-type="nvarchar(30)" not-null="false" />
+    </property>
+    <property name="SignupDate" insert="false">
+      <column name="SignupDate" sql-type="datetime" default="getdate" not-null="true" />
+    </property>
+    <property name="Rowid" insert="false">
+      <column name="Rowid" sql-type="uniqueidentifier" default="newsequentialid" not-null="false" />
+    </property>
+    <property name="OrderCount" insert="false">
+      <column name="OrderCount" sql-type="int" precision="10" default="0" not-null="true" />
+    </property>
+    <property name="CreatedOn" insert="false">
+      <column name="CreatedOn" sql-type="datetime" default="getdate" not-null="true" />
+    </property>
+    <property name="CreatedBy">
+      <column name="CreatedBy" sql-type="int" precision="10" not-null="false" />
+    </property>
+    <property name="ChangedOn" insert="false">
+      <column name="ChangedOn" sql-type="datetime" default="getdate" not-null="true" />
+    </property>
+    <property name="ChangedBy">
+      <column name="ChangedBy" sql-type="int" precision="10" not-null="false" />
+    </property>
+    <bag name="Order" inverse="true">
+      <key column="ClientId" />
+      <one-to-many class="Order" />
+    </bag>
+    <bag name="Rating" inverse="true">
+      <key column="ClientId" />
+      <one-to-many class="Rating" />
+    </bag>
+  </class>
+</hibernate-mapping>

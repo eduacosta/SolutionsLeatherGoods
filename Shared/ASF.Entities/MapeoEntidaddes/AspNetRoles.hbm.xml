@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="ASF.Entities" namespace="ASF.Entities" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="AspNetRoles" table="AspNetRoles" lazy="true" schema="dbo" dynamic-insert="true" dynamic-update="true" >
+    <id name="Id" column="Id" />
+    <property name="Name">
+      <column name="Name" sql-type="nvarchar(256)" not-null="true" />
+    </property>
+    <bag name="AspNetUserRoles" inverse="true">
+      <key column="RoleId" />
+      <one-to-many class="AspNetUserRoles" />
+    </bag>
+  </class>
+</hibernate-mapping>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="ASF.Entities" namespace="ASF.Entities" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="Product" table="Product" lazy="true" schema="dbo" dynamic-insert="true" dynamic-update="true" >
+    <id name="Id" column="Id">
+      <generator class="identity" />
+    </id>
+    <many-to-one name="Dealer">
+      <column name="DealerId" sql-type="int" precision="10" not-null="true" />
+    </many-to-one>
+    <property name="Title">
+      <column name="Title" sql-type="nvarchar(100)" not-null="true" />
+    </property>
+    <property name="Description">
+      <column name="Description" sql-type="nvarchar(250)" not-null="false" />
+    </property>
+    <property name="Image">
+      <column name="Image" sql-type="nvarchar(30)" not-null="true" />
+    </property>
+    <property name="Price">
+      <column name="Price" sql-type="float" precision="53" not-null="true" />
+    </property>
+    <property name="QuantitySold" insert="false">
+      <column name="QuantitySold" sql-type="int" precision="10" default="0" not-null="true" />
+    </property>
+    <property name="AvgStars" insert="false">
+      <column name="AvgStars" sql-type="float" precision="53" default="0" not-null="true" />
+    </property>
+    <property name="Rowid" insert="false">
+      <column name="Rowid" sql-type="uniqueidentifier" default="newsequentialid" not-null="false" />
+    </property>
+    <property name="CreatedOn" insert="false">
+      <column name="CreatedOn" sql-type="datetime" default="getdate" not-null="true" />
+    </property>
+    <property name="CreatedBy">
+      <column name="CreatedBy" sql-type="int" precision="10" not-null="false" />
+    </property>
+    <property name="ChangedOn" insert="false">
+      <column name="ChangedOn" sql-type="datetime" default="getdate" not-null="true" />
+    </property>
+    <property name="ChangedBy">
+      <column name="ChangedBy" sql-type="int" precision="10" not-null="false" />
+    </property>
+    <bag name="OrderDetail" inverse="true">
+      <key column="ProductId" />
+      <one-to-many class="OrderDetail" />
+    </bag>
+    <bag name="Rating" inverse="true">
+      <key column="ProductId" />
+      <one-to-many class="Rating" />
+    </bag>
+  </class>
+</hibernate-mapping>

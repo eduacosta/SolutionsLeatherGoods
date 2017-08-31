@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="ASF.Entities" namespace="ASF.Entities" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="OrderDetail" table="OrderDetail" lazy="true" schema="dbo" dynamic-insert="true" dynamic-update="true" >
+    <id name="Id" column="Id">
+      <generator class="identity" />
+    </id>
+    <many-to-one name="Order">
+      <column name="OrderId" sql-type="int" precision="10" not-null="true" />
+    </many-to-one>
+    <many-to-one name="Product">
+      <column name="ProductId" sql-type="int" precision="10" not-null="true" />
+    </many-to-one>
+    <property name="Price">
+      <column name="Price" sql-type="float" precision="53" not-null="true" />
+    </property>
+    <property name="Quantity" insert="false">
+      <column name="Quantity" sql-type="int" precision="10" default="1" not-null="true" />
+    </property>
+    <property name="CreatedOn" insert="false">
+      <column name="CreatedOn" sql-type="datetime" default="getdate" not-null="true" />
+    </property>
+    <property name="CreatedBy">
+      <column name="CreatedBy" sql-type="int" precision="10" not-null="false" />
+    </property>
+    <property name="ChangedOn" insert="false">
+      <column name="ChangedOn" sql-type="datetime" default="getdate" not-null="true" />
+    </property>
+    <property name="ChangedBy">
+      <column name="ChangedBy" sql-type="int" precision="10" not-null="false" />
+    </property>
+  </class>
+</hibernate-mapping>

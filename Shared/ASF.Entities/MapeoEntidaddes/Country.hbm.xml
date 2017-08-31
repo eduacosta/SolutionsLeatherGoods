@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="ASF.Entities" namespace="ASF.Entities" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="Country" table="Country" lazy="true" schema="dbo" dynamic-insert="true" dynamic-update="true" >
+    <id name="Id" column="Id">
+      <generator class="identity" />
+    </id>
+    <property name="Name">
+      <column name="Name" sql-type="nvarchar(60)" not-null="true" />
+    </property>
+    <property name="CreatedOn" insert="false">
+      <column name="CreatedOn" sql-type="datetime2" default="getdate" not-null="true" />
+    </property>
+    <property name="CreatedBy">
+      <column name="CreatedBy" sql-type="int" precision="10" not-null="false" />
+    </property>
+    <property name="ChangedOn" insert="false">
+      <column name="ChangedOn" sql-type="datetime2" default="getdate" not-null="true" />
+    </property>
+    <property name="ChangedBy">
+      <column name="ChangedBy" sql-type="int" precision="10" not-null="false" />
+    </property>
+    <bag name="Client" inverse="true">
+      <key column="CountryId" />
+      <one-to-many class="Client" />
+    </bag>
+    <bag name="Dealer" inverse="true">
+      <key column="CountryId" />
+      <one-to-many class="Dealer" />
+    </bag>
+  </class>
+</hibernate-mapping>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="ASF.Entities" namespace="ASF.Entities" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="Error" table="Error" lazy="true" schema="dbo" dynamic-insert="true" dynamic-update="true" >
+    <id name="Id" column="Id">
+      <generator class="identity" />
+    </id>
+    <property name="ClientId">
+      <column name="ClientId" sql-type="int" precision="10" not-null="false" />
+    </property>
+    <property name="ErrorDate" insert="false">
+      <column name="ErrorDate" sql-type="datetime" default="getdate" not-null="false" />
+    </property>
+    <property name="IpAddress">
+      <column name="IpAddress" sql-type="nvarchar(40)" not-null="false" />
+    </property>
+    <property name="ClientAgent">
+      <column name="ClientAgent" sql-type="nvarchar(MAX)" not-null="false" />
+    </property>
+    <property name="Exception">
+      <column name="Exception" sql-type="nvarchar(MAX)" not-null="false" />
+    </property>
+    <property name="Message">
+      <column name="Message" sql-type="nvarchar(MAX)" not-null="false" />
+    </property>
+    <property name="Everything">
+      <column name="Everything" sql-type="nvarchar(MAX)" not-null="false" />
+    </property>
+    <property name="HttpReferer">
+      <column name="HttpReferer" sql-type="nvarchar(500)" not-null="false" />
+    </property>
+    <property name="PathAndQuery">
+      <column name="PathAndQuery" sql-type="nvarchar(500)" not-null="false" />
+    </property>
+    <property name="CreatedBy">
+      <column name="CreatedBy" sql-type="int" precision="10" not-null="false" />
+    </property>
+    <property name="CreatedOn" insert="false">
+      <column name="CreatedOn" sql-type="datetime" default="getdate" not-null="true" />
+    </property>
+    <property name="ChangedBy">
+      <column name="ChangedBy" sql-type="int" precision="10" not-null="false" />
+    </property>
+    <property name="ChangedOn" insert="false">
+      <column name="ChangedOn" sql-type="datetime" default="getdate" not-null="true" />
+    </property>
+  </class>
+</hibernate-mapping>

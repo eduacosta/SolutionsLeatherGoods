@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="ASF.Entities" namespace="ASF.Entities" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="Order" table="Order" lazy="true" schema="dbo" dynamic-insert="true" dynamic-update="true" >
+    <id name="Id" column="Id">
+      <generator class="identity" />
+    </id>
+    <many-to-one name="Client">
+      <column name="ClientId" sql-type="int" precision="10" not-null="true" />
+    </many-to-one>
+    <property name="OrderDate">
+      <column name="OrderDate" sql-type="datetime" not-null="true" />
+    </property>
+    <property name="TotalPrice" insert="false">
+      <column name="TotalPrice" sql-type="float" precision="53" default="0" not-null="true" />
+    </property>
+    <property name="State">
+      <column name="State" sql-type="int" precision="10" not-null="false" />
+    </property>
+    <property name="OrderNumber" insert="false">
+      <column name="OrderNumber" sql-type="int" precision="10" default="0" not-null="true" />
+    </property>
+    <property name="ItemCount" insert="false">
+      <column name="ItemCount" sql-type="int" precision="10" default="0" not-null="true" />
+    </property>
+    <property name="Rowid" insert="false">
+      <column name="Rowid" sql-type="uniqueidentifier" default="newsequentialid" not-null="false" />
+    </property>
+    <property name="CreatedOn" insert="false">
+      <column name="CreatedOn" sql-type="datetime" default="getdate" not-null="true" />
+    </property>
+    <property name="CreatedBy">
+      <column name="CreatedBy" sql-type="int" precision="10" not-null="false" />
+    </property>
+    <property name="ChangedOn" insert="false">
+      <column name="ChangedOn" sql-type="datetime" default="getdate" not-null="true" />
+    </property>
+    <property name="ChangedBy">
+      <column name="ChangedBy" sql-type="int" precision="10" not-null="false" />
+    </property>
+    <bag name="OrderDetail" inverse="true">
+      <key column="OrderId" />
+      <one-to-many class="OrderDetail" />
+    </bag>
+  </class>
+</hibernate-mapping>

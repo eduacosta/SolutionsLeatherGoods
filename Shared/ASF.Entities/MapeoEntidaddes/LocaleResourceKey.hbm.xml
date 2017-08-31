@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="ASF.Entities" namespace="ASF.Entities" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="LocaleResourceKey" table="LocaleResourceKey" lazy="true" schema="dbo" dynamic-insert="true" dynamic-update="true" >
+    <id name="Id" column="Id">
+      <generator class="identity" />
+    </id>
+    <property name="Name">
+      <column name="Name" sql-type="nvarchar(200)" not-null="true" />
+    </property>
+    <property name="Notes">
+      <column name="Notes" sql-type="nvarchar(MAX)" not-null="false" />
+    </property>
+    <property name="DateAdded">
+      <column name="DateAdded" sql-type="datetime" not-null="true" />
+    </property>
+    <bag name="LocaleStringResource" inverse="true">
+      <key column="LocaleResourceKey_Id" />
+      <one-to-many class="LocaleStringResource" />
+    </bag>
+  </class>
+</hibernate-mapping>
