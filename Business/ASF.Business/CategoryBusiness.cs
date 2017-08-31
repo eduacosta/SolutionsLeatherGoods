@@ -26,6 +26,8 @@ namespace ASF.Business
         /// <returns></returns>
         public Category Add(Category category)
         {
+
+
             var categoryDac = new CategoryDac();
             return categoryDac.Create(category);
         }
