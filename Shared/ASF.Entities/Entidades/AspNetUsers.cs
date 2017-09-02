@@ -1,12 +1,15 @@
 using System;
 using System.Text;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using NHibernate.Validator.Constraints;
 
 
 namespace ASF.Entities {
-    
-    public class AspNetUsers {
+    [Serializable]
+    [DataContract]
+    public class AspNetUsers : EntityBase
+    {
         public AspNetUsers() {
 			AspNetUserClaims = new List<AspNetUserClaims>();
 			AspNetUserLogins = new List<AspNetUserLogins>();

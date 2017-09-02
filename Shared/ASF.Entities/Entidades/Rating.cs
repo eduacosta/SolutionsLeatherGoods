@@ -1,12 +1,15 @@
 using System;
 using System.Text;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using NHibernate.Validator.Constraints;
 
 
 namespace ASF.Entities {
-    
-    public class Rating {
+    [Serializable]
+    [DataContract]
+    public class Rating : EntityBase
+    {
         public virtual int Id { get; set; }
         [NotNull(Message="Se debe cargar algún valor para el campo Client, no puede estar vacío")]
         public virtual Client Client { get; set; }

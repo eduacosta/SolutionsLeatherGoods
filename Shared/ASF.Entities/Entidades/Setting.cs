@@ -1,12 +1,15 @@
 using System;
 using System.Text;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using NHibernate.Validator.Constraints;
 
 
 namespace ASF.Entities {
-    
-    public class Setting {
+    [Serializable]
+    [DataContract]
+    public class Setting : EntityBase
+    {
         public virtual int Id { get; set; }
         [NotNull(Message="Se debe cargar algún valor para el campo Name, no puede estar vacío")]
         [Length(Max=30, Message="La longitud del campo Name no debe ser mayor a 30 caracteres")]

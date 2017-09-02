@@ -1,12 +1,15 @@
 using System;
 using System.Text;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using NHibernate.Validator.Constraints;
 
 
 namespace ASF.Entities {
-    
-    public class OrderDetail {
+    [Serializable]
+    [DataContract]
+    public class OrderDetail : EntityBase
+    {
         public virtual int Id { get; set; }
         [NotNull(Message="Se debe cargar algún valor para el campo Order, no puede estar vacío")]
         public virtual Order Order { get; set; }

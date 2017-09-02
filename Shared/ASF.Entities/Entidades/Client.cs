@@ -1,12 +1,15 @@
 using System;
 using System.Text;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using NHibernate.Validator.Constraints;
 
 
 namespace ASF.Entities {
-    
-    public class Client {
+    [Serializable]
+    [DataContract]
+    public class Client : EntityBase
+    {
         public Client() {
 			Order = new List<Order>();
 			Rating = new List<Rating>();

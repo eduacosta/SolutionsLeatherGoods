@@ -1,12 +1,15 @@
 using System;
 using System.Text;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using NHibernate.Validator.Constraints;
 
 
 namespace ASF.Entities {
-    
-    public class Cart {
+    [Serializable]
+    [DataContract]
+    public class Cart : EntityBase
+    {
         public Cart() {
 			CartItem = new List<CartItem>();
         }

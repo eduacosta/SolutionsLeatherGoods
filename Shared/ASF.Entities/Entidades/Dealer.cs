@@ -1,12 +1,15 @@
 using System;
 using System.Text;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using NHibernate.Validator.Constraints;
 
 
 namespace ASF.Entities {
-    
-    public class Dealer {
+    [Serializable]
+    [DataContract]
+    public class Dealer : EntityBase
+    {
         public Dealer() {
 			Product = new List<Product>();
         }

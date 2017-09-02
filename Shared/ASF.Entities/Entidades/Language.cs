@@ -1,12 +1,15 @@
 using System;
 using System.Text;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using NHibernate.Validator.Constraints;
 
 
 namespace ASF.Entities {
-    
-    public class Language {
+    [Serializable]
+    [DataContract]
+    public class Language : EntityBase
+    {
         public Language() {
 			LocaleStringResource = new List<LocaleStringResource>();
         }

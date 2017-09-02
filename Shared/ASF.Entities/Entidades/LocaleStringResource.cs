@@ -1,12 +1,15 @@
 using System;
 using System.Text;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using NHibernate.Validator.Constraints;
 
 
 namespace ASF.Entities {
-    
-    public class LocaleStringResource {
+    [Serializable]
+    [DataContract]
+    public class LocaleStringResource : EntityBase
+    {
         public virtual int Id { get; set; }
         [NotNull(Message="Se debe cargar algún valor para el campo Locale Resource Key, no puede estar vací" +
             "o")]

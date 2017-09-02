@@ -1,12 +1,15 @@
 using System;
 using System.Text;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using NHibernate.Validator.Constraints;
 
 
 namespace ASF.Entities {
-    
-    public class Error {
+    [Serializable]
+    [DataContract]
+    public class Error : EntityBase
+    {
         public virtual int Id { get; set; }
         public virtual int? ClientId { get; set; }
         public virtual DateTime? ErrorDate { get; set; }

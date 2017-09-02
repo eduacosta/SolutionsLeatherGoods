@@ -1,12 +1,15 @@
 using System;
 using System.Text;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using NHibernate.Validator.Constraints;
 
 
 namespace ASF.Entities {
-    
-    public class Country {
+    [Serializable]
+    [DataContract]
+    public class Country : EntityBase
+    {
         public Country() {
 			Client = new List<Client>();
 			Dealer = new List<Dealer>();

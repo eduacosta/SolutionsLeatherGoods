@@ -35,9 +35,6 @@
     <Reference Include="Iesi.Collections, Version=1.0.1.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Iesi.Collections.3.2.0.4000\lib\Net35\Iesi.Collections.dll</HintPath>
     </Reference>
-    <Reference Include="NHibernate, Version=3.3.1.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\NHibernate.3.3.1.4000\lib\Net35\NHibernate.dll</HintPath>
-    </Reference>
     <Reference Include="NHibernate.Validator, Version=1.3.2.4000, Culture=neutral, PublicKeyToken=70154e18752585bd, processorArchitecture=MSIL">
       <HintPath>..\..\packages\NHibernate.Validator.1.3.2.4000\lib\Net35\NHibernate.Validator.dll</HintPath>
     </Reference>
@@ -52,27 +49,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Cart.cs" />
-    <Compile Include="CartItem.cs" />
-    <Compile Include="Category.cs" />
-    <Compile Include="Client.cs" />
-    <Compile Include="Country.cs" />
-    <Compile Include="Dealer.cs" />
+    <Compile Include="Entidades\AspNetRoles.cs" />
+    <Compile Include="Entidades\AspNetUserClaims.cs" />
+    <Compile Include="Entidades\AspNetUserLogins.cs" />
+    <Compile Include="Entidades\AspNetUserRoles.cs" />
+    <Compile Include="Entidades\AspNetUsers.cs" />
+    <Compile Include="Entidades\Cart.cs" />
+    <Compile Include="Entidades\CartItem.cs" />
+    <Compile Include="Entidades\Category.cs" />
+    <Compile Include="Entidades\Client.cs" />
+    <Compile Include="Entidades\Country.cs" />
+    <Compile Include="Entidades\Dealer.cs" />
+    <Compile Include="Entidades\Error.cs" />
+    <Compile Include="Entidades\Language.cs" />
+    <Compile Include="Entidades\LocaleResourceKey.cs" />
+    <Compile Include="Entidades\LocaleStringResource.cs" />
+    <Compile Include="Entidades\Order.cs" />
+    <Compile Include="Entidades\OrderDetail.cs" />
+    <Compile Include="Entidades\OrderNumber.cs" />
+    <Compile Include="Entidades\Product.cs" />
+    <Compile Include="Entidades\Rating.cs" />
+    <Compile Include="Entidades\Setting.cs" />
     <Compile Include="EntityBase.cs" />
-    <Compile Include="Order.cs" />
-    <Compile Include="OrderDetail.cs" />
-    <Compile Include="OrderNumber.cs" />
-    <Compile Include="Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Rating.cs" />
-    <Compile Include="Setting.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Entidades\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="MapeoEntidaddes\AspNetRoles.hbm.xml" />
     <EmbeddedResource Include="MapeoEntidaddes\AspNetUserClaims.hbm.xml" />
