@@ -19,11 +19,11 @@ namespace ASF.Entities
     [DataContract]
     public class EntityBase : INotifyPropertyChanged
     {
-        public event PropertyChangedEventHandler PropertyChanged;
+        public virtual event PropertyChangedEventHandler PropertyChanged;
         /// <summary>
         /// Raise the ProperChanged event when the value in property changes.
         /// </summary>
-        public void NotifyPropertyChanged(string propertyName)
+        public virtual void NotifyPropertyChanged(string propertyName)
         {
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
@@ -32,7 +32,7 @@ namespace ASF.Entities
         /// <summary>
         /// Displays the values of the properties for debugging purposes.
         /// </summary>
-        public override string ToString()
+        public  override string ToString()
         {
             return this.GetType().Name + ": " +
                 string.Join(",", this.GetType().GetProperties()

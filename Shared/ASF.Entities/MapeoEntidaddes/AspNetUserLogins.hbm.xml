@@ -2,8 +2,8 @@
 <hibernate-mapping assembly="ASF.Entities" namespace="ASF.Entities" xmlns="urn:nhibernate-mapping-2.2">
   <class name="AspNetUserLogins" table="AspNetUserLogins" lazy="true" schema="dbo" dynamic-insert="true" dynamic-update="true" >
     <composite-id>
-      <key-property name="LoginProvider" column="LoginProvider" not-null="true" />
-      <key-property name="ProviderKey" column="ProviderKey" not-null="true" />
+      <key-property name="LoginProvider" column="LoginProvider"  />
+      <key-property name="ProviderKey" column="ProviderKey" />
       <key-many-to-one name="AspNetUsers" column="UserId" />
     </composite-id>
   </class>

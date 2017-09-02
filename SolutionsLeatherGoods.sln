@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{36AB28E1-F1F1-4E8B-A69D-1319F22454BF}"
 EndProject
@@ -38,6 +38,11 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASF.UI.WbSite", "Presentation\ASF.UI.WbSite\ASF.UI.WbSite.csproj", "{2AE8D9D4-1145-464B-8283-4AAECC485E62}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASF.Framework", "Shared\ASF.Framework\ASF.Framework.csproj", "{B07FAACC-7F82-4FDB-9BBB-666711EEF0F4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ArchivosConfiguracion", "ArchivosConfiguracion", "{05A7F5B5-24B4-4691-AFE4-4D3013F17C84}"
+	ProjectSection(SolutionItems) = preProject
+		Conexion.config = Conexion.config
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
