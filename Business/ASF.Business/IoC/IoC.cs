@@ -23,14 +23,10 @@ namespace ASF.Business.IoC
                 {
 
 
-
                     var container = new UnityContainer()
 
                         .RegisterType<ICategoryBusines, CategoryBusines.CategoryBusines>();
                        
-
-
-
 
                     Container = container;
                 }
