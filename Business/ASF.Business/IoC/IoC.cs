@@ -25,8 +25,11 @@ namespace ASF.Business.IoC
 
                     var container = new UnityContainer()
 
-                        .RegisterType<ICategoryBusines, CategoryBusines.CategoryBusines>();
-                       
+                            .RegisterType<ICategoryBusines, CategoryBusines.CategoryBusines>(new ContainerControlledLifetimeManager(), new InjectionConstructor(FachadaDAL.FachadaDAL.CategoryDAL()))
+
+                        ;
+
+
 
                     Container = container;
                 }

@@ -62,11 +62,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CategoryBusiness.cs" />
     <Compile Include="CategoryBusiness\CategoryBusines.cs" />
     <Compile Include="CategoryBusiness\ICategoryBusines.cs" />
     <Compile Include="FachadaBLL\FachadaBLL.cs" />
     <Compile Include="FachadaDAL\FachadaDAL.cs" />
+    <Compile Include="IABM\IABM.cs" />
     <Compile Include="IoC\IoC.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

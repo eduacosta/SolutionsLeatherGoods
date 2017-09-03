@@ -19,7 +19,7 @@ namespace ASF.Services.Contracts
     public class AllResponse
     {
         [DataMember]
-        public List<Category> Result { get; set; }
+        public IList<Category> Result { get; set; }
     }
 }
 

@@ -11,7 +11,7 @@ namespace ASF.Test.TestCategory
         [TestMethod]
         public void TestDALCAtegory()
         {
-            var _datos = FachadaBLL.BusinessCategoryBusines.All().ToList();
+            var _datos = FachadaBLL.CategoryBusiness.All().ToList();
 
         }
     }

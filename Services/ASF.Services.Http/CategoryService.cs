@@ -12,6 +12,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using ASF.Business;
+using ASF.Business.FachadaBLL;
 using ASF.Entities;
 using ASF.Services.Contracts;
 
@@ -29,7 +30,7 @@ namespace ASF.Services.Http
         {
             try
             {
-                var bc = new CategoryBusiness();
+                var bc = FachadaBLL.CategoryBusiness;
                 return bc.Add(category);
             }
             catch (Exception ex)
@@ -51,7 +52,7 @@ namespace ASF.Services.Http
             try
             {
                 var response = new AllResponse();
-                var bc = new CategoryBusiness();
+                var bc =  FachadaBLL.CategoryBusiness;
                 response.Result = bc.All();
                 return response;
             }
@@ -73,7 +74,7 @@ namespace ASF.Services.Http
         {
             try
             {
-                var bc = new CategoryBusiness();
+                var bc = FachadaBLL.CategoryBusiness;
                 bc.Edit(category);
             }
             catch (Exception ex)
@@ -95,8 +96,8 @@ namespace ASF.Services.Http
             try
             {
                 var response = new FindResponse();
-                var bc = new CategoryBusiness();
-                response.Result = bc.Find(id);
+                var bc = FachadaBLL.CategoryBusiness;
+                response.Result = bc.GetByID(new Category(){Id = id});
                 return response;
             }
             catch (Exception ex)
@@ -117,8 +118,8 @@ namespace ASF.Services.Http
         {
             try
             {
-                var bc = new CategoryBusiness();
-                bc.Remove(id);
+                var bc = FachadaBLL.CategoryBusiness;
+                bc.Delete(new Category(){Id = id});
             }
             catch (Exception ex)
             {

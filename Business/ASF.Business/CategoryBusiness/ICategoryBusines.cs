@@ -1,10 +1,12 @@
 using System.Collections.Generic;
+using ASF.Business.IABM;
 using ASF.Entities;
 
 namespace ASF.Business.CategoryBusines
 {
-    public interface ICategoryBusines
+    public interface ICategoryBusines : IABM<Category>
     {
-        IList<Category> All();
+    
+
     }
 }
