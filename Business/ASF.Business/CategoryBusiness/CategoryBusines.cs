@@ -22,7 +22,7 @@ namespace ASF.Business.CategoryBusines
         public IList<Category> All()
         {
 
-            using (var repo = _unitOfWorkcategory)
+            using (var repo = FachadaDAL.FachadaDAL.CategoryDAL())
             {
                 IList<Category> _liscategory;
                 repo.BeginTransaction();
@@ -64,7 +64,21 @@ namespace ASF.Business.CategoryBusines
 
         public Category GetByID(Category entity)
         {
-            throw new NotImplementedException();
+            using (var repo = FachadaDAL.FachadaDAL.CategoryDAL())
+            {
+                repo.BeginTransaction();
+                var _category = repo.Entidad.GetAll().Where(c => c.Id == entity.Id).Select(c => new Category()
+                {
+                    Id = c.Id, 
+                    Name = c.Name
+                }).FirstOrDefault();
+                repo.Commit();
+
+                return _category;
+
+            }
+
+                
         }
     }
 }

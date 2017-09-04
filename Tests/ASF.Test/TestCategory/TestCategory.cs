@@ -10,7 +10,7 @@ namespace ASF.Test.TestCategory
     public class TestCategory
     {
         [TestMethod]
-        public void TestDALCAtegory()
+        public void TestDALCAtegoryALL()
         {
             var _datos = FachadaBLL.CategoryBusiness.All().ToList();
 
@@ -21,6 +21,14 @@ namespace ASF.Test.TestCategory
         public void TestInsertCategory()
         {
             var _datos = FachadaBLL.CategoryBusiness.Add(new Category(){Name = "Prueba"});
+
+        }
+
+        [TestMethod]
+        public void TestCategoryGetById()
+        {
+            
+            var _datos = FachadaBLL.CategoryBusiness.GetByID(new Category(){Id = 1});
 
         }
 
