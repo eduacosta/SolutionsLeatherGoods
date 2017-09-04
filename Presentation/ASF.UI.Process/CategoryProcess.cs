@@ -19,7 +19,7 @@ namespace ASF.UI.Process
         /// 
         /// </summary>
         /// <returns></returns>
-        public List<Category> SelectList()
+        public IList<Category> SelectList()
         {
             var response = HttpGet<AllResponse>("rest/Category/All", new Dictionary<string, object>(), MediaType.Json);
             return response.Result;

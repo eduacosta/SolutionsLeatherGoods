@@ -39,7 +39,17 @@ namespace ASF.Business.CategoryBusines
 
         public Category Add(Category entity)
         {
-            throw new NotImplementedException();
+
+            using (var repo = this._unitOfWorkcategory)
+            {
+                repo.BeginTransaction();
+                int _id = (int)repo.Entidad.Create(entity);
+                repo.Commit();
+
+                return new Category() { Id = _id };
+
+            }
+
         }
 
         public void Edit(Category entity)
