@@ -238,6 +238,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Areas\Category\CategoryAreaRegistration.cs" />
+    <Compile Include="Areas\Category\Controllers\CategoryController.cs" />
     <Compile Include="Constants\ExtensionMethods\HtmlLabelExtensions.cs" />
     <Compile Include="Constants\ExtensionMethods\TypeFactory.cs" />
     <Compile Include="Constants\ExtensionMethods\WebGridExtensions.cs" />
@@ -292,6 +294,8 @@
     <Content Include="AngularControllers\ControladorPrincipal.js" />
     <Content Include="AngularControllers\Principal.js" />
     <Content Include="Built\main.bundle.js" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\fonts\bootstrap\glyphicons-halflings-regular.woff2" />
     <Content Include="Content\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
@@ -399,6 +403,7 @@
     <Content Include="Content\bootstrap\bootstrap.less" />
     <Content Include="Content\bootstrap\badges.less" />
     <Content Include="Content\bootstrap\alerts.less" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="node_modules\.bin\sha.js" />
     <Content Include="node_modules\acorn-dynamic-import\lib\index.js" />
     <Content Include="node_modules\acorn-dynamic-import\lib\inject.js" />
@@ -5328,6 +5333,13 @@
     <Content Include="node_modules\yargs\node_modules\cliui\README.md" />
     <Content Include="node_modules\yargs\package.json" />
     <Content Include="node_modules\yargs\README.md" />
+    <Content Include="Areas\Category\Views\web.config" />
+    <Content Include="Areas\Category\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Category\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Category\Views\Category\ListaCategory.cshtml" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="Scripts\angular.intellisense.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
@@ -5481,6 +5493,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Category\Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
