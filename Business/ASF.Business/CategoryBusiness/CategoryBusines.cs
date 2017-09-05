@@ -40,7 +40,7 @@ namespace ASF.Business.CategoryBusines
         public Category Add(Category entity)
         {
 
-            using (var repo = this._unitOfWorkcategory)
+            using (var repo = FachadaDAL.FachadaDAL.CategoryDAL())
             {
                 repo.BeginTransaction();
                 int _id = (int)repo.Entidad.Create(entity);
@@ -54,12 +54,25 @@ namespace ASF.Business.CategoryBusines
 
         public void Edit(Category entity)
         {
-            throw new NotImplementedException();
+            using (var repo = FachadaDAL.FachadaDAL.CategoryDAL())
+            {
+                repo.BeginTransaction();
+                var _category = repo.Entidad.GetById(entity.Id);
+                _category.Name = entity.Name;
+                repo.Entidad.Update(_category);
+                repo.Commit();
+            }
         }
 
         public void Delete(Category entity)
         {
-            throw new NotImplementedException();
+            using (var repo = FachadaDAL.FachadaDAL.CategoryDAL())
+            {
+                repo.BeginTransaction();
+                repo.Entidad.Delete(entity);
+                repo.Commit();
+
+            }
         }
 
         public Category GetByID(Category entity)

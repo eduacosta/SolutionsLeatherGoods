@@ -26,7 +26,7 @@ namespace ASF.Business.FachadaDAL
 
       
 
-        public static IUnitOfWork<Category> CategoryDAL()
+        public  static IUnitOfWork<Category> CategoryDAL()
         {
 
             return _DAL.Entidades<Category>();
