@@ -12,15 +12,15 @@ namespace ASF.Test.TestCategory
         [TestMethod]
         public void TestDALCAtegoryALL()
         {
-            var _datos = FachadaBLL.CategoryBusiness.All().ToList();
-
+            var _datos = new FachadaBLL().CategoryBusiness.All().ToList();
+            var _datos1 = new  FachadaBLL().CategoryBusiness.All().ToList();
         }
 
 
         [TestMethod]
         public void TestInsertCategory()
         {
-            var _datos = FachadaBLL.CategoryBusiness.Add(new Category(){Name = "Prueba"});
+            //var _datos = FachadaBLL.CategoryBusiness.Add(new Category(){Name = "Prueba"});
 
         }
 
@@ -28,7 +28,7 @@ namespace ASF.Test.TestCategory
         public void TestCategoryGetById()
         {
             
-            var _datos = FachadaBLL.CategoryBusiness.GetByID(new Category(){Id = 1});
+            //var _datos = FachadaBLL.CategoryBusiness.GetByID(new Category(){Id = 1});
 
         }
 

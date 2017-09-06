@@ -7,12 +7,15 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "webpack": "3.5.5",
+
     "angular": "1.6.6",
     "angular-material": "1.1.4",
-    "imports-loader" :  "0.7.1" 
+    "webpack": "3.5.5",
+    "imports-loader": "0.7.1",
+    "exports-loader": "0.6.4"
 
   },
+ 
   "author": "",
   "license": "ISC"
 }

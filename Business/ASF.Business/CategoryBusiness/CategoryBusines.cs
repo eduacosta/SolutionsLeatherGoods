@@ -10,14 +10,9 @@ namespace ASF.Business.CategoryBusines
 {
     internal class CategoryBusines : ICategoryBusines
     {
-        private readonly IUnitOfWork<Category> _unitOfWorkcategory;
+       
 
-        public CategoryBusines(IUnitOfWork<Category> unitOfWorkcategory)
-        {
-
-            this._unitOfWorkcategory = unitOfWorkcategory;
-
-        }
+      
 
         public IList<Category> All()
         {
