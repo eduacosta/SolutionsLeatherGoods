@@ -67,22 +67,27 @@
 /* 0 */
 /***/ (function(module, exports, __webpack_require__) {
 
-﻿__webpack_require__(1)
+﻿__webpack_require__(1);
+
+
+
 
 /***/ }),
 /* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-﻿
-var angulars = __webpack_require__(2);
-var angularmodulo = angulars.module('AngularModuloPrincipal', []);
-angularmodulo.controller('ctrControladorPrincipal','$scope','$http',
+﻿var angulars = __webpack_require__(2);
+//import modulo from './ControladorCategory';
+var principal = angulars.module('ModuloPrincipal',[]);
+principal.controller('ctrControladorPrincipal',['$scope','$http',
     function($scope, $http) {
 
         console.log('Edu');
 
-    });
+    }]);
+
+
+module.exports = principal;
 
 
 

@@ -10,7 +10,7 @@ namespace ASF.Business.FachadaBLL
     public class FachadaBLL
     {
 
-        public  ICategoryBusines CategoryBusiness { get { return IoC.IoC.Resolve<ICategoryBusines>(); } }
+        public static ICategoryBusines CategoryBusiness { get { return IoC.IoC.Resolve<ICategoryBusines>(); } }
 
 
     }
