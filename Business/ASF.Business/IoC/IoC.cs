@@ -23,12 +23,12 @@ namespace ASF.Business.IoC
             {
                 try
                 {
-
-
-                    var container = new UnityContainer()
-
-                            //.RegisterType(typeof(IUnitOfWork<>), typeof(UnitOfWork<>), new TransientLifetimeManager())
-                            .RegisterType<ICategoryBusines, CategoryBusines.CategoryBusines>()
+                    FachadaDAL.FachadaDAL _fachadal = new FachadaDAL.FachadaDAL();
+                    var container = new UnityContainer();
+                   
+                    container.RegisterInstance<FachadaDAL.FachadaDAL>("_fachadal", _fachadal, new TransientLifetimeManager());
+                    //.RegisterType(typeof(IUnitOfWork<>), typeof(UnitOfWork<>), new TransientLifetimeManager())
+                    container.RegisterType<ICategoryBusines, CategoryBusines.CategoryBusines>(new InjectionConstructor( container.Resolve<FachadaDAL.FachadaDAL>("_fachadal")))
 
                             
                          
