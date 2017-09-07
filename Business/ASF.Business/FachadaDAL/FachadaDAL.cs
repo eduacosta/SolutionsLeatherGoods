@@ -24,9 +24,10 @@ namespace ASF.Business.FachadaDAL
         private static readonly DAL.FachadaDAL _DAL = new DAL.FachadaDAL(_ConfiguracionNHibernate);
 
 
-      
+       public static DAL.FachadaDAL DAL { get { return _DAL;} }
 
-        public static IUnitOfWork<Category> CategoryDAL()
+
+        public static  IUnitOfWork<Category> CategoryDAL()
         {
 
             return _DAL.Entidades<Category>();

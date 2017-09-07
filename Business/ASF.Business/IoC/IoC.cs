@@ -27,9 +27,10 @@ namespace ASF.Business.IoC
 
                     var container = new UnityContainer()
 
+                            //.RegisterType(typeof(IUnitOfWork<>), typeof(UnitOfWork<>), new TransientLifetimeManager())
                             .RegisterType<ICategoryBusines, CategoryBusines.CategoryBusines>()
 
-
+                            
                          
 
 
