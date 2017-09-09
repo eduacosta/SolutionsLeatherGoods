@@ -405,7 +405,6 @@
     <Content Include="Content\bootstrap\badges.less" />
     <Content Include="Content\bootstrap\alerts.less" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="Scripts\angular-mocks.js" />
     <Content Include="Areas\Category\Views\web.config" />
     <Content Include="Areas\Category\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Category\Views\Shared\_Layout.cshtml" />
@@ -414,7 +413,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Areas\Category\Views\Category\EditCategory.cshtml" />
-    <None Include="Scripts\angular.intellisense.js" />
+    <Content Include="Scripts\angular-mocks.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
     <Content Include="webpack.config.js" />
@@ -517,7 +516,6 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\site.js" />
-    <Content Include="Scripts\_references.js" />
     <Content Include="Views\Error\BadRequest.cshtml" />
     <Content Include="Views\Error\InternalServerError.cshtml" />
     <Content Include="Web.config">

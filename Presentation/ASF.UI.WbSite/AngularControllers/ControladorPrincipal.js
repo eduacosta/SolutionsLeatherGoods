@@ -1,13 +1,12 @@
-﻿var angulars = require('angular');
-//import modulo from './ControladorCategory';
-var principal = angulars.module('ModuloPrincipal',[]);
-principal.controller('ctrControladorPrincipal',['$scope','$http',
-    function($scope, $http) {
+﻿
+require('./ControladorCategory');
 
-        console.log('Edu');
-
-    }]);
+var app = angular.module("AngularModuloPrincipal", ['AngularModuloCategory']);
 
 
-module.exports = principal;
+app.controller("ctrControladorPrincipal", function ($scope) {
+    $scope.firstName = "John";
+    $scope.lastName = "Doe";
+    console.log("eduddd");
+});
 

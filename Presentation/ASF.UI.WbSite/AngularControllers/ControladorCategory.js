@@ -1,9 +1,8 @@
-﻿var angulars = require('angular');
-var modulo = angulars.module('ModuloCategory', []);
-modulo.controller('ControladorCategory', '$scope', '$http',
-    function ($scope, $http) {
+﻿var category = angular.module("AngularModuloCategory", []);
 
-        console.log('Edu categpru');
+category.controller("ctrControladorCategory", function ($scope) {
+  
+    console.log("edu categoprydddd");
+});
 
-    });
 

@@ -104,7 +104,8 @@
                 //< script src = "~/Scripts/angular.min.js" ></ script >
                 //< script src = "~/Built/main.bundle.js" ></ script >
             Bundle failoverCoreBundle = new ScriptBundle("~/bundles/site")
-
+                .Include("~/Scripts/angular.min.js")
+                .Include("~/Built/main.bundle.js")
                 .Include("~/Scripts/Fallback/styles.js")
                 .Include("~/Scripts/Fallback/scripts.js")
                 .Include("~/Scripts/site.js");

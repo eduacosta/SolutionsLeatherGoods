@@ -9,7 +9,7 @@ module.exports = {
         path: path.join(__dirname, 'Built'),
         filename: '[name].bundle.js'
     },
-   
+    watch: true
    
    
     //resolve: {

@@ -34,8 +34,8 @@
     <p><a href="https://github.com/ASP-NET-Core-Boilerplate/Templates" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
 </header>
 
-<div  ng-app="ModuloPrincipal" >
-    <div class="row" ng-controller="ctrControladorPrincipal">
+<div   >
+    <div class="row" ng-app="AngularModuloPrincipal" ng-controller="ctrControladorPrincipal">
         <article class="col-md-4" role="article">
             <header>
                 <h2><span aria-hidden="true" class="fa fa-book"></span> Getting started</h2>
@@ -46,7 +46,7 @@
                 is an ideal platform for building RESTful applications on the .NET Framework.
             </p>
         </article>
-        <article class="col-md-4" role="article" >
+        <article class="col-md-4" role="article"   ng-controller="ctrControladorCategory">
             <header>
                 <h2><span aria-hidden="true" class="fa fa-dropbox"></span> Get more libraries</h2>
             </header>
@@ -59,7 +59,7 @@
             <p>You can easily find a <a href="http://go.microsoft.com/fwlink/?LinkId=301872">web hosting</a> company that offers the right mix of features and price for your applications.</p>
         </article>
     </div>
-    <div class="row" >
+    <div class="row"  >
         <article class="col-md-4" role="article">
             <header>
                 <h2><span aria-hidden="true" class="fa fa-mobile"></span> Bootstrap</h2>
@@ -151,5 +151,6 @@
         </article>
     </div>
 </div>
-<script src="~/Scripts/angular.min.js"></script>
-<script src="~/Built/main.bundle.js"></script>
+@*<script src="~/Scripts/angular.js"></script>
+@*<script src="~/AngularControllers/ControladorPrincipal.js"></script>
+<script src="~/Built/main.bundle.js"></script>*@
