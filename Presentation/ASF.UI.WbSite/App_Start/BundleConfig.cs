@@ -104,13 +104,22 @@
                 //< script src = "~/Scripts/angular.min.js" ></ script >
                 //< script src = "~/Built/main.bundle.js" ></ script >
             Bundle failoverCoreBundle = new ScriptBundle("~/bundles/site")
-                .Include("~/Scripts/angular.min.js")
-                .Include("~/Built/main.bundle.js")
+                //.Include("~/Scripts/angular.min.js")
+              
                 .Include("~/Scripts/Fallback/styles.js")
                 .Include("~/Scripts/Fallback/scripts.js")
                 .Include("~/Scripts/site.js");
             
             bundles.Add(failoverCoreBundle);
+
+
+            Bundle webpackconfig = new ScriptBundle("~/bundles/webpack")
+
+                .Include("~/Built/main.bundle.js");
+               
+
+            bundles.Add(webpackconfig);
+
         }
     }
 }

@@ -240,6 +240,7 @@
   <ItemGroup>
     <Compile Include="Areas\Category\CategoryAreaRegistration.cs" />
     <Compile Include="Areas\Category\Controllers\CategoryController.cs" />
+    <Compile Include="Constants\CategoryController\CategoryControllerRoute.cs" />
     <Compile Include="Constants\ExtensionMethods\HtmlLabelExtensions.cs" />
     <Compile Include="Constants\ExtensionMethods\TypeFactory.cs" />
     <Compile Include="Constants\ExtensionMethods\WebGridExtensions.cs" />
@@ -407,7 +408,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Areas\Category\Views\web.config" />
     <Content Include="Areas\Category\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\Category\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Category\Views\Category\ListaCategory.cshtml" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -566,6 +566,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Category\Models\" />
+    <Folder Include="Areas\Category\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">

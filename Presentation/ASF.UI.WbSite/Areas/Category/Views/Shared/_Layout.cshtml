@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html>
+<html ng-app="AngularModuloPrincipal">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +7,7 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
-<body>
+<body ng-controller="ctrControladorCategory">
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -35,6 +35,7 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+@Scripts.Render("~/bundles/webpack")
     @RenderSection("scripts", required: false)
 </body>
 </html>

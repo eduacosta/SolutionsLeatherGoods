@@ -1,3 +1,6 @@
-﻿require('./ControladorPrincipal')
+﻿require("angular");
+
+
+require('./ControladorPrincipal');
 
 
