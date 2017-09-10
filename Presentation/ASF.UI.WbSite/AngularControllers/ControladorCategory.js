@@ -1,6 +1,9 @@
 ﻿var category = angular.module("AngularModuloCategory", []);
 
-import '../node_modules/angular-ui-grid/ui-grid.min.css';
+
+
+
+//import '../node_modules/angular-ui-grid/ui-grid.min.css';
 
 category.controller("ctrControladorCategory", function ($scope, $http) {
 
@@ -15,9 +18,9 @@ category.controller("ctrControladorCategory", function ($scope, $http) {
     $scope.gridOptions.columnDefs =
     [
         {
-            name: 'ID',
+            name: 'Id',
             field:
-                'ID'
+                'Id'
         },
         {
             name: 'Name',
@@ -40,8 +43,8 @@ category.controller("ctrControladorCategory", function ($scope, $http) {
             console.log(response.data);
 
             $scope.ListaCategorias = response.data;
+            $scope.gridOptions.data = $scope.ListaCategorias;
 
-   
 
         }, function myError(response) {
             

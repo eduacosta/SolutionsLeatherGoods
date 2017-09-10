@@ -295,6 +295,10 @@
     <Content Include="AngularControllers\ControladorCategory.js" />
     <Content Include="AngularControllers\ControladorPrincipal.js" />
     <Content Include="AngularControllers\Principal.js" />
+    <Content Include="Built\3c1e366328a749b4063b2ebe0d587904.ttf" />
+    <Content Include="Built\8f16b81dd400112540ad7bb9a0c65e3d.svg" />
+    <Content Include="Built\a0e7afb4e425820169162d25a3f9947c.woff" />
+    <Content Include="Built\aaf4143f03f2f63a121c11e3c5cbe248.eot" />
     <Content Include="Built\main.bundle.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -405,6 +409,7 @@
     <Content Include="Content\bootstrap\bootstrap.less" />
     <Content Include="Content\bootstrap\badges.less" />
     <Content Include="Content\bootstrap\alerts.less" />
+    <Content Include="Content\ui-grid.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Areas\Category\Views\web.config" />
     <Content Include="Areas\Category\Views\_ViewStart.cshtml" />

@@ -8,9 +8,14 @@
 <head @(ViewBag.OpenGraph == null ? null : Html.OpenGraphNamespace((OpenGraphMetadata)ViewBag.OpenGraph))>
     @* The order of the tags in the head is important for best performance and compatibility. *@
     @* charset - The character encoding of the document. *@
-    <meta charset="utf-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *;**script-src 'self' http://onlineerp.solution.quebec 'unsafe-inline' 'unsafe-eval';** ">
     <base href ="/">
+    
 
+    
+   
+
+    @*<script src="~/Built/main.bundle.js"></script>*@
         @* viewport - Set the scale on mobile devices (For more info see https://developer.mozilla.org/en/docs/Mozilla/Mobile/Viewport_meta_tag). *@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         @* title - The title of the page which appears in the browser window title. Aim for the title to be less than 70
@@ -203,12 +208,12 @@
 </div>
 
 
-
+@Scripts.Render("~/bundles/webpack")
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/jqueryvalunobtrusive")
     @Scripts.Render("~/bundles/bootstrap")
-@Scripts.Render("~/bundles/webpack")
+
     @RenderSection("scripts", required: false)
 </body>
 </html>
