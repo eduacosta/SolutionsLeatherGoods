@@ -2,6 +2,7 @@
 
 //import 'angular-ui-grid/ui-grid.min.css';
 import "angular-ui-grid/ui-grid.min.css"
+////import "../Built/ui-grid.eot";
 
 
 //require('angular-ui-grid/ui-grid.min.css');

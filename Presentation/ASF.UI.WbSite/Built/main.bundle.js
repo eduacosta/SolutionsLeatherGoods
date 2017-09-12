@@ -89,6 +89,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 //import 'angular-ui-grid/ui-grid.min.css';
 
+////import "../Built/ui-grid.eot";
 
 
 //require('angular-ui-grid/ui-grid.min.css');

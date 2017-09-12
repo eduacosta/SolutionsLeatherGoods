@@ -13,7 +13,7 @@
         {
             AddSearchEngineOptimizationFilters(filters);
             AddSecurityFilters(filters);
-            AddContentSecurityPolicyFilters(filters);
+            //AddContentSecurityPolicyFilters(filters);
         }
 
         /// <summary>
@@ -165,10 +165,12 @@
                 {
                     // Allow fonts from maxcdn.bootstrapcdn.com.
                     CustomSources = string.Join(
-                        " ",
+                        "*",
                         ContentDeliveryNetwork.MaxCdn.Domain),
                     // Allow all fonts from the same domain.
-                    Self = true
+                    Self = true,
+                   
+
                 });
             // form-action - This directive restricts which URLs can be used as the action of HTML form elements.
             filters.Add(
