@@ -13,7 +13,7 @@
         {
             AddSearchEngineOptimizationFilters(filters);
             AddSecurityFilters(filters);
-            //AddContentSecurityPolicyFilters(filters);
+            AddContentSecurityPolicyFilters(filters);
         }
 
         /// <summary>
@@ -159,14 +159,19 @@
                     // Allow all AJAX and Web Sockets calls from the same domain.
                     Self = true
                 });
+
+
+            
             // font-src - This directive restricts from where the protected resource can load fonts.
             filters.Add(
                 new CspFontSrcAttribute()
                 {
+                   
+
                     // Allow fonts from maxcdn.bootstrapcdn.com.
                     CustomSources = string.Join(
-                        "*",
-                        ContentDeliveryNetwork.MaxCdn.Domain),
+                        " ",
+                        ContentDeliveryNetwork.MaxCdn.Domain, "data:"),
                     // Allow all fonts from the same domain.
                     Self = true,
                    

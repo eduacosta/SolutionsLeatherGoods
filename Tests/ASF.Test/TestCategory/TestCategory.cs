@@ -12,8 +12,14 @@ namespace ASF.Test.TestCategory
         [TestMethod]
         public void TestDALCAtegoryALL()
         {
+
+            var ss = string.Concat("dsfsd", 2, "dfds");
+
             var _datos =  FachadaBLL.CategoryBusiness.All().ToList();
             var _datos1 =   FachadaBLL.CategoryBusiness.All().ToList();
+
+           
+
         }
 
 
