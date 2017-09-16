@@ -2,6 +2,7 @@ using System;
 using System.Text;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using NHibernate.Validator.Constraints;
 
@@ -23,6 +24,7 @@ namespace ASF.Entities {
         [DataMember]
         [DisplayName("Name")]
         [Browsable(false)]
+        //[Required(ErrorMessage = "El campo Nombre es obligatorio")]
         public virtual string Name { get; set; }
         [NotNull(Message="Se debe cargar algún valor para el campo Created On, no puede estar vacío")]
         public virtual DateTime CreatedOn { get; set; }

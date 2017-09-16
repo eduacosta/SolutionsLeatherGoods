@@ -1,4 +1,5 @@
 ﻿@using ASF.UI.WbSite.Constants.HomeController
+@model ASF.UI.WbSite.Models.MensajeError
 @{
     ViewBag.Title = "Bad Request";
     ViewBag.Description = "Your browser sent a request that this server could not understand.";
@@ -9,5 +10,6 @@
         <h1><span aria-hidden="true" class="fa fa-exclamation-circle text-danger"></span> @ViewBag.Title</h1>
     </header>
     <p>@ViewBag.Description</p>
+    <p>@Model.Mensaje</p>
     <a class="btn btn-primary btn-lg" href="@Url.RouteUrl(HomeControllerRoute.GetIndex)"><span aria-hidden="true" class="fa fa-home"></span> Take me home</a>
 </div>

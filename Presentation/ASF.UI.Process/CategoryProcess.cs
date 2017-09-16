@@ -7,6 +7,7 @@ using System.Configuration;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Threading;
 using System.Web;
 using ASF.Entities;
 using ASF.Services.Contracts;
@@ -38,9 +39,37 @@ namespace ASF.UI.Process
         public Category GetById(int id)
         {
 
-            var reponse = HttpGet<FindResponse>("rest/Category/Find", new Dictionary<string, object>(){{"id", id}},
+            var reponse = HttpGet<FindResponse>("rest/Category/Find", new Dictionary<string, object>() { { "id", id } },
                 mediaType: MediaType.Json);
             return reponse.Result;
+
+        }
+
+
+        public Category RemoveCategory(Category category)
+        {
+
+            var response = HttpPost("rest/Category/Remove", category, MediaType.Json);
+            return response;
+
+        }
+
+        public Category CreateCategory(Category category)
+        {
+            try
+            {
+
+
+
+                var response = HttpPost("rest/Category/Add", category, MediaType.Json);
+                return response;
+
+            }
+            catch( Exception ex )
+            {
+
+                throw;
+            }
 
         }
 

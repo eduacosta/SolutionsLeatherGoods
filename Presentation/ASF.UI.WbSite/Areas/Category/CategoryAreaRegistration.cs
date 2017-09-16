@@ -17,12 +17,12 @@ namespace ASF.UI.WbSite.Areas.Category
             context.MapRoute(
                 "Category_default",
                 "Category/Category/ListaCategory",
-                new { controller = "Category", action = "ListaCategory", id = UrlParameter.Optional }
+                new { controller = "Category", action = "ListCategory", id = UrlParameter.Optional }
             );
 
             context.MapRoute(
                 "Category5",
-                "Category/{controller}/{action}/{id}"
+                "Category/{controller}/{action}/{id}", new {id=UrlParameter.Optional}
             );
 
         }

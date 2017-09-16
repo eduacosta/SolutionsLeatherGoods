@@ -67,7 +67,9 @@ module.exports = {
 
 
     },
-    
+    plugins: [
+        new ExtractTextPlugin("[name].css")
+    ]
     //plugins: [
     //    // Output extracted CSS to a file
     //    new ExtractTextPlugin('[name].[chunkhash].css')

@@ -1,4 +1,5 @@
 ﻿using ASF.UI.WbSite.Constants.ErrorController;
+using ASF.UI.WbSite.Models;
 
 namespace ASF.UI.WbSite.Controllers
 {
@@ -21,9 +22,9 @@ namespace ASF.UI.WbSite.Controllers
         /// <returns>The partial or full bad request view.</returns>
         [OutputCache(CacheProfile = CacheProfileName.BadRequest)]
         [Route("badrequest", Name = ErrorControllerRoute.GetBadRequest)]
-        public ActionResult BadRequest()
+        public ActionResult BadRequest(string mensaje)
         {
-            return this.GetErrorView(HttpStatusCode.BadRequest, ErrorControllerAction.BadRequest);
+            return this.GetErrorView(HttpStatusCode.BadRequest, ErrorControllerAction.BadRequest, mensaje);
         }
 
         /// <summary>
@@ -86,7 +87,7 @@ namespace ASF.UI.WbSite.Controllers
 
         #region Private Methods
 
-        private ActionResult GetErrorView(HttpStatusCode statusCode, string viewName)
+        private ActionResult GetErrorView(HttpStatusCode statusCode, string viewName, string mensaje = null)
         {
             this.Response.StatusCode = (int)statusCode;
 
@@ -101,7 +102,9 @@ namespace ASF.UI.WbSite.Controllers
             }
             else
             {
-                result = this.View(viewName);
+
+                result = this.View(viewName, new MensajeError(){Mensaje = mensaje});
+               
             }
 
             return result;

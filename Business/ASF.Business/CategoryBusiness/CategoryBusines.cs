@@ -40,14 +40,28 @@ namespace ASF.Business.CategoryBusines
         public Category Add(Category entity)
         {
 
-            using (var repo = _unitOfWorkcategory)
+            try
             {
-                repo.BeginTransaction();
-                int _id = (int)repo.Entidad.Create(entity);
-                repo.Commit();
 
-                return new Category() { Id = _id };
 
+
+                using (var repo = _unitOfWorkcategory)
+
+                {
+                    repo.BeginTransaction();
+                    entity.ChangedOn = DateTime.Now;
+                    int _id = (int)repo.Entidad.Create(entity);
+                    repo.Commit();
+
+                    return new Category() { Id = _id };
+
+                }
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
             }
 
         }
@@ -59,6 +73,7 @@ namespace ASF.Business.CategoryBusines
                 repo.BeginTransaction();
                 var _category = repo.Entidad.GetById(entity.Id);
                 _category.Name = entity.Name;
+                _category.ChangedOn = DateTime.Now;
                 repo.Entidad.Update(_category);
                 repo.Commit();
             }
@@ -69,7 +84,7 @@ namespace ASF.Business.CategoryBusines
             using (var repo = _unitOfWorkcategory)
             {
                 repo.BeginTransaction();
-                repo.Entidad.Delete(entity);
+                repo.Entidad.Delete(entity.Id);
                 repo.Commit();
 
             }
@@ -82,7 +97,7 @@ namespace ASF.Business.CategoryBusines
                 repo.BeginTransaction();
                 var _category = repo.Entidad.GetAll().Where(c => c.Id == entity.Id).Select(c => new Category()
                 {
-                    Id = c.Id, 
+                    Id = c.Id,
                     Name = c.Name
                 }).FirstOrDefault();
                 repo.Commit();
@@ -91,7 +106,7 @@ namespace ASF.Business.CategoryBusines
 
             }
 
-                
+
         }
     }
 }

@@ -112,14 +112,14 @@ namespace ASF.Services.Http
             }
         }
 
-        [HttpGet]
-        [Route("Remove/{id}")]
-        public void Remove(int id)
+        [HttpPost]
+        [Route("Remove")]
+        public void Remove(Category category)
         {
             try
             {
                 var bc = FachadaBLL.CategoryBusiness;
-                bc.Delete(new Category(){Id = id});
+                bc.Delete(new Category(){Id = category.Id});
             }
             catch (Exception ex)
             {

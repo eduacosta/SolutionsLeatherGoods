@@ -86,16 +86,28 @@ namespace ASF.UI.Process
 
         public static T HttpPost<T>(string path, T value, string mediaType)
         {
-            
-            var pathAndQuery = path.EndsWith("/") ? path : path + "/";
-            using (var client = new HttpClient())
-            {
-                client.BaseAddress = new Uri(ConfigurationManager.AppSettings["serviceUrl"]);
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(mediaType));
-                var response = client.PostAsJsonAsync(pathAndQuery, value).Result;
-                response.EnsureSuccessStatusCode();
-                return value;
 
+            try
+            {
+
+
+
+
+                var pathAndQuery = path.EndsWith("/") ? path : path + "/";
+                using (var client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri(ConfigurationManager.AppSettings["serviceUrl"]);
+                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(mediaType));
+                    var response = client.PostAsJsonAsync(pathAndQuery, value).Result;
+                    response.EnsureSuccessStatusCode();
+                    return value;
+
+                }
+            }
+            catch (Exception ex)
+            {
+                var mensaje = ex.Message;
+                throw;
             }
 
         }
