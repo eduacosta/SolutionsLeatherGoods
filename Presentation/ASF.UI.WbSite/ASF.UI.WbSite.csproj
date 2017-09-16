@@ -295,7 +295,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="AngularControllers\ControladorCategory.js" />
+    <Content Include="AngularControllers\ControladorCategoria.js" />
     <Content Include="AngularControllers\ControladorPrincipal.js" />
     <Content Include="AngularControllers\Principal.js" />
     <Content Include="Built\3c1e366328a749b4063b2ebe0d587904.ttf" />

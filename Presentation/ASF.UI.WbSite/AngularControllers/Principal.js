@@ -11,6 +11,7 @@ import "angular-material/angular-material.min.css";
 //window.$ = require('jquery');
 //require('materialize-css/dist/js/materialize.js');
 //require('materialize-css/js/init.js');
+require("jquery");
 require("angular");
 require("angular-material");
 require('./ControladorPrincipal');

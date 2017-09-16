@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ASF.UI.Process;
+using ASF.UI.WbSite.Areas.Category.Models;
 using ASF.UI.WbSite.Constants.CategoryController;
 using ASF.UI.WbSite.Constants.ErrorController;
 using ASF.UI.WbSite.Controllers;
@@ -60,8 +61,8 @@ namespace ASF.UI.WbSite.Areas.Category.Controllers
         
         public ActionResult CreateCategory()
         {
-
-            return View();
+            
+            return View( );
 
         }
 
@@ -69,7 +70,7 @@ namespace ASF.UI.WbSite.Areas.Category.Controllers
         public ActionResult CreateCategory(Entities.Category category)
         {
 
-
+            System.Threading.Thread.Sleep(2000);
 
             if (ModelState.IsValid)
             {
