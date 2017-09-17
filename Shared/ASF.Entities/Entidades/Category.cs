@@ -24,13 +24,21 @@ namespace ASF.Entities {
         [DataMember]
         [DisplayName("Name")]
         [Browsable(false)]
-        //[Required(ErrorMessage = "El campo Nombre es obligatorio")]
+        [Required(ErrorMessage = "El campo Nombre es obligatorio")]
         public virtual string Name { get; set; }
         [NotNull(Message="Se debe cargar algún valor para el campo Created On, no puede estar vacío")]
+        [DataMember]
+        [DisplayName("Created On")]
         public virtual DateTime CreatedOn { get; set; }
+        [DataMember]
+        [DisplayName("Created By")]
         public virtual int? CreatedBy { get; set; }
+        [DataMember]
+        [DisplayName("Changed On")]
         [NotNull(Message="Se debe cargar algún valor para el campo Changed On, no puede estar vacío")]
         public virtual DateTime ChangedOn { get; set; }
+        [DataMember]
+        [DisplayName("Changed By")]
         public virtual int? ChangedBy { get; set; }
         public virtual IList<Dealer> Dealer { get; set; }
     }

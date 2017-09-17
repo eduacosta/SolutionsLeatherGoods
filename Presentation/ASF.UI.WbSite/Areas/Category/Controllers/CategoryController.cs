@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Web;
+using System.Web.Http;
 using System.Web.Mvc;
 using ASF.UI.Process;
 using ASF.UI.WbSite.Areas.Category.Models;
@@ -15,19 +18,19 @@ namespace ASF.UI.WbSite.Areas.Category.Controllers
     {
         // GET: Category/Category
 
-        [HttpGet]
+        [System.Web.Mvc.HttpGet]
         public JsonResult AllData()
         {
             var _lista = new Process.CategoryProcess().SelectList();
             IEnumerable<object> customers = null;
-           
+
             return Json(_lista.ToList(), JsonRequestBehavior.AllowGet);
         }
 
 
         public ActionResult ListaCategory()
         {
-          
+
             return View();
         }
 
@@ -47,10 +50,10 @@ namespace ASF.UI.WbSite.Areas.Category.Controllers
 
         }
 
-        [HttpPost]
+        [System.Web.Mvc.HttpPost]
         public ActionResult EditCategory(Entities.Category category)
         {
-            
+
             var _category = new CategoryProcess().EditCategory(category);
             var _lista = new Process.CategoryProcess().SelectList();
             return View("ListCategory", _lista);
@@ -58,51 +61,62 @@ namespace ASF.UI.WbSite.Areas.Category.Controllers
 
         }
 
-        
+
         public ActionResult CreateCategory()
         {
-            
-            return View( );
+
+            return View();
 
         }
 
-        [HttpPost]
-        public ActionResult CreateCategory(Entities.Category category)
+        [System.Web.Mvc.HttpPost]
+        public JsonResult CreateCategory(Entities.Category category)
         {
 
-            System.Threading.Thread.Sleep(2000);
+
 
             if (ModelState.IsValid)
             {
                 try
                 {
+
                     new CategoryProcess().CreateCategory(category);
                 }
                 catch (Exception e)
                 {
-                  return   RedirectToRoute(ErrorControllerRoute.GetBadRequest,new{mensaje = e.Message});
+                    return Json(new
+                    {
+                        success = false,
+                        errors = e.Message
+                    });
+
+
                 }
 
-               
-                var _lista = new Process.CategoryProcess().SelectList();
-                return View("ListCategory", _lista);
+
+
             }
             else
             {
-                foreach (ModelState modelState in ViewData.ModelState.Values)
+                return Json(new
                 {
-                    foreach (ModelError error in modelState.Errors)
-                    {
-                        //DoSomethingWith(error);
-                    }
-                }
-            }
+                    success = false,
+                    errors = ModelState.Keys.SelectMany(i => ModelState[i].Errors).Select(m => m.ErrorMessage).ToArray()
 
-            return View();
+                });
+
+              
+            }
+            return Json(new
+            {
+                success = true,
+
+            }); ;
+
         }
 
 
-        [HttpGet]
+        [System.Web.Mvc.HttpGet]
         public ActionResult DeleteCategory(int id)
         {
             var _category = new CategoryProcess().GetById(id);
@@ -114,7 +128,7 @@ namespace ASF.UI.WbSite.Areas.Category.Controllers
         }
 
 
-        [HttpPost]
+        [System.Web.Mvc.HttpPost]
         public ActionResult DeleteCategory(Entities.Category category)
         {
             var _category = new CategoryProcess().RemoveCategory(category);

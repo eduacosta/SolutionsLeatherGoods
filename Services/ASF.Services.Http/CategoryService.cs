@@ -28,6 +28,8 @@ namespace ASF.Services.Http
         [Route("Add")]
         public Category Add(Category category)
         {
+
+        
             try
             {
                 var bc = FachadaBLL.CategoryBusiness;

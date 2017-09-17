@@ -18,26 +18,26 @@ category.controller("ControladorCategoria", function ($scope, $http, $mdDialog) 
     /***************
     Variables
     ****************/
-    vm.gridOptions = { enableSorting: true};
+    vm.gridOptions = { enableSorting: true };
     vm.gridOptions.columnDefs =
-    [
-        {
-            name: 'Id',
-            field:
+        [
+            {
+                name: 'Id',
+                field:
                 'Id'
-        },
-        {
-            name: 'Name',
-            field:
+            },
+            {
+                name: 'Name',
+                field:
                 'Name'
-        },
-    ];
+            },
+        ];
     vm.gridOptions.data = [];
 
 
 
 
-    vm.TraerListaCategoria = function() {
+    vm.TraerListaCategoria = function () {
 
 
         $http({
@@ -51,33 +51,30 @@ category.controller("ControladorCategoria", function ($scope, $http, $mdDialog) 
 
 
         }, function myError(response) {
-            
+
         });
 
     }
 
 
     vm.ShowWait = false;
-    vm.GuardarCategoria = function(ev) {
+    vm.GuardarCategoria = function (ev) {
 
 
-       
+
         if (typeof vm.model == "undefined") {
 
 
-            vm.showAlert = function() {
-                // Appending dialog to document.body to cover sidenav in docs app
-                // Modal dialogs should fully cover application
-                // to prevent interaction outside of dialog
-                $mdDialog.show(
-                    $mdDialog.alert()
+
+            $mdDialog.show(
+                $mdDialog.alert()
                     .clickOutsideToClose(true)
                     .title('Datos no válidos')
                     .textContent('Debe cargar un nombre de categoria')
                     .ok('Ok')
                     .targetEvent(ev)
-                );
-            };
+            );
+
 
             vm.showAlert();
 
@@ -90,30 +87,50 @@ category.controller("ControladorCategoria", function ($scope, $http, $mdDialog) 
                 data: vm.model
             }).then(function mySuccess(response) {
                 console.log(response);
-                window.location.pathname = "Category/Category/ListCategory";
+                //window.location.pathname = "Category/Category/ListCategory";
                 vm.ShowWait = false;
+
+                if (response.data.success === true) {
+
+
+                    window.location.pathname = "Category/Category/ListCategory";
+
+                } else {
+
+                    $mdDialog.show(
+                        $mdDialog.alert()
+                        .clickOutsideToClose(true)
+                        .title('Error')
+                        .textContent(response.data.errors)
+                        .ok('Ok')
+                        .targetEvent(ev));
+                }
+
 
             }, function myError(response) {
                 vm.ShowWait = false;
+
+               
+
             });
 
         }
 
-      
+
 
     }
 
-  
 
 
 
-  
+
+
 
 });
 
 
 
-   
+
 
 
 
