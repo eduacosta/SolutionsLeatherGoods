@@ -4,7 +4,7 @@ using ASF.Entities;
 
 namespace ASF.Business.CategoryBusines
 {
-    public interface ICategoryBusines : IABM<Category>
+    public interface ICategoryBusiness : IABM<Category>
     {
     
 

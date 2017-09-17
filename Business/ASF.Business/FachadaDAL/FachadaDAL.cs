@@ -32,6 +32,19 @@ namespace ASF.Business.FachadaDAL
             return _DAL.Entidades<Category>();
         }
 
+        public IUnitOfWork<Client> ClientDAL()
+        {
+
+            return _DAL.Entidades<Client>();
+        }
+
+        public IUnitOfWork<Country> CountryDAL()
+        {
+
+            return _DAL.Entidades<Country>();
+        }
+
+
         public  IUnitOfWork<AspNetUserLogins> AspNetUserLoginsDAL()
         {
 

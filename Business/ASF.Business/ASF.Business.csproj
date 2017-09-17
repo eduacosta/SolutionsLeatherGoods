@@ -13,6 +13,7 @@
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
+    <DontImportPostSharp>True</DontImportPostSharp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -32,6 +33,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Bitacora, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\ArquitecturaBase\Bitacora\bin\Debug\Bitacora.dll</HintPath>
+    </Reference>
     <Reference Include="DAL">
       <HintPath>..\..\..\..\ArquitecturaBase\DAL\DAL.dll</HintPath>
     </Reference>
@@ -53,6 +58,10 @@
     <Reference Include="NHibernate, Version=4.1.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
       <HintPath>..\..\packages\NHibernate.4.1.1.4000\lib\net40\NHibernate.dll</HintPath>
     </Reference>
+    <Reference Include="PostSharp, Version=4.2.17.0, Culture=neutral, PublicKeyToken=b13fd38b8f9c99d7, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\PostSharp.4.2.17\lib\net35-client\PostSharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -62,8 +71,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CategoryBusiness\CategoryBusines.cs" />
-    <Compile Include="CategoryBusiness\ICategoryBusines.cs" />
+    <Compile Include="CategoryBusiness\CategoryBusiness.cs" />
+    <Compile Include="CategoryBusiness\ICategoryBusiness.cs" />
+    <Compile Include="ClientBusiness\ClientBusiness.cs" />
+    <Compile Include="ClientBusiness\IClientBusiness.cs" />
+    <Compile Include="CountryBusiness\CountryBusiness.cs" />
+    <Compile Include="CountryBusiness\ICountryBusiness.cs" />
     <Compile Include="FachadaBLL\FachadaBLL.cs" />
     <Compile Include="FachadaDAL\FachadaDAL.cs" />
     <Compile Include="IABM\IABM.cs" />
@@ -98,4 +111,9 @@
     -->
     <AutoUnifyAssemblyReferences>false</AutoUnifyAssemblyReferences>
   </PropertyGroup>
+  <Import Project="..\..\packages\PostSharp.4.2.17\tools\PostSharp.targets" Condition="Exists('..\..\packages\PostSharp.4.2.17\tools\PostSharp.targets')" />
+  <Target Name="EnsurePostSharpImported" BeforeTargets="BeforeBuild" Condition="'$(PostSharp30Imported)' == ''">
+    <Error Condition="!Exists('..\..\packages\PostSharp.4.2.17\tools\PostSharp.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://www.postsharp.net/links/nuget-restore." />
+    <Error Condition="Exists('..\..\packages\PostSharp.4.2.17\tools\PostSharp.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://www.postsharp.net/links/nuget-restore." />
+  </Target>
 </Project>

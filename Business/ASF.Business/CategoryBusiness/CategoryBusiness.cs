@@ -4,15 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ASF.Entities;
+using Bitacora;
 using DAL;
 
 namespace ASF.Business.CategoryBusines
 {
-    internal class CategoryBusines : ICategoryBusines
+    [ExceptionAspect]
+    internal class CategoryBusiness : ICategoryBusiness
     {
         private readonly IUnitOfWork<Category> _unitOfWorkcategory;
 
-        public CategoryBusines(FachadaDAL.FachadaDAL unitOfWorkcategory)
+        public CategoryBusiness(FachadaDAL.FachadaDAL unitOfWorkcategory)
         {
 
             this._unitOfWorkcategory = unitOfWorkcategory.CategoryDAL();

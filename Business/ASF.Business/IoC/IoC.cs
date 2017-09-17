@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ASF.Business.CategoryBusines;
+using ASF.Business.ClientBusiness;
 using ASF.Entities;
 using DAL;
 using Microsoft.Practices.Unity;
@@ -27,11 +28,15 @@ namespace ASF.Business.IoC
                     var container = new UnityContainer();
                    
                     container.RegisterInstance<FachadaDAL.FachadaDAL>("_fachadal", _fachadal, new TransientLifetimeManager());
-                    //.RegisterType(typeof(IUnitOfWork<>), typeof(UnitOfWork<>), new TransientLifetimeManager())
-                    container.RegisterType<ICategoryBusines, CategoryBusines.CategoryBusines>(new InjectionConstructor( container.Resolve<FachadaDAL.FachadaDAL>("_fachadal")))
+                 
 
-                            
-                         
+
+                    container.RegisterType<ICategoryBusiness, CategoryBusines.CategoryBusiness>(
+                        new InjectionConstructor(container.Resolve<FachadaDAL.FachadaDAL>("_fachadal")));
+                    container.RegisterType<IClientBusiness, ClientBusiness.ClientBusiness>(new InjectionConstructor(container.Resolve<FachadaDAL.FachadaDAL>("_fachadal")))
+
+
+
 
 
                         ;
