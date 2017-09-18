@@ -6,8 +6,10 @@ using System.Net.Http;
 using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
 using ASF.UI.Process;
 using ASF.UI.WbSite.Areas.Category.Models;
+using ASF.UI.WbSite.Constants;
 using ASF.UI.WbSite.Constants.CategoryController;
 using ASF.UI.WbSite.Constants.ErrorController;
 using ASF.UI.WbSite.Controllers;
@@ -84,11 +86,13 @@ namespace ASF.UI.WbSite.Areas.Category.Controllers
                 }
                 catch (Exception e)
                 {
-                    return Json(new
-                    {
-                        success = false,
-                        errors = e.Message
-                    });
+                    return Json(new ResponseHttp() { success = false, errors = e.Message});
+
+                    //return Json(new
+                    //{
+                    //    success = false,
+                    //    errors = e.Message
+                    //});
 
 
                 }
@@ -98,20 +102,30 @@ namespace ASF.UI.WbSite.Areas.Category.Controllers
             }
             else
             {
-                return Json(new
+                return Json(new ResponseHttp()
                 {
                     success = false,
                     errors = ModelState.Keys.SelectMany(i => ModelState[i].Errors).Select(m => m.ErrorMessage).ToArray()
-
+                        .ToString()
                 });
 
-              
-            }
-            return Json(new
-            {
-                success = true,
+                //return Json(new
+                //{
+                //    success = false,
+                //    errors = ModelState.Keys.SelectMany(i => ModelState[i].Errors).Select(m => m.ErrorMessage).ToArray()
 
-            }); ;
+                //});
+
+
+            }
+
+            return Json(new ResponseHttp(){success = true, redirect = "Category / Category / ListCategory" });
+
+            //return Json(new
+            //{
+            //    success = true,
+
+            //}); ;
 
         }
 

@@ -93,7 +93,7 @@ category.controller("ControladorCategoria", function ($scope, $http, $mdDialog) 
                 if (response.data.success === true) {
 
 
-                    window.location.pathname = "Category/Category/ListCategory";
+                    window.location.pathname = response.data.redirect; 
 
                 } else {
 
