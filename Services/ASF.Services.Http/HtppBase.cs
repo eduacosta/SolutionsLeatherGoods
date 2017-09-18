@@ -9,11 +9,27 @@ using System.Web.Http;
 using ASF.Business.FachadaBLL;
 using ASF.Entities;
 using ASF.Services.Contracts;
+//using ASF.Services.Contracts.Responses;
 
 namespace ASF.Services.Http
 {
-    public abstract class HtppBase <T> where T : EntityBase
+    public abstract class HtppBase<T> : ApiController where T : EntityBase
     {
+        private AllResponse<T> _Allresonpse = new AllResponse<T>();
+
+        public AllResponse<T> AllResult
+        {
+            get { return _Allresonpse; }
+            set { _Allresonpse = value; }
+        }
+
+        private FindResponse<T> _FindResponse = new FindResponse<T>();
+        public FindResponse<T> FindResult
+        {
+            get { return _FindResponse; }
+            set { _FindResponse = value; }
+        }
+
 
         [HttpPost]
         [Route("Add")]
@@ -22,39 +38,23 @@ namespace ASF.Services.Http
 
         [HttpGet]
         [Route("All")]
-        public abstract AllResponse All();
+        public abstract AllResponse<T> All();
 
 
         [HttpPost]
         [Route("Edit")]
-        public abstract void Edit(Category category);
-       
+        public abstract void Edit(T entidad);
+
 
         [HttpGet]
         [Route("Find")]
-        public abstract FindResponse Find(int id)
-       
+        public abstract  FindResponse<T> Find(int id);
+
 
         [HttpPost]
         [Route("Remove")]
-        public void Remove(Category category)
-        {
-            try
-            {
-                var bc = FachadaBLL.CategoryBusiness;
-                bc.Delete(new Category() { Id = category.Id });
-            }
-            catch (Exception ex)
-            {
-                var httpError = new HttpResponseMessage()
-                {
-                    StatusCode = (HttpStatusCode)422,
-                    ReasonPhrase = ex.Message
-                };
+        public abstract void Remove(T entidad);
 
-                throw new HttpResponseException(httpError);
-            }
-        }
 
     }
 }

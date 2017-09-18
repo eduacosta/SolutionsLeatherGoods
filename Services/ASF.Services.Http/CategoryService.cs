@@ -22,118 +22,118 @@ namespace ASF.Services.Http
     /// Category HTTP service controller.
     /// </summary>
     [RoutePrefix("rest/Category")]
-    public class CategoryService : ApiController
+    public class CategoryService  :  CategoryHttp.CategoryHttp
     {
-        [HttpPost]
-        [Route("Add")]
-        public Category Add(Category category)
-        {
+        //[HttpPost]
+        //[Route("Add")]
+        //public Entities.Category Add(Entities.Category category)
+        //{
 
-        
-            try
-            {
-                var bc = FachadaBLL.CategoryBusiness;
-                return bc.Add(category);
-            }
-            catch (Exception ex)
-            {
-                var httpError = new HttpResponseMessage()
-                {
-                    StatusCode = (HttpStatusCode)422,
-                    ReasonPhrase = ex.Message
-                };
 
-                throw new HttpResponseException(httpError);
-            }
-        }
+        //    try
+        //    {
+        //        var bc = FachadaBLL.CategoryBusiness;
+        //        return bc.Add(category);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        var httpError = new HttpResponseMessage()
+        //        {
+        //            StatusCode = (HttpStatusCode)422,
+        //            ReasonPhrase = ex.Message
+        //        };
 
-        [HttpGet]
-        [Route("All")]
-        public AllResponse All()
-        {
-            try
-            {
-                var response = new AllResponse();
-                var bc =  FachadaBLL.CategoryBusiness;
-                response.Result = bc.All();
-                return response;
-            }
-            catch (Exception ex)
-            {
-                var httpError = new HttpResponseMessage()
-                {
-                    StatusCode = (HttpStatusCode)422,
-                    ReasonPhrase = ex.Message
-                };
+        //        throw new HttpResponseException(httpError);
+        //    }
+        //}
 
-                throw new HttpResponseException(httpError);
-            }
-        }
+        //[HttpGet]
+        //[Route("All")]
+        //public AllResponse All()
+        //{
+        //    try
+        //    {
+        //        var response = new AllResponse();
+        //        var bc = FachadaBLL.CategoryBusiness;
+        //        response.Result = bc.All();
+        //        return response;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        var httpError = new HttpResponseMessage()
+        //        {
+        //            StatusCode = (HttpStatusCode)422,
+        //            ReasonPhrase = ex.Message
+        //        };
 
-        [HttpPost]
-        [Route("Edit")]
-        public void Edit(Category category)
-        {
-            try
-            {
-                var bc = FachadaBLL.CategoryBusiness;
-                bc.Edit(category);
-            }
-            catch (Exception ex)
-            {
-                var httpError = new HttpResponseMessage()
-                {
-                    StatusCode = (HttpStatusCode)422,
-                    ReasonPhrase = ex.Message
-                };
+        //        throw new HttpResponseException(httpError);
+        //    }
+        //}
 
-                throw new HttpResponseException(httpError);
-            }
-        }
+        //[HttpPost]
+        //[Route("Edit")]
+        //public void Edit(Category category)
+        //{
+        //    try
+        //    {
+        //        var bc = FachadaBLL.CategoryBusiness;
+        //        bc.Edit(category);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        var httpError = new HttpResponseMessage()
+        //        {
+        //            StatusCode = (HttpStatusCode)422,
+        //            ReasonPhrase = ex.Message
+        //        };
 
-        [HttpGet]
-        [Route("Find")]
-        public FindResponse Find(int id)
-        {
-            try
-            {
-                var response = new FindResponse();
-                var bc = FachadaBLL.CategoryBusiness;
-                response.Result = bc.GetByID(new Category(){Id = id});
-                return response;
-            }
-            catch (Exception ex)
-            {
-                var httpError = new HttpResponseMessage()
-                {
-                    StatusCode = (HttpStatusCode)422,
-                    ReasonPhrase = ex.Message
-                };
+        //        throw new HttpResponseException(httpError);
+        //    }
+        //}
 
-                throw new HttpResponseException(httpError);
-            }
-        }
+        //[HttpGet]
+        //[Route("Find")]
+        //public FindResponse Find(int id)
+        //{
+        //    try
+        //    {
+        //        var response = new FindResponse();
+        //        var bc = FachadaBLL.CategoryBusiness;
+        //        response.Result = bc.GetByID(new Category(){Id = id});
+        //        return response;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        var httpError = new HttpResponseMessage()
+        //        {
+        //            StatusCode = (HttpStatusCode)422,
+        //            ReasonPhrase = ex.Message
+        //        };
 
-        [HttpPost]
-        [Route("Remove")]
-        public void Remove(Category category)
-        {
-            try
-            {
-                var bc = FachadaBLL.CategoryBusiness;
-                bc.Delete(new Category(){Id = category.Id});
-            }
-            catch (Exception ex)
-            {
-                var httpError = new HttpResponseMessage()
-                {
-                    StatusCode = (HttpStatusCode)422,
-                    ReasonPhrase = ex.Message
-                };
+        //        throw new HttpResponseException(httpError);
+        //    }
+        //}
 
-                throw new HttpResponseException(httpError);
-            }
-        }
+        //[HttpPost]
+        //[Route("Remove")]
+        //public void Remove(Category category)
+        //{
+        //    try
+        //    {
+        //        var bc = FachadaBLL.CategoryBusiness;
+        //        bc.Delete(new Category(){Id = category.Id});
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        var httpError = new HttpResponseMessage()
+        //        {
+        //            StatusCode = (HttpStatusCode)422,
+        //            ReasonPhrase = ex.Message
+        //        };
+
+        //        throw new HttpResponseException(httpError);
+        //    }
+        //}
     }
 }
 

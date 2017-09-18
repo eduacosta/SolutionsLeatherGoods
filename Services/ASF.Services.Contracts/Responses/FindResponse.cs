@@ -16,10 +16,10 @@ namespace ASF.Services.Contracts
 {
     
     [DataContract]
-    public class FindResponse
+    public class FindResponse<T> where T : EntityBase
     {
         [DataMember]
-        public Category Result { get; set; }
+        public T Result { get; set; }
     }
 }
 

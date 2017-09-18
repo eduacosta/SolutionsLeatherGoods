@@ -20,7 +20,7 @@ namespace ASF.Hosts.Web
 
             bool result = type.IsClass && type.IsVisible && !type.IsAbstract &&
                           typeof(IHttpController).IsAssignableFrom(type) &&
-                          type.Namespace.EndsWith(".Services.Http");
+                          type.Namespace.EndsWith(".Services.Http.Services");
 
             return result;
 

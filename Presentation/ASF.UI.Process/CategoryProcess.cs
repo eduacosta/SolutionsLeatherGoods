@@ -23,7 +23,7 @@ namespace ASF.UI.Process
         /// <returns></returns>
         public IList<Category> SelectList()
         {
-            var response = HttpGet<AllResponse>("rest/Category/All", new Dictionary<string, object>(), MediaType.Json);
+            var response = HttpGet<AllResponse<Category>>("rest/Category/All", new Dictionary<string, object>(), MediaType.Json);
             return response.Result;
         }
 
@@ -39,7 +39,7 @@ namespace ASF.UI.Process
         public Category GetById(int id)
         {
 
-            var reponse = HttpGet<FindResponse>("rest/Category/Find", new Dictionary<string, object>() { { "id", id } },
+            var reponse = HttpGet<FindResponse<Category>>("rest/Category/Find", new Dictionary<string, object>() { { "id", id } },
                 mediaType: MediaType.Json);
             return reponse.Result;
 

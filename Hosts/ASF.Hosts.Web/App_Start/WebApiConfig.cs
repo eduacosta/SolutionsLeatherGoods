@@ -4,7 +4,9 @@ using System.Linq;
 using System.Reflection;
 using System.Web;
 using System.Web.Http;
+using System.Web.Http.Controllers;
 using System.Web.Http.Dispatcher;
+using System.Web.Http.Routing;
 using ASF.Hosts.Web;
 
 namespace ASF.Hosts.Web
@@ -23,11 +25,25 @@ namespace ASF.Hosts.Web
             config.Services.Replace(typeof(IHttpControllerTypeResolver),
                new HttpServiceTypeResolver());
 
+            config.MapHttpAttributeRoutes(new WebApiCustomDirectRouteProvider());
+
             // Web API routes
-            config.MapHttpAttributeRoutes();
+            //config.MapHttpAttributeRoutes();
 
             var appXmlType = config.Formatters.XmlFormatter.SupportedMediaTypes.FirstOrDefault(t => t.MediaType == "application/xml");
             config.Formatters.XmlFormatter.SupportedMediaTypes.Remove(appXmlType);
         }
     }
+
+
+    public class WebApiCustomDirectRouteProvider : DefaultDirectRouteProvider
+    {
+        protected override IReadOnlyList<IDirectRouteFactory>
+            GetActionRouteFactories(HttpActionDescriptor actionDescriptor)
+        {
+            // inherit route attributes decorated on base class controller's actions
+            return actionDescriptor.GetCustomAttributes<IDirectRouteFactory>(inherit: true);
+        }
+    }
+
 }
