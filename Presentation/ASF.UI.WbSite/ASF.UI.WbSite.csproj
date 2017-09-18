@@ -245,6 +245,7 @@
     <Compile Include="Areas\Category\CategoryAreaRegistration.cs" />
     <Compile Include="Areas\Category\Controllers\CategoryController.cs" />
     <Compile Include="Areas\Category\Models\CategoryDTO.cs" />
+    <Compile Include="Constants\CarritoCompra\CarritoControllerRoute.cs" />
     <Compile Include="Constants\CategoryController\CategoryControllerRoute.cs" />
     <Compile Include="Constants\ExtensionMethods\HtmlLabelExtensions.cs" />
     <Compile Include="Constants\ExtensionMethods\TypeFactory.cs" />
@@ -265,6 +266,7 @@
     <Compile Include="Constants\HomeController\HomeControllerRoute.cs" />
     <Compile Include="Constants\ResponseHttp.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CarritoController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -581,6 +583,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.1.1.min.map" />
+    <Content Include="Views\Carrito\CarritoCompra.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

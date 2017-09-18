@@ -6,7 +6,7 @@
 
         public const string Home = "Home";
 
-        
+        public const string Carrito = "Carrito";
 
     }
 }
