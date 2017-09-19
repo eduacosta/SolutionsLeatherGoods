@@ -1,16 +1,12 @@
 ﻿var category = angular.module("AngularModuloCategoria", []);
 
 
-
-
 //import '../node_modules/angular-ui-grid/ui-grid.min.css';
 
 category.controller("ControladorCategoria", function ($scope, $http, $mdDialog) {
 
 
     var vm = this;
-
-
     /***************
     Variables
     ****************/
