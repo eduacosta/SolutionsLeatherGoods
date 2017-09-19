@@ -45,12 +45,13 @@ namespace ASF.Business.FachadaDAL
         }
 
 
-        public  IUnitOfWork<AspNetUserLogins> AspNetUserLoginsDAL()
+        public IUnitOfWork<Dealer> DealerDAL()
         {
 
-            return _DAL.Entidades<AspNetUserLogins>();
+            return _DAL.Entidades<Dealer>();
         }
 
+     
 
 
 

@@ -16,14 +16,23 @@ using ASF.UI.WbSite.Controllers;
 
 namespace ASF.UI.WbSite.Areas.Category.Controllers
 {
-    public class CategoryController : Controller
+    public class CategoryController : Controller, IABMControlador<Entities.Category>
     {
+        private ProcessComponent<Entities.Category> _categoyprocess;
+
+        public CategoryController()
+        {
+            _categoyprocess = new ProcessComponent<Entities.Category>();
+
+        }
+
+
         // GET: Category/Category
 
         [System.Web.Mvc.HttpGet]
         public JsonResult AllData()
         {
-            var _lista = new Process.CategoryProcess().SelectList();
+            var _lista = _categoyprocess.SelectList();
             IEnumerable<object> customers = null;
 
             return Json(_lista.ToList(), JsonRequestBehavior.AllowGet);
@@ -37,34 +46,34 @@ namespace ASF.UI.WbSite.Areas.Category.Controllers
         }
 
 
-        public ActionResult ListCategory()
+        public ActionResult ListEntity()
         {
-            var _lista = new Process.CategoryProcess().SelectList();
+            var _lista = _categoyprocess.SelectList();
             return View(_lista);
         }
 
 
-        public ActionResult EditCategory(int id)
+        public ActionResult EditEntity(int id)
         {
-            var _category = new CategoryProcess().GetById(id);
+            var _category = _categoyprocess.GetById(id);
             return View(_category);
 
 
         }
 
         [System.Web.Mvc.HttpPost]
-        public ActionResult EditCategory(Entities.Category category)
+        public ActionResult EditEntity(Entities.Category category)
         {
 
-            var _category = new CategoryProcess().EditCategory(category);
-            var _lista = new Process.CategoryProcess().SelectList();
-            return View("ListCategory", _lista);
+            var _category = _categoyprocess.EditCategory(category);
+            var _lista = _categoyprocess.SelectList();
+            return View("ListEntity", _lista);
 
 
         }
 
 
-        public ActionResult CreateCategory()
+        public ActionResult CreateEntity()
         {
 
             return View();
@@ -72,7 +81,7 @@ namespace ASF.UI.WbSite.Areas.Category.Controllers
         }
 
         [System.Web.Mvc.HttpPost]
-        public JsonResult CreateCategory(Entities.Category category)
+        public ActionResult CreateEntity(Entities.Category category)
         {
 
 
@@ -82,17 +91,11 @@ namespace ASF.UI.WbSite.Areas.Category.Controllers
                 try
                 {
 
-                    new CategoryProcess().CreateCategory(category);
+                    _categoyprocess.CreateCategory(category);
                 }
                 catch (Exception e)
                 {
                     return Json(new ResponseHttp() { success = false, errors = e.Message});
-
-                    //return Json(new
-                    //{
-                    //    success = false,
-                    //    errors = e.Message
-                    //});
 
 
                 }
@@ -109,31 +112,19 @@ namespace ASF.UI.WbSite.Areas.Category.Controllers
                         .ToString()
                 });
 
-                //return Json(new
-                //{
-                //    success = false,
-                //    errors = ModelState.Keys.SelectMany(i => ModelState[i].Errors).Select(m => m.ErrorMessage).ToArray()
-
-                //});
-
-
+                
             }
 
-            return Json(new ResponseHttp(){success = true, redirect = "Category / Category / ListCategory" });
+            return Json(new ResponseHttp(){success = true, redirect = "Category/Category/ListEntity" });
 
-            //return Json(new
-            //{
-            //    success = true,
-
-            //}); ;
-
+          
         }
 
 
         [System.Web.Mvc.HttpGet]
-        public ActionResult DeleteCategory(int id)
+        public ActionResult DeleteEntity(int id)
         {
-            var _category = new CategoryProcess().GetById(id);
+            var _category = _categoyprocess.GetById(id);
 
             return View(_category);
 
@@ -143,12 +134,12 @@ namespace ASF.UI.WbSite.Areas.Category.Controllers
 
 
         [System.Web.Mvc.HttpPost]
-        public ActionResult DeleteCategory(Entities.Category category)
+        public ActionResult DeleteEntity(Entities.Category category)
         {
-            var _category = new CategoryProcess().RemoveCategory(category);
+            var _category = _categoyprocess.RemoveCategory(category);
 
-            var _lista = new Process.CategoryProcess().SelectList();
-            return View("ListCategory", _lista);
+            var _lista = _categoyprocess.SelectList();
+            return View("ListEntity", _lista);
 
 
 

@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using ASF.Business.CategoryBusines;
 using ASF.Business.ClientBusiness;
+using ASF.Business.CountryBusiness;
+using ASF.Business.DealerBusiness;
 using ASF.Entities;
 using DAL;
 using Microsoft.Practices.Unity;
@@ -33,13 +35,16 @@ namespace ASF.Business.IoC
 
                     container.RegisterType<ICategoryBusiness, CategoryBusines.CategoryBusiness>(
                         new InjectionConstructor(container.Resolve<FachadaDAL.FachadaDAL>("_fachadal")));
-                    container.RegisterType<IClientBusiness, ClientBusiness.ClientBusiness>(new InjectionConstructor(container.Resolve<FachadaDAL.FachadaDAL>("_fachadal")))
+                    container.RegisterType<IClientBusiness, ClientBusiness.ClientBusiness>(
+                        new InjectionConstructor(container.Resolve<FachadaDAL.FachadaDAL>("_fachadal")));
+                    container.RegisterType<IDealerBusiness, DealerBusiness.DealerBusiness>(
+                        new InjectionConstructor(container.Resolve<FachadaDAL.FachadaDAL>("_fachadal")));
+                    container.RegisterType<ICountryBusiness, CountryBusiness.CountryBusiness>(
+                        new InjectionConstructor(container.Resolve<FachadaDAL.FachadaDAL>("_fachadal")));
 
 
 
 
-
-                        ;
 
 
 

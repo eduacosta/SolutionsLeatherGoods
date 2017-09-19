@@ -5,6 +5,8 @@ using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Web;
+using ASF.Entities;
+using ASF.Services.Contracts;
 
 namespace ASF.UI.Process
 {
@@ -12,7 +14,7 @@ namespace ASF.UI.Process
     /// Base class for UI Controllers (not the ASP.NET MVC Controllers).
     /// This class is purposely renamed to ProcessComponent to avoid confusion from the MVC controllers.
     /// </summary>
-    public abstract class ProcessComponent
+    public  class ProcessComponent<T> : IABMProcess<T> where T : EntityBase
     {
         /// <summary>
         /// Sends a Http Get request to a URL with querystring style parameters.
@@ -22,7 +24,7 @@ namespace ASF.UI.Process
         /// <param name="parameters">A dictionary containing the parameters and values to form the query.</param>
         /// <param name="mediaType">The media type to use i.e. application/xml or application/json.</param>
         /// <returns>An object specified in the generic type.</returns>
-        protected static T HttpGet<T>(string path, Dictionary<string, object> parameters, string mediaType)
+        private static T HttpGet<T>(string path, Dictionary<string, object> parameters, string mediaType)
         {
             UriBuilder builder = new UriBuilder
             {
@@ -44,7 +46,7 @@ namespace ASF.UI.Process
         /// <param name="values">A list of parameter values to form the query.</param>
         /// <param name="mediaType">The media type to use i.e. application/xml or application/json.</param>
         /// <return
-        protected static T HttpGet<T>(string path, List<object> values, string mediaType)
+        private static T HttpGet<T>(string path, List<object> values, string mediaType)
         {
             string query = string.Empty;
             string pathAndQuery = path.EndsWith("/") ? path : path += "/";
@@ -84,7 +86,7 @@ namespace ASF.UI.Process
             return result;
         }
 
-        public static T HttpPost<T>(string path, T value, string mediaType)
+        private static T HttpPost<T>(string path, T value, string mediaType)
         {
 
             try
@@ -110,6 +112,69 @@ namespace ASF.UI.Process
                 throw;
             }
 
+        }
+
+        private static  IList<T> CallHttpGetAll<T>(Dictionary<string, object> parametros = null) where  T : EntityBase
+        {
+            var nombreclase = typeof(T).Name;
+            var response = HttpGet<AllResponse<T>>( $"rest/{nombreclase}/All", parametros ?? new Dictionary<string, object>(), MediaType.Json);
+            return response.Result;
+
+        }
+
+
+        private static T CallHttpGetById<T>(Dictionary<string, object> parametros = null) where T : EntityBase
+        {
+            var nombreclase = typeof(T).Name;
+            var reponse = HttpGet<FindResponse<T>>($"rest/{nombreclase}/Find", parametros ?? new Dictionary<string, object>(),
+                mediaType: MediaType.Json);
+            return reponse.Result;
+        }
+
+        private static T CallHttpPostRemove<T>(T value) where T : EntityBase
+        {
+            var nombreclase = typeof(T).Name;
+            var response = HttpPost($"rest/{nombreclase}/Remove", value, MediaType.Json);
+            return response;
+        }
+
+        private static T CallHttpPostEdit<T>(T value) where T : EntityBase
+        {
+            var nombreclase = typeof(T).Name;
+            var response = HttpPost($"rest/{nombreclase}/Edit", value, MediaType.Json);
+            return response;
+        }
+
+        private static T CallHttpPostAdd<T>(T value) where T : EntityBase
+        {
+            var nombreclase = typeof(T).Name;
+            var response = HttpPost($"rest/{nombreclase}/Add", value, MediaType.Json);
+            return response;
+        }
+
+        public IList<T> SelectList()
+        {
+            return CallHttpGetAll<T>();
+        }
+
+        public T EditCategory(T entity)
+        {
+            return CallHttpPostEdit(entity);
+        }
+
+        public T GetById(int id)
+        {
+            return CallHttpGetById<T>(new Dictionary<string, object>() { { "id", id } });
+        }
+
+        public T RemoveCategory(T entity)
+        {
+            return CallHttpPostRemove(entity);
+        }
+
+        public T CreateCategory(T entity)
+        {
+            return CallHttpPostAdd(entity);
         }
     }
 }

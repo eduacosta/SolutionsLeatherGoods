@@ -1,6 +1,8 @@
 ﻿@using ASF.UI.WbSite.Areas.Category.Controllers
+@using ASF.UI.WbSite.Areas.Client.Controllers
 @using ASF.UI.WbSite.Constants.CarritoCompra
 @using ASF.UI.WbSite.Constants.CategoryController
+@using ASF.UI.WbSite.Constants.ClientController
 @using ASF.UI.WbSite.Constants.HomeController
 <!DOCTYPE html >
 @* lang - The language of the page. *@
@@ -174,6 +176,7 @@
                     <li><a href="@Url.RouteUrl(HomeControllerRoute.GetFeed)"><span aria-hidden="true" class="fa fa-rss"></span> RSS</a></li>
                     <li><a href="@Url.RouteUrl(CategoryControllerRoute.GetListaCategory)"><span aria-hidden="true" class="fa fa-rss"></span> Category</a></li>
                     <li><a href="@Url.RouteUrl(CarritoControllerRoute.CarritoCompra)"><span aria-hidden="true" class="fa fa-bell"></span> Carrito de Compra</a></li>
+                    <li><a href="@Url.RouteUrl(ClientControllerRoute.GetListClient)"><span aria-hidden="true" class="fa fa-bell"></span> Cliente</a></li>
                     @if (HttpContext.Current.IsDebuggingEnabled)
                     {
                         // if <compilation debug="true"> is set in Web.config.

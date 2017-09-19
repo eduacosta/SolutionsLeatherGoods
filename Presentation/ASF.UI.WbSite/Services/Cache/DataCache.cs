@@ -49,7 +49,7 @@ namespace ASF.UI.WbSite.Services.Cache
 
             var lista = _cacheService.GetOrAdd(CacheSetting.CategoryCache.Key, () =>
             {
-                var cp = new CategoryProcess();
+                var cp = new ProcessComponent<Category>();
                 return cp.SelectList();
 
             }, CacheSetting.CategoryCache.SlidingExpiration);

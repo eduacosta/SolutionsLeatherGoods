@@ -245,8 +245,12 @@
     <Compile Include="Areas\Category\CategoryAreaRegistration.cs" />
     <Compile Include="Areas\Category\Controllers\CategoryController.cs" />
     <Compile Include="Areas\Category\Models\CategoryDTO.cs" />
+    <Compile Include="Areas\Client\ClientAreaRegistration.cs" />
+    <Compile Include="Areas\Client\Controllers\ClientController.cs" />
+    <Compile Include="Areas\IABMControlador.cs" />
     <Compile Include="Constants\CarritoCompra\CarritoControllerRoute.cs" />
     <Compile Include="Constants\CategoryController\CategoryControllerRoute.cs" />
+    <Compile Include="Constants\ClientController\ClientControllerRoute.cs" />
     <Compile Include="Constants\ExtensionMethods\HtmlLabelExtensions.cs" />
     <Compile Include="Constants\ExtensionMethods\TypeFactory.cs" />
     <Compile Include="Constants\ExtensionMethods\WebGridExtensions.cs" />
@@ -429,15 +433,19 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Areas\Category\Views\Category\EditCategory.cshtml" />
+    <Content Include="Areas\Category\Views\Category\EditEntity.cshtml" />
     <Content Include="Scripts\angular-mocks.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
     <Content Include="webpack.config.js" />
     <Content Include="Built\fonts\ui-grid.eot" />
-    <Content Include="Areas\Category\Views\Category\ListCategory.cshtml" />
-    <Content Include="Areas\Category\Views\Category\CreateCategory.cshtml" />
-    <Content Include="Areas\Category\Views\Category\DeleteCategory.cshtml" />
+    <Content Include="Areas\Category\Views\Category\ListEntity.cshtml" />
+    <Content Include="Areas\Category\Views\Category\CreateEntity.cshtml" />
+    <Content Include="Areas\Category\Views\Category\DeleteEntity.cshtml" />
+    <Content Include="Areas\Client\Views\web.config" />
+    <Content Include="Areas\Client\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Client\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Client\Views\Client\ListEntity.cshtml" />
     <None Include="job_scheduling_data_2_0.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -588,6 +596,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Category\Views\Shared\" />
+    <Folder Include="Areas\Client\Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">

@@ -16,8 +16,8 @@ namespace ASF.UI.WbSite.Areas.Category
         {
             context.MapRoute(
                 "Category_default",
-                "Category/Category/ListaCategory",
-                new { controller = "Category", action = "ListCategory", id = UrlParameter.Optional }
+                "Category/Category/ListEntity",
+                new { controller = "Category", action = "ListEntity", id = UrlParameter.Optional }
             );
 
             context.MapRoute(

@@ -77,6 +77,8 @@
     <Compile Include="ClientBusiness\IClientBusiness.cs" />
     <Compile Include="CountryBusiness\CountryBusiness.cs" />
     <Compile Include="CountryBusiness\ICountryBusiness.cs" />
+    <Compile Include="DealerBusiness\DealerBusiness.cs" />
+    <Compile Include="DealerBusiness\IDealerBusiness.cs" />
     <Compile Include="FachadaBLL\FachadaBLL.cs" />
     <Compile Include="FachadaDAL\FachadaDAL.cs" />
     <Compile Include="IABM\IABM.cs" />
@@ -97,6 +99,7 @@
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

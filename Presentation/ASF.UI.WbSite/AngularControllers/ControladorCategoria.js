@@ -83,7 +83,7 @@ category.controller("ControladorCategoria", function ($scope, $http, $mdDialog) 
             vm.ShowWait = true;
             $http({
                 method: "POST",
-                url: "Category/Category/CreateCategory",
+                url: "Category/Category/CreateEntity",
                 data: vm.model
             }).then(function mySuccess(response) {
                 console.log(response);

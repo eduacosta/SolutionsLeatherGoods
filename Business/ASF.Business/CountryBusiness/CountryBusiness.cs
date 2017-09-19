@@ -29,31 +29,70 @@ namespace ASF.Business.CountryBusiness
                 repo.Commit();
                 return _lista;
 
-
-
-
-
             }
         }
 
         public Country Add(Country entity)
         {
-            throw new NotImplementedException();
+            using (var repo = _unitOfWorkCountry)
+            {
+                repo.BeginTransaction();
+                entity.ChangedOn = DateTime.Now;
+                int _id = (int)repo.Entidad.Create(entity);
+                repo.Commit();
+
+                return new Country()
+                {
+                    Id = _id
+                };
+
+            }
         }
 
         public void Edit(Country entity)
         {
-            throw new NotImplementedException();
+            using (var repo = _unitOfWorkCountry)
+            {
+                repo.BeginTransaction();
+                var _country = repo.Entidad.GetById(entity.Id);
+                _country.Name = entity.Name;
+                _country.ChangedOn = DateTime.Now;
+
+                repo.Entidad.Update(_country);
+
+                repo.Commit();
+ 
+            }
         }
 
         public void Delete(Country entity)
         {
-            throw new NotImplementedException();
+            using (var repo = _unitOfWorkCountry)
+            {
+                repo.BeginTransaction();
+                repo.Entidad.Delete(entity);
+                repo.Commit();
+            }
         }
 
         public Country GetByID(Country entity)
         {
-            throw new NotImplementedException();
+            using (var repo = _unitOfWorkCountry)
+            {
+                repo.BeginTransaction();
+                var _country = repo.Entidad.GetAll().Where(c => c.Id == entity.Id).Select(c => new Country()
+                {
+                    Id = c.Id,
+                    Name = c.Name
+
+
+                }).FirstOrDefault();
+
+                repo.Commit();
+
+                return _country;
+
+            }
         }
     }
 }

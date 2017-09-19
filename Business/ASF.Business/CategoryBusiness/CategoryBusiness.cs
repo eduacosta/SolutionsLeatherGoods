@@ -42,29 +42,23 @@ namespace ASF.Business.CategoryBusines
         public Category Add(Category entity)
         {
 
-            try
+
+
+
+
+            using (var repo = _unitOfWorkcategory)
+
             {
+                repo.BeginTransaction();
+                entity.ChangedOn = DateTime.Now;
+                int _id = (int)repo.Entidad.Create(entity);
+                repo.Commit();
 
-
-
-                using (var repo = _unitOfWorkcategory)
-
-                {
-                    repo.BeginTransaction();
-                    entity.ChangedOn = DateTime.Now;
-                    int _id = (int)repo.Entidad.Create(entity);
-                    repo.Commit();
-
-                    return new Category() { Id = _id };
-
-                }
+                return new Category() { Id = _id };
 
             }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                throw;
-            }
+
+
 
         }
 

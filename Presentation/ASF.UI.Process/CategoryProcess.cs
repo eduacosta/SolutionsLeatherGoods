@@ -15,7 +15,7 @@ using ASF.UI.Process;
 
 namespace ASF.UI.Process
 {
-    public class CategoryProcess : ProcessComponent
+    public class CategoryProcess : ProcessComponent, IABMProcess<Category>
     {
         /// <summary>
         /// 
@@ -23,46 +23,53 @@ namespace ASF.UI.Process
         /// <returns></returns>
         public IList<Category> SelectList()
         {
-            var response = HttpGet<AllResponse<Category>>("rest/Category/All", new Dictionary<string, object>(), MediaType.Json);
-            return response.Result;
+          
+
+            return CallHttpGetAll<Category>();
+
         }
 
-        public Category EditCategory(Category category)
+        public Category EditCategory(Category entity)
         {
 
-            var reponse = HttpPost("rest/Category/Edit", category, mediaType: MediaType.Json);
+            //var reponse = HttpPost("rest/Category/Edit", entity, mediaType: MediaType.Json);
+            //return reponse;
 
-            return reponse;
-
+            return CallHttpPostEdit(entity);
         }
 
         public Category GetById(int id)
         {
 
-            var reponse = HttpGet<FindResponse<Category>>("rest/Category/Find", new Dictionary<string, object>() { { "id", id } },
-                mediaType: MediaType.Json);
-            return reponse.Result;
+            //var reponse = HttpGet<FindResponse<Category>>("rest/Category/Find", new Dictionary<string, object>() { { "id", id } },
+            //    mediaType: MediaType.Json);
+            //return reponse.Result;
+
+            return CallHttpGetById<Category>(new Dictionary<string, object>() { { "id", id }});
 
         }
 
 
-        public Category RemoveCategory(Category category)
+        public Category RemoveCategory(Category entity)
         {
 
-            var response = HttpPost("rest/Category/Remove", category, MediaType.Json);
-            return response;
+            //var response = HttpPost("rest/Category/Remove", entity, MediaType.Json);
+            //return response;
+
+            return CallHttpPostRemove(entity);
 
         }
 
-        public Category CreateCategory(Category category)
+        public Category CreateCategory(Category entity)
         {
             try
             {
 
 
+                //var response = HttpPost("rest/Category/Add", entity, MediaType.Json);
+                //return response;
 
-                var response = HttpPost("rest/Category/Add", category, MediaType.Json);
-                return response;
+                return CallHttpPostAdd(entity);
 
             }
             catch( Exception ex )
