@@ -1,6 +1,6 @@
 ﻿require('./ControladorCategoria');
 
-var app = angular.module("AngularModuloPrincipal", [require('angular-material'), require('angular-ui-grid'), 'AngularModuloCategoria']);
+var app = angular.module("AngularModuloPrincipal", [require('angular-material'), require('angular-ui-grid'), require('angular-translate'), 'AngularModuloCategoria']);
 
 app.config(function ($locationProvider) {
     $locationProvider.html5Mode(true);

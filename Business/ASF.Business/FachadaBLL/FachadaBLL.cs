@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ASF.Business.Business.LanguajeBusiness;
 using ASF.Business.CategoryBusines;
 using ASF.Business.ClientBusiness;
 using ASF.Business.CountryBusiness;
@@ -21,7 +22,7 @@ namespace ASF.Business.FachadaBLL
 
         public static IDealerBusiness DealerBusiness { get { return IoC.IoC.Resolve<IDealerBusiness>(); } }
 
-
+        public static ILanguajesBusiness LanguajeBusiness { get { return IoC.IoC.Resolve<ILanguajesBusiness>(); } }
 
     }
 }

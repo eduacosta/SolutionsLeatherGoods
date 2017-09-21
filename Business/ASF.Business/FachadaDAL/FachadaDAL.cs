@@ -45,6 +45,27 @@ namespace ASF.Business.FachadaDAL
         }
 
 
+        public IUnitOfWork<Language> LanguegeDAL()
+        {
+
+            return _DAL.Entidades<Language>();
+        }
+
+
+        public IUnitOfWork<LocaleResourceKey> LocaleResourceKeyDAL()
+        {
+
+            return _DAL.Entidades<LocaleResourceKey>();
+        }
+
+
+        public IUnitOfWork<LocaleStringResource> LocaleStringResourceDAL()
+        {
+
+            return _DAL.Entidades<LocaleStringResource>();
+        }
+
+
         public IUnitOfWork<Dealer> DealerDAL()
         {
 

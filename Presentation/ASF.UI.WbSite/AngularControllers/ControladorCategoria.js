@@ -7,6 +7,11 @@ category.controller("ControladorCategoria", function ($scope, $http, $mdDialog) 
 
 
     var vm = this;
+
+   
+
+
+
     /***************
     Variables
     ****************/

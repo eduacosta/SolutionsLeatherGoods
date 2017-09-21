@@ -71,14 +71,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CategoryBusiness\CategoryBusiness.cs" />
-    <Compile Include="CategoryBusiness\ICategoryBusiness.cs" />
-    <Compile Include="ClientBusiness\ClientBusiness.cs" />
-    <Compile Include="ClientBusiness\IClientBusiness.cs" />
-    <Compile Include="CountryBusiness\CountryBusiness.cs" />
-    <Compile Include="CountryBusiness\ICountryBusiness.cs" />
-    <Compile Include="DealerBusiness\DealerBusiness.cs" />
-    <Compile Include="DealerBusiness\IDealerBusiness.cs" />
+    <Compile Include="Business\CategoryBusiness\CategoryBusiness.cs" />
+    <Compile Include="Business\CategoryBusiness\ICategoryBusiness.cs" />
+    <Compile Include="Business\ClientBusiness\ClientBusiness.cs" />
+    <Compile Include="Business\ClientBusiness\IClientBusiness.cs" />
+    <Compile Include="Business\CountryBusiness\CountryBusiness.cs" />
+    <Compile Include="Business\CountryBusiness\ICountryBusiness.cs" />
+    <Compile Include="Business\DealerBusiness\DealerBusiness.cs" />
+    <Compile Include="Business\DealerBusiness\IDealerBusiness.cs" />
+    <Compile Include="Business\LanguajeBusiness\ILanguajesBusiness.cs" />
+    <Compile Include="Business\LanguajeBusiness\LanguajesBusiness.cs" />
     <Compile Include="FachadaBLL\FachadaBLL.cs" />
     <Compile Include="FachadaDAL\FachadaDAL.cs" />
     <Compile Include="IABM\IABM.cs" />

@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestCategory\TestCategory.cs" />
+    <Compile Include="TestLanguaje\TestLanguaje.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Business\ASF.Business\ASF.Business.csproj">
