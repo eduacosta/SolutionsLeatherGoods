@@ -56,5 +56,17 @@ namespace ASF.Services.Http
         public abstract void Remove(T entidad);
 
 
+        [HttpGet]
+        [Route("Idiomas")]
+        public IDictionary<LocaleResourceKey, string> ListaLenguajes(int id)
+        {
+
+            var language = new Language(){Id = id};
+            return FachadaBLL.LanguajeBusiness.GetLenguajesResourceByLanguaje(language);
+
+
+        }
+
+
     }
 }
