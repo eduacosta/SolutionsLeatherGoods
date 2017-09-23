@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 @{
     ViewBag.Title = "Carrito de Compra";
-    Layout = null;
+    //Layout = null;
 }
 
 <html class="no-js" lang="en" ng-app="AngularModuloPrincipal">
@@ -11,7 +11,7 @@
     @Styles.Render("~/Content/css")
     <meta name="x-font-awesome-stylesheet-fallback-test" class="fa">
     @Styles.Render("~/Content/fa")
-    
+    @RenderSection("head", required: false)
     @*<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">*@
     @*<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>*@
    @* <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>*@
@@ -43,9 +43,10 @@
                     <li><a href="#">Projects</a></li>
                     <li><a href="#">Contact</a></li>
                 </ul>
-                <ul class="nav navbar-nav navbar-right">
+                @Html.Partial("_LoginPartial")
+                @*<ul class="nav navbar-nav navbar-right">
                    <a href="#" ng-click="Login($event)"><span class="glyphicon glyphicon-log-in" ></span> Login</a>
-                </ul>
+                </ul>*@
             </div>
         </div>
     </nav>
@@ -73,6 +74,8 @@
                 </div>
             </div>
         </div>
+        @RenderBody()
+
     </div>
 
     <footer class="container-fluid text-center">
@@ -83,5 +86,11 @@
 
 
 @Scripts.Render("~/bundles/webpack")
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jqueryval")
+@Scripts.Render("~/bundles/jqueryvalunobtrusive")
+@Scripts.Render("~/bundles/bootstrap")
+
+@RenderSection("scripts", required: false)
 </body>
 </html>
