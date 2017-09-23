@@ -1,0 +1,102 @@
+﻿<style>
+    body {
+        background-color: #EEEEEE;
+    }
+
+    .login md-card {
+        width: 500px;
+    }
+
+    .login .logo {
+        font-size: 48px;
+        width: 48px;
+        height: 48px;
+    }
+</style>
+
+<md-dialog>
+    <form ng-cloak>
+        <!--<md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>Mango (Fruit)</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="cancel()">
+                    <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>-->
+        <md-toolbar>
+            <div layout="column" layout-padding layout-align="center center">
+                            
+                <div class="md-headline md-padding">Login</div>
+            </div>
+        </md-toolbar>
+        <md-dialog-content>
+            <div class="md-dialog-content">
+             
+                    <section layout="column" flex layout-align="center center" class="login">
+                        <md-card class="md-whiteframe-4dp">
+                          
+                            <md-card-content>
+                                <form name="login">
+                                    <md-input-container class="md-block">
+                                        <label for="username">User Name Or E-mail</label>
+                                        <input type="text" name="username" ng-model="Username" required />
+                                    </md-input-container>                                    
+                                    <md-input-container class="md-block">
+                                        <label for="password">Password</label>
+                                        <input type="password" name="password" ng-model="Password" required />
+                                    </md-input-container>
+
+                                    <md-input-container class="md-block">
+                                        <div layout="row" layout-align="center center">
+                                            <md-button class="md-raised md-accent" flex="50" ng-click="Login()">Login</md-button>
+                                        </div>
+                                    </md-input-container>
+                                </form>
+                            </md-card-content>
+                        </md-card>
+                    </section>
+               
+            </div>
+        </md-dialog-content>
+
+       
+    </form>
+</md-dialog>
+
+
+<!--<md-dialog aria-label="Mango (Fruit)">
+    <md-dialog-content>
+        <div layout="row" layout-fill ng-cloak>
+            <section layout="column" flex layout-align="center center" class="login">
+                <md-card class="md-whiteframe-4dp">
+                    <md-toolbar>
+                        <div layout="column" layout-padding layout-align="center center">
+                            
+                            <div class="md-headline md-padding">Login</div>
+                        </div>
+                    </md-toolbar>
+                    <md-card-content>
+                        <form name="login">
+                            <md-input-container class="md-block">
+                                <label for="email">Email</label>
+                                <input type="email" name="email" ng-model="vm.email" required />
+                            </md-input-container>
+                            <md-input-container class="md-block">
+                                <label for="password">Password</label>
+                                <input type="password" name="password" ng-model="vm.password" required />
+                            </md-input-container>
+                            <md-input-container class="md-block">
+                                <div layout="row" layout-align="center center">
+                                    <md-button class="md-raised md-accent" flex="50">Login</md-button>
+                                </div>
+                            </md-input-container>
+                        </form>
+                    </md-card-content>
+                </md-card>
+            </section>
+        </div>
+    </md-dialog-content>
+
+</md-dialog>-->

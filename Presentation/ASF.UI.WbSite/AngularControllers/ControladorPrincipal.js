@@ -20,7 +20,22 @@ app.controller("ControladorPrincipal", function ($scope, Dialogs) {
     $scope.Login = function (evento) {
 
         console.log('anda');
-        Dialogs.showAlert('Hola', "Hola", evento);
+        //Dialogs.showAlert('Hola', "Hola", evento);
+
+        Dialogs.showCustom(evento, ControladorLogin, '../../Views/Carrito/Login.html');
+    }
+
+
+    function ControladorLogin($scope) {
+
+        $scope.Username = '';
+        $scope.Password = '';
+
+
+        $scope.Login = function() {
+
+            console.log($scope.Username);
+        }
 
     }
 
@@ -28,7 +43,11 @@ app.controller("ControladorPrincipal", function ($scope, Dialogs) {
 
 
 });
-
+app.config(function ($mdThemingProvider) {
+    $mdThemingProvider.theme('default')
+        .primaryPalette('pink')
+        .accentPalette('orange');
+});
 app.service('Dialogs',
     function ($mdDialog) {
 

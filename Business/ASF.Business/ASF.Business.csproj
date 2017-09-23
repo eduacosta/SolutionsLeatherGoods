@@ -71,6 +71,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Business\AspNetUserBusiness\AspNetUserBusiness.cs" />
+    <Compile Include="Business\AspNetUserBusiness\IAspNetUserBusiness.cs" />
     <Compile Include="Business\CategoryBusiness\CategoryBusiness.cs" />
     <Compile Include="Business\CategoryBusiness\ICategoryBusiness.cs" />
     <Compile Include="Business\ClientBusiness\ClientBusiness.cs" />

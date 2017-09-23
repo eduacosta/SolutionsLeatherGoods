@@ -67,6 +67,7 @@
   <ItemGroup>
     <None Include="..\..\Conexion.config">
       <Link>Conexion.config</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="App.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

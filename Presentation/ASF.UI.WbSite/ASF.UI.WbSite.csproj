@@ -438,6 +438,7 @@
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Views\Carrito\Estilos.css" />
+    <Content Include="Views\Carrito\Login.html" />
     <Content Include="webpack.config.js" />
     <Content Include="Built\fonts\ui-grid.eot" />
     <Content Include="Areas\Category\Views\Category\ListEntity.cshtml" />
@@ -447,6 +448,9 @@
     <Content Include="Areas\Client\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Client\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Client\Views\Client\ListEntity.cshtml" />
+    <Content Include="..\..\Conexion.config">
+      <Link>Conexion.config</Link>
+    </Content>
     <None Include="job_scheduling_data_2_0.xsd">
       <SubType>Designer</SubType>
     </None>
