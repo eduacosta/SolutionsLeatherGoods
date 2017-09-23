@@ -437,6 +437,7 @@
     <Content Include="Scripts\angular-mocks.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
+    <Content Include="Views\Carrito\Estilos.css" />
     <Content Include="webpack.config.js" />
     <Content Include="Built\fonts\ui-grid.eot" />
     <Content Include="Areas\Category\Views\Category\ListEntity.cshtml" />

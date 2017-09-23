@@ -15,5 +15,9 @@
             public const string Key = "CategoryCache";
             public static readonly TimeSpan SlidingExpiration = TimeSpan.FromDays(1);
         }
+
+        
+           
+
     }
 }

@@ -44,7 +44,7 @@ namespace ASF.UI.WbSite.Services.Cache
             _cacheService = DependencyResolver.Current.GetService<ICacheService>();
         }
 
-        public List<Category> ProductoList(int id)
+        public List<Category> ProductoList()
         {
 
             var lista = _cacheService.GetOrAdd(CacheSetting.CategoryCache.Key, () =>

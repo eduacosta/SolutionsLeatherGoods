@@ -8,9 +8,10 @@ using ASF.UI.WbSite.Constants.CarritoCompra;
 
 namespace ASF.UI.WbSite.Controllers
 {
+    [RoutePrefix("Carrito")]
     public class CarritoController : Controller
     {
-        [Route("CarritoCompra", Name = CarritoControllerRoute.CarritoCompra)]
+        [Route("CarritoCompra")]
         // GET: Carrito
         public ActionResult CarritoCompra()
         {
