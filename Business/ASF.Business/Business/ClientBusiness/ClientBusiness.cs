@@ -86,8 +86,9 @@ namespace ASF.Business.ClientBusiness
                         FirstName = c.FirstName,
                         LastName = c.LastName,
                         Email = c.Email,
-                        Country = new Country() { Id = c.Country.Id, Name = c.Country.Name },
-                        City = c.City
+                        //Country = new Country() { Id = c.Country.Id, Name = c.Country.Name },
+                        City = c.City,
+                        CountryID = c.Country.Id
                     }).FirstOrDefault();
 
                 repo.Commit();

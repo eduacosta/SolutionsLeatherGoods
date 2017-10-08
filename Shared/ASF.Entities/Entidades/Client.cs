@@ -17,12 +17,19 @@ namespace ASF.Entities {
         }
         [DataMember]
         [DisplayName("Id")]
-        [Browsable(false)]
+        //[Browsable(false)]
         public virtual int Id { get; set; }
         [NotNull(Message="Se debe cargar algún valor para el campo Country, no puede estar vacío")]
         [DataMember]
         [DisplayName("Country Id")]
+
+       
+
         public virtual Country Country { get; set; }
+
+        [DataMember]
+        public virtual int CountryID { get; set; }
+
         [NotNull(Message="Se debe cargar algún valor para el campo First Name, no puede estar vacío")]
         [Length(Max=30, Message="La longitud del campo First Name no debe ser mayor a 30 caracteres")]
         [DataMember]
