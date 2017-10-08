@@ -42,15 +42,11 @@ namespace ASF.Business.CategoryBusines
         public Category Add(Category entity)
         {
 
-
-
-
-
             using (var repo = _unitOfWorkcategory)
 
             {
                 repo.BeginTransaction();
-                entity.ChangedOn = DateTime.Now;
+                entity.CreatedOn = DateTime.Now;
                 int _id = (int)repo.Entidad.Create(entity);
                 repo.Commit();
 
@@ -70,6 +66,7 @@ namespace ASF.Business.CategoryBusines
                 var _category = repo.Entidad.GetById(entity.Id);
                 _category.Name = entity.Name;
                 _category.ChangedOn = DateTime.Now;
+                _category.ChangedBy = entity.ChangedBy;
                 repo.Entidad.Update(_category);
                 repo.Commit();
             }

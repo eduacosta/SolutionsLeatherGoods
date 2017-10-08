@@ -49,11 +49,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entidades\AspNetRoles.cs" />
-    <Compile Include="Entidades\AspNetUserClaims.cs" />
-    <Compile Include="Entidades\AspNetUserLogins.cs" />
-    <Compile Include="Entidades\AspNetUserRoles.cs" />
-    <Compile Include="Entidades\AspNetUsers.cs" />
     <Compile Include="Entidades\Cart.cs" />
     <Compile Include="Entidades\CartItem.cs" />
     <Compile Include="Entidades\Category.cs" />
@@ -78,11 +73,6 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <EmbeddedResource Include="MapeoEntidaddes\AspNetRoles.hbm.xml" />
-    <EmbeddedResource Include="MapeoEntidaddes\AspNetUserClaims.hbm.xml" />
-    <EmbeddedResource Include="MapeoEntidaddes\AspNetUserLogins.hbm.xml" />
-    <EmbeddedResource Include="MapeoEntidaddes\AspNetUserRoles.hbm.xml" />
-    <EmbeddedResource Include="MapeoEntidaddes\AspNetUsers.hbm.xml" />
     <EmbeddedResource Include="MapeoEntidaddes\Cart.hbm.xml" />
     <EmbeddedResource Include="MapeoEntidaddes\CartItem.hbm.xml" />
     <EmbeddedResource Include="MapeoEntidaddes\Category.hbm.xml" />

@@ -37,7 +37,7 @@ namespace ASF.Business.CountryBusiness
             using (var repo = _unitOfWorkCountry)
             {
                 repo.BeginTransaction();
-                entity.ChangedOn = DateTime.Now;
+                entity.CreatedOn = DateTime.Now;               
                 int _id = (int)repo.Entidad.Create(entity);
                 repo.Commit();
 
@@ -57,6 +57,7 @@ namespace ASF.Business.CountryBusiness
                 var _country = repo.Entidad.GetById(entity.Id);
                 _country.Name = entity.Name;
                 _country.ChangedOn = DateTime.Now;
+                _country.ChangedBy = entity.ChangedBy;
 
                 repo.Entidad.Update(_country);
 
@@ -70,7 +71,7 @@ namespace ASF.Business.CountryBusiness
             using (var repo = _unitOfWorkCountry)
             {
                 repo.BeginTransaction();
-                repo.Entidad.Delete(entity);
+                repo.Entidad.Delete(entity.Id);
                 repo.Commit();
             }
         }

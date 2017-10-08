@@ -51,6 +51,11 @@ namespace ASF.Services.Http
         public abstract  FindResponse<T> Find(int id);
 
 
+        [HttpGet]
+        [Route("FindString")]
+        public abstract FindResponse<T> Find(string id);
+
+
         [HttpPost]
         [Route("Remove")]
         public abstract void Remove(T entidad);

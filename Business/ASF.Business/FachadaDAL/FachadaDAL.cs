@@ -72,12 +72,7 @@ namespace ASF.Business.FachadaDAL
             return _DAL.Entidades<Dealer>();
         }
 
-        public IUnitOfWork<AspNetUsers> AspNetUsersDAL()
-        {
-
-            return _DAL.Entidades<AspNetUsers>();
-        }
-
+      
 
 
 

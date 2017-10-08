@@ -76,13 +76,13 @@ namespace ASF.Services.Http.Services
             //}
         }
 
-        public override FindResponse<Client> Find(int id)
+        public override FindResponse<Client> Find(string id)
         {
             //try
             //{
 
                 var bc = FachadaBLL.ClentBusiness;
-                base.FindResult.Result = bc.GetByID(new Client() { Id = id });
+                base.FindResult.Result = bc.GetByID(new Client() { AspNetUsers = id.ToString() });
                 return base.FindResult;
             //}
             //catch (Exception ex)
@@ -95,6 +95,11 @@ namespace ASF.Services.Http.Services
 
             //    throw new HttpResponseException(httpError);
             //}
+        }
+
+        public override FindResponse<Client> Find(int id)
+        {
+            throw new NotImplementedException();
         }
 
         public override void Remove(Client entidad)

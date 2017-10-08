@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Web;
@@ -131,6 +132,16 @@ namespace ASF.UI.Process
             return reponse.Result;
         }
 
+
+        private static T CallHttpGetByIdString<T>(Dictionary<string, object> parametros = null) where T : EntityBase
+        {
+            var nombreclase = typeof(T).Name;
+            var reponse = HttpGet<FindResponse<T>>($"rest/{nombreclase}/FindString", parametros ?? new Dictionary<string, object>(),
+                mediaType: MediaType.Json);
+            return reponse.Result;
+        }
+
+
         private static T CallHttpPostRemove<T>(T value) where T : EntityBase
         {
             var nombreclase = typeof(T).Name;
@@ -157,24 +168,38 @@ namespace ASF.UI.Process
             return CallHttpGetAll<T>();
         }
 
-        public T EditCategory(T entity)
+        public T Edit(T entity)
         {
             return CallHttpPostEdit(entity);
         }
 
         public T GetById(int id)
         {
+            //var f = id.GetType();
+
+            //var ob = Activator.CreateInstance(f);
+
+            //ob = id;
+
             return CallHttpGetById<T>(new Dictionary<string, object>() { { "id", id } });
         }
 
-        public T RemoveCategory(T entity)
+        public T GetById(string id)
+        {
+            return CallHttpGetByIdString<T>(new Dictionary<string, object>() { { "id", id } });
+        }
+
+        public T Remove(T entity)
         {
             return CallHttpPostRemove(entity);
         }
 
-        public T CreateCategory(T entity)
+        public T Create(T entity)
         {
             return CallHttpPostAdd(entity);
         }
+
+
+      
     }
 }

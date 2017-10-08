@@ -246,8 +246,9 @@
     <Compile Include="Areas\Category\Controllers\CategoryController.cs" />
     <Compile Include="Areas\Category\Models\CategoryDTO.cs" />
     <Compile Include="Areas\Client\ClientAreaRegistration.cs" />
-    <Compile Include="Areas\Client\Controllers\ClientController.cs" />
-    <Compile Include="Areas\IABMControlador.cs" />
+    <Compile Include="Controllers\CustomController\ClienteController.cs" />
+    <Compile Include="Controllers\CustomController\CountryController.cs" />
+    <Compile Include="Controllers\CustomController\IABMControlador.cs" />
     <Compile Include="Constants\CarritoCompra\CarritoControllerRoute.cs" />
     <Compile Include="Constants\CategoryController\CategoryControllerRoute.cs" />
     <Compile Include="Constants\ClientController\ClientControllerRoute.cs" />
@@ -270,7 +271,8 @@
     <Compile Include="Constants\HomeController\HomeControllerRoute.cs" />
     <Compile Include="Constants\ResponseHttp.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\CarritoController.cs" />
+    <Compile Include="Controllers\CustomController\CarritoController.cs" />
+    <Compile Include="Controllers\CustomController\CategoriasController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -597,10 +599,20 @@
     <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.1.1.min.map" />
     <Content Include="Views\Carrito\CarritoCompra.cshtml" />
+    <Content Include="Views\Categorias\Index.cshtml" />
+    <Content Include="Views\Categorias\Create.cshtml" />
+    <Content Include="Views\Categorias\Edit.cshtml" />
+    <Content Include="Views\Categorias\Delete.cshtml" />
+    <Content Include="Views\Country\Index.cshtml" />
+    <Content Include="Views\Country\Create.cshtml" />
+    <Content Include="Views\Country\Delete.cshtml" />
+    <Content Include="Views\Country\Edit.cshtml" />
+    <Content Include="Views\Cliente\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Category\Views\Shared\" />
+    <Folder Include="Areas\Client\Controllers\" />
     <Folder Include="Areas\Client\Models\" />
   </ItemGroup>
   <ItemGroup>

@@ -15,9 +15,9 @@ namespace ASF.Entities {
         public virtual int Number { get; set; }
         [NotNull(Message="Se debe cargar algún valor para el campo Created On, no puede estar vacío")]
         public virtual DateTime CreatedOn { get; set; }
-        public virtual int? CreatedBy { get; set; }
+        public virtual string CreatedBy { get; set; }
         [NotNull(Message="Se debe cargar algún valor para el campo Changed On, no puede estar vacío")]
         public virtual DateTime ChangedOn { get; set; }
-        public virtual int? ChangedBy { get; set; }
+        public virtual string ChangedBy { get; set; }
     }
 }

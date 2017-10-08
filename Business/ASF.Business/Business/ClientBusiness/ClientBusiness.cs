@@ -79,7 +79,7 @@ namespace ASF.Business.ClientBusiness
             {
                 repo.BeginTransaction();
                 var _lista = repo.Entidad.GetAll()
-                    .Where(c => c == entity)
+                    .Where(c => c.AspNetUsers == entity.AspNetUsers)
                     .Select(c => new Client()
                     {
                         Id = c.Id,

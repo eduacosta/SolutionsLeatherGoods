@@ -15,6 +15,9 @@ using Bitacora.Excepciones;
 
 namespace ASF.Services.Http.Services
 {
+    /// <summary>
+    /// Rest Category
+    /// </summary>
     [RoutePrefix("rest/Category")]
     [ExcepcionHttp]
     public  class CategoryService : HtppBase<Entities.Category>
@@ -85,7 +88,7 @@ namespace ASF.Services.Http.Services
             //{
                 
                 var bc = FachadaBLL.CategoryBusiness;
-                base.FindResult.Result = bc.GetByID(new Category() { Id = id });
+                base.FindResult.Result = bc.GetByID(new Category() { Id = int.Parse(id.ToString()) });
                 return base.FindResult;
             //}
             //catch (Exception ex)
@@ -98,6 +101,11 @@ namespace ASF.Services.Http.Services
 
             //    throw new HttpResponseException(httpError);
             //}
+        }
+
+        public override FindResponse<Category> Find(string id)
+        {
+            throw new NotImplementedException();
         }
 
         public override void Remove(Entities.Category entidad)

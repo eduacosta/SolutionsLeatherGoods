@@ -23,10 +23,10 @@ namespace ASF.Entities {
         public virtual string HttpReferer { get; set; }
         [Length(Max=500, Message="La longitud del campo Path And Query no debe ser mayor a 500 caracteres")]
         public virtual string PathAndQuery { get; set; }
-        public virtual int? CreatedBy { get; set; }
+        public virtual string CreatedBy { get; set; }
         [NotNull(Message="Se debe cargar algún valor para el campo Created On, no puede estar vacío")]
         public virtual DateTime CreatedOn { get; set; }
-        public virtual int? ChangedBy { get; set; }
+        public virtual string ChangedBy { get; set; }
         [NotNull(Message="Se debe cargar algún valor para el campo Changed On, no puede estar vacío")]
         public virtual DateTime ChangedOn { get; set; }
     }

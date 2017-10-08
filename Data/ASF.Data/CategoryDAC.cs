@@ -149,12 +149,12 @@ namespace ASF.Data
         {
             var category = new Category
             {
-                Id = GetDataValue<int>(dr, "Id"),
-                Name = GetDataValue<string>(dr, "Name"),
-                CreatedOn = GetDataValue<DateTime>(dr, "CreatedOn"),
-                CreatedBy = GetDataValue<int>(dr, "CreatedBy"),
-                ChangedOn = GetDataValue<DateTime>(dr, "ChangedOn"),
-                ChangedBy = GetDataValue<int>(dr, "ChangedBy")
+                //Id = GetDataValue<int>(dr, "Id"),
+                //Name = GetDataValue<string>(dr, "Name"),
+                //CreatedOn = GetDataValue<DateTime>(dr, "CreatedOn"),
+                //CreatedBy = GetDataValue<int>(dr, "CreatedBy"),
+                //ChangedOn = GetDataValue<DateTime>(dr, "ChangedOn"),
+                //ChangedBy = GetDataValue<int>(dr, "ChangedBy")
             };
             return category;
         }

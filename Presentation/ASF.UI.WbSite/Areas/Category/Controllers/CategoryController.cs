@@ -16,7 +16,7 @@ using ASF.UI.WbSite.Controllers;
 
 namespace ASF.UI.WbSite.Areas.Category.Controllers
 {
-    public class CategoryController : Controller, IABMControlador<Entities.Category>
+    public class CategoryController : Controller
     {
         private ProcessComponent<Entities.Category> _categoyprocess;
 
@@ -65,7 +65,7 @@ namespace ASF.UI.WbSite.Areas.Category.Controllers
         public ActionResult EditEntity(Entities.Category category)
         {
 
-            var _category = _categoyprocess.EditCategory(category);
+            var _category = _categoyprocess.Edit(category);
             var _lista = _categoyprocess.SelectList();
             return View("ListEntity", _lista);
 
@@ -91,7 +91,7 @@ namespace ASF.UI.WbSite.Areas.Category.Controllers
                 try
                 {
 
-                    _categoyprocess.CreateCategory(category);
+                    _categoyprocess.Create(category);
                 }
                 catch (Exception e)
                 {
@@ -136,7 +136,7 @@ namespace ASF.UI.WbSite.Areas.Category.Controllers
         [System.Web.Mvc.HttpPost]
         public ActionResult DeleteEntity(Entities.Category category)
         {
-            var _category = _categoyprocess.RemoveCategory(category);
+            var _category = _categoyprocess.Remove(category);
 
             var _lista = _categoyprocess.SelectList();
             return View("ListEntity", _lista);

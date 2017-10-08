@@ -64,14 +64,14 @@ namespace ASF.Entities {
         public virtual DateTime CreatedOn { get; set; }
         [DataMember]
         [DisplayName("Created By")]
-        public virtual int? CreatedBy { get; set; }
+        public virtual string CreatedBy { get; set; }
         [NotNull(Message="Se debe cargar algún valor para el campo Changed On, no puede estar vacío")]
         [DataMember]
         [DisplayName("Changed On")]
         public virtual DateTime ChangedOn { get; set; }
         [DataMember]
         [DisplayName("Changed By")]
-        public virtual int? ChangedBy { get; set; }
+        public virtual string ChangedBy { get; set; }
         public virtual IList<Order> Order { get; set; }
         public virtual IList<Rating> Rating { get; set; }
     }
