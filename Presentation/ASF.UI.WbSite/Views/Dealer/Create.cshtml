@@ -1,27 +1,21 @@
 ﻿@using ASF.Entities
 @using ASF.UI.Process
-@model ASF.Entities.Client
+@model ASF.Entities.Dealer
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Create";
 }
 
-<h2>Edit</h2>
+<h2>Create</h2>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>Client</h4>
+        <h4>Dealer</h4>
         <hr />
-        <div class="form-group">
-
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            @*@Html.HiddenFor(model => model.Id)*@
-            <input type="hidden" value="@Model.Id" name="Id" />
-
-        </div>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
             @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -38,47 +32,62 @@
             </div>
         </div>
 
-
-
-
-
         <div class="form-group">
-            @Html.LabelFor(model => model.City, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
             </div>
         </div>
 
 
         @{
-            List<SelectListItem> listItems = new ProcessComponent<Country>()
+            List<SelectListItem> listItemscountry = new ProcessComponent<Country>()
                 .SelectList().Select(c => new SelectListItem() { Value = c.Id.ToString(), Text = c.Name })
                 .ToList();
         }
 
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Country.Id
-    , htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Country, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(m => m.CountryID,
-                    listItems,
+                @Html.DropDownListFor(m => m.CountryId,
+                    listItemscountry,
                     "País")
             </div>
         </div>
 
 
+        @{
+            List<SelectListItem> listItemsCategory = new ProcessComponent<Category>()
+                .SelectList().Select(c => new SelectListItem() { Value = c.Id.ToString(), Text = c.Name })
+                .ToList();
+        }
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Category, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(m => m.CategoryId,
+                    listItemsCategory,
+                    "Categoria")
+            </div>
+        </div>
 
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Create" class="btn btn-default" />
             </div>
         </div>
     </div>
             }
 
+<div>
+
+    @Html.Partial("_ListProducts", new List<Product>());
+
+</div>
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>

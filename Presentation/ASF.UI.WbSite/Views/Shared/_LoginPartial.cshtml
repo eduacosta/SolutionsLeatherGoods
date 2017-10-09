@@ -14,7 +14,10 @@
             </li>
             @if (Context.User.IsInRole("User"))
             {
-            <li><a href="/Cliente/Edit/@User.Identity.GetUserId()">Administrar Cuenta</a></li>
+                <li><a href="/Cliente/Edit/@User.Identity.GetUserId()">Comprador</a></li>
+
+                <li><a href="/Dealer/Edit/@User.Identity.GetUserId()">Vendedor</a></li>
+
             }
 
         </ul>

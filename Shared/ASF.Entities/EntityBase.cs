@@ -29,10 +29,10 @@ namespace ASF.Entities
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        /// <summary>
-        /// Displays the values of the properties for debugging purposes.
-        /// </summary>
-        public  override string ToString()
+        ///// <summary>
+        ///// Displays the values of the properties for debugging purposes.
+        ///// </summary>
+        public override string ToString()
         {
             return this.GetType().Name + ": " +
                 string.Join(",", this.GetType().GetProperties()

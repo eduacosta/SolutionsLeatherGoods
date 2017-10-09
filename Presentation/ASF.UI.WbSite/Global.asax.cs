@@ -1,4 +1,5 @@
-﻿using ASF.UI.WbSite.Services.Logging;
+﻿using ASF.UI.WbSite.Services.Cache;
+using ASF.UI.WbSite.Services.Logging;
 
 namespace ASF.UI.WbSite
 {
@@ -23,6 +24,9 @@ namespace ASF.UI.WbSite
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+          
+
         }
 
         /// <summary>

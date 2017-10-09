@@ -1,5 +1,6 @@
 ﻿using ASF.UI.WbSite.Constants.HomeController;
 using ASF.UI.WbSite.Services.BrowserConfig;
+using ASF.UI.WbSite.Services.Cache;
 using ASF.UI.WbSite.Services.Feed;
 using ASF.UI.WbSite.Services.Manifest;
 using ASF.UI.WbSite.Services.OpenSearch;
@@ -67,7 +68,7 @@ namespace ASF.UI.WbSite.Controllers
             //    Destination = "user@emaill"
             //};
             //this.emailService.SendAsync(msg);
-
+            DataCache.Instance.IdiomaList();
             return this.View(HomeControllerAction.Index);
         }
 

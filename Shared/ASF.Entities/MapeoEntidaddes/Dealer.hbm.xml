@@ -37,6 +37,12 @@
     <property name="ChangedBy">
       <column name="ChangedBy" sql-type="nvarchar(128)" precision="10" not-null="false" />
     </property>
+
+    <property name="AsPNetUsers">
+      <column name="AsPNetUsers" sql-type="nvarchar(128)" precision="10" not-null="true" />
+    </property>
+    
+
     <bag name="Product" inverse="true">
       <key column="DealerId" />
       <one-to-many class="Product" />

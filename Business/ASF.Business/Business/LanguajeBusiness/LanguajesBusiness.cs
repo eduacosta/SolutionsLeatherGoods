@@ -21,13 +21,13 @@ namespace ASF.Business.Business.LanguajeBusiness
 
         }
 
-        public IDictionary<LocaleResourceKey, string> GetLenguajesResourceByLanguaje(Language language)
+        public IList<LocaleStringResource> GetLenguajesResourceByLanguaje()
         {
 
             using (var repo = _unitOfWorkLocaleStringResource)
             {
                 repo.BeginTransaction();
-                var _resource = repo.Entidad.GetAll().Where(c => c.Language == language).Select(c => new LocaleStringResource()
+                var _resource = repo.Entidad.GetAll().Select(c => new LocaleStringResource()
                 {
 
                     Id = c.Id,
@@ -40,7 +40,7 @@ namespace ASF.Business.Business.LanguajeBusiness
                     }
                    
 
-                }).ToDictionary(c => c.LocaleResourceKey, f => f.ResourceValue);
+                }).ToList();
 
                 repo.Commit();
                 return _resource;

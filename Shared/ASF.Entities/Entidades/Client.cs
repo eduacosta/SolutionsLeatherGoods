@@ -19,12 +19,11 @@ namespace ASF.Entities {
         [DisplayName("Id")]
         //[Browsable(false)]
         public virtual int Id { get; set; }
+
+
         [NotNull(Message="Se debe cargar algún valor para el campo Country, no puede estar vacío")]
         [DataMember]
-        [DisplayName("Country Id")]
-
-       
-
+        [DisplayName("Country")]
         public virtual Country Country { get; set; }
 
         [DataMember]

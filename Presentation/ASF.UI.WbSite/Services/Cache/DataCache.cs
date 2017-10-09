@@ -36,15 +36,15 @@ namespace ASF.UI.WbSite.Services.Cache
 
         }
 
-        private readonly ICacheService _cacheService;
+        private  readonly ICacheService _cacheService;
 
-        private DataCache()
+        private  DataCache()
         {
 
             _cacheService = DependencyResolver.Current.GetService<ICacheService>();
         }
 
-        public List<Category> ProductoList()
+        public  List<Category> ProductoList()
         {
 
             var lista = _cacheService.GetOrAdd(CacheSetting.CategoryCache.Key, () =>
@@ -53,6 +53,21 @@ namespace ASF.UI.WbSite.Services.Cache
                 return cp.SelectList();
 
             }, CacheSetting.CategoryCache.SlidingExpiration);
+
+            return lista.ToList();
+        }
+
+
+
+        public  List<LocaleStringResource> IdiomaList()
+        {
+
+            var lista = _cacheService.GetOrAdd(CacheSetting.IdiomaCache.Key, () =>
+            {
+                var cp = new ProcessComponent<LocaleStringResource>();
+                return cp.SelectList();
+
+            }, CacheSetting.IdiomaCache.SlidingExpiration);
 
             return lista.ToList();
         }

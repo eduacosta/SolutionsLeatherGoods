@@ -95,7 +95,8 @@ namespace ASF.Business.DealerBusiness
             using (var repo = _unitOfWorkDealer)
             {
                 repo.BeginTransaction();
-                var _dealer = repo.Entidad.GetAll().Where(c => c.Id == entity.Id).Select(c => new Dealer()
+                var _dealer = repo.Entidad.GetAll().Where(c => c.AsPNetUsers == entity.AsPNetUsers)
+                    .Select(c => new Dealer()
                 {
                     Id = c.Id,
                     FirstName = c.FirstName,

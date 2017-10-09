@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Web;
+using System.Web.Http;
 using System.Web.Mvc;
 using ASF.Entities;
 using ASF.UI.Process;
@@ -71,7 +73,7 @@ namespace ASF.UI.WbSite.Controllers
             }
         }
 
-        [HttpPost]
+        [System.Web.Mvc.HttpPost]
         public ActionResult Edit(Client entity)
         {
             try
@@ -79,14 +81,15 @@ namespace ASF.UI.WbSite.Controllers
                 entity.AspNetUsers = User.Identity.GetUserId();
                 entity.Email = User.Identity.GetUserName();
                 entity.Country = new Country(){Id = entity.CountryID};
-                if (entity.AspNetUsers == null)
+                if (entity.Id == 0)
                 {
-                   
+                    entity.CreatedBy = User.Identity.GetUserId();
                     _abmProcess.Create(entity);
                     
                 }
                 else
                 {
+                    entity.ChangedBy = User.Identity.GetUserId();
                     _abmProcess.Edit(entity);
                 }
 
@@ -102,8 +105,9 @@ namespace ASF.UI.WbSite.Controllers
             }
         }
 
-        [HttpPost]
-        public ActionResult Edit(int Id,Client entity)
+
+        [System.Web.Mvc.HttpPost]
+        public ActionResult EditID(int Id,[FromBody] Client entity)
         {
             try
             {

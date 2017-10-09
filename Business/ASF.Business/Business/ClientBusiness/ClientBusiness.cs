@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using ASF.Entities;
@@ -59,7 +60,26 @@ namespace ASF.Business.ClientBusiness
 
         public void Edit(Client entity)
         {
-            throw new NotImplementedException();
+            using (var repo =_unitOfClient)
+            {
+                
+                repo.BeginTransaction();
+                var _client = repo.Entidad.GetById(entity.Id);
+                _client.ChangedOn = DateTime.Now;
+                _client.ChangedBy = entity.ChangedBy;
+                _client.FirstName = entity.FirstName;
+                _client.LastName = entity.LastName;
+                _client.Country = entity.Country;
+                _client.City = entity.City;
+               
+
+                repo.Entidad.Update(_client);
+
+                repo.Commit();
+                
+
+
+            }
         }
 
         public void Delete(Client entity)

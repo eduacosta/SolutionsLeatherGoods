@@ -248,6 +248,7 @@
     <Compile Include="Areas\Client\ClientAreaRegistration.cs" />
     <Compile Include="Controllers\CustomController\ClienteController.cs" />
     <Compile Include="Controllers\CustomController\CountryController.cs" />
+    <Compile Include="Controllers\CustomController\DealerController.cs" />
     <Compile Include="Controllers\CustomController\IABMControlador.cs" />
     <Compile Include="Constants\CarritoCompra\CarritoControllerRoute.cs" />
     <Compile Include="Constants\CategoryController\CategoryControllerRoute.cs" />
@@ -271,7 +272,6 @@
     <Compile Include="Constants\HomeController\HomeControllerRoute.cs" />
     <Compile Include="Constants\ResponseHttp.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\CustomController\CarritoController.cs" />
     <Compile Include="Controllers\CustomController\CategoriasController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -439,8 +439,7 @@
     <Content Include="Scripts\angular-mocks.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
-    <Content Include="Views\Carrito\Estilos.css" />
-    <Content Include="Views\Carrito\Login.html" />
+    <Content Include="Content\Estilos.css" />
     <Content Include="webpack.config.js" />
     <Content Include="Built\fonts\ui-grid.eot" />
     <Content Include="Areas\Category\Views\Category\ListEntity.cshtml" />
@@ -598,7 +597,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.1.1.min.map" />
-    <Content Include="Views\Carrito\CarritoCompra.cshtml" />
+    <Content Include="Views\Shared\_LayoutCarritoCompra.cshtml" />
     <Content Include="Views\Categorias\Index.cshtml" />
     <Content Include="Views\Categorias\Create.cshtml" />
     <Content Include="Views\Categorias\Edit.cshtml" />
@@ -608,6 +607,10 @@
     <Content Include="Views\Country\Delete.cshtml" />
     <Content Include="Views\Country\Edit.cshtml" />
     <Content Include="Views\Cliente\Edit.cshtml" />
+    <Content Include="Views\Dealer\Index.cshtml" />
+    <Content Include="Views\Dealer\Create.cshtml" />
+    <Content Include="Views\Shared\_ListProducts.cshtml" />
+    <Content Include="Views\Dealer\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

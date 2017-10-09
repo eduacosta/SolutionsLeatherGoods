@@ -16,8 +16,14 @@
             public static readonly TimeSpan SlidingExpiration = TimeSpan.FromDays(1);
         }
 
-        
-           
+
+        public static class IdiomaCache
+        {
+            public const string Key = "IdiomaCache";
+            public static readonly TimeSpan SlidingExpiration = TimeSpan.FromDays(1);
+        }
+
+
 
     }
 }
