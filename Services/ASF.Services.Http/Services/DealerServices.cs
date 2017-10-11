@@ -46,7 +46,10 @@ namespace ASF.Services.Http.Services
 
         public override FindResponse<Dealer> Find(string id)
         {
-            throw new NotImplementedException();
+            var _response = new FindResponse<Dealer>();
+            _response.Result = FachadaBLL.DealerBusiness.GetByID(new Dealer() { AsPNetUsers = id });
+
+            return _response;
         }
 
         public override void Remove(Dealer entidad)
