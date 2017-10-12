@@ -102,7 +102,11 @@ namespace ASF.Business.DealerBusiness
                     FirstName = c.FirstName,
                     LastName = c.LastName,
                     Description = c.Description,
-                    Category = new Category() {Id = c.Category.Id, Name = c.Category.Name}
+                    Category = new Category() {Id = c.Category.Id, Name = c.Category.Name},
+                    Country = new Country() { Id= c.Country.Id, Name = c.Country.Name},
+                    CountryId = c.Country.Id,
+                    CategoryId = c.Category.Id
+                    
                 }).FirstOrDefault();
                 repo.Commit();
 

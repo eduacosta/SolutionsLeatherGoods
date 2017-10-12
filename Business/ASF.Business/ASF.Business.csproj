@@ -81,6 +81,8 @@
     <Compile Include="Business\DealerBusiness\IDealerBusiness.cs" />
     <Compile Include="Business\LanguajeBusiness\ILanguajesBusiness.cs" />
     <Compile Include="Business\LanguajeBusiness\LanguajesBusiness.cs" />
+    <Compile Include="Business\ProductBusiness\IProductBusiness.cs" />
+    <Compile Include="Business\ProductBusiness\ProductBusiness.cs" />
     <Compile Include="FachadaBLL\FachadaBLL.cs" />
     <Compile Include="FachadaDAL\FachadaDAL.cs" />
     <Compile Include="IABM\IABM.cs" />

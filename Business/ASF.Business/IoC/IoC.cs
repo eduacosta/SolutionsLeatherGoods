@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ASF.Business.Business.LanguajeBusiness;
+using ASF.Business.Business.ProductBusiness;
 using ASF.Business.CategoryBusines;
 using ASF.Business.ClientBusiness;
 using ASF.Business.CountryBusiness;
@@ -44,7 +45,8 @@ namespace ASF.Business.IoC
                         new InjectionConstructor(container.Resolve<FachadaDAL.FachadaDAL>("_fachadal")));
                     container.RegisterType<ILanguajesBusiness, LanguajesBusiness>(
                         new InjectionConstructor(container.Resolve<FachadaDAL.FachadaDAL>("_fachadal")));
-
+                    container.RegisterType<IProductBusiness, ProductBusiness>(
+                        new InjectionConstructor(container.Resolve<FachadaDAL.FachadaDAL>("_fachadal")));
 
 
 

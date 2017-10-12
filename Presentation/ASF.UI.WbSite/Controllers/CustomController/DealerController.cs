@@ -79,9 +79,11 @@ namespace ASF.UI.WbSite.Controllers.CustomController
         {
             try
             {
-                entity.AsPNetUsers = User.Identity.GetUserId();
-               
+                entity.AsPNetUsers = User.Identity.GetUserId();               
                 entity.Country = new Country() { Id = entity.CountryId };
+                entity.Category = new Category() {Id = entity.CategoryId};
+
+
                 if (entity.Id == 0)
                 {
                     entity.CreatedBy = User.Identity.GetUserId();

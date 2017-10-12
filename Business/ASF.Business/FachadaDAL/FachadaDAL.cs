@@ -72,8 +72,12 @@ namespace ASF.Business.FachadaDAL
             return _DAL.Entidades<Dealer>();
         }
 
-      
 
+        public IUnitOfWork<Product> ProductDAL()
+        {
+
+            return _DAL.Entidades<Product>();
+        }
 
 
     }

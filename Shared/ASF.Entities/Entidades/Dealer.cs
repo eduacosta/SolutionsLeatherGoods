@@ -23,14 +23,14 @@ namespace ASF.Entities {
         [DisplayName("Category")]
         [NotNull(Message="Se debe cargar algún valor para el campo Category, no puede estar vacío")]
         public virtual Category Category { get; set; }
-
+        [DataMember]
         public virtual int CategoryId { get; set; }
 
         [DataMember]
         [DisplayName("Country")]
         [NotNull(Message="Se debe cargar algún valor para el campo Country, no puede estar vacío")]
         public virtual Country Country { get; set; }
-
+        [DataMember]
         public virtual int CountryId { get; set; }
 
         [DataMember]

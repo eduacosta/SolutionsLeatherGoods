@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ASF.Business.Business.LanguajeBusiness;
+using ASF.Business.Business.ProductBusiness;
 using ASF.Business.CategoryBusines;
 using ASF.Business.ClientBusiness;
 using ASF.Business.CountryBusiness;
@@ -24,5 +25,7 @@ namespace ASF.Business.FachadaBLL
 
         public static ILanguajesBusiness LanguajeBusiness { get { return IoC.IoC.Resolve<ILanguajesBusiness>(); } }
 
+
+        public static IProductBusiness ProductBusiness { get { return IoC.IoC.Resolve<IProductBusiness>(); } }
     }
 }
