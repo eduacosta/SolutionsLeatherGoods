@@ -115,10 +115,10 @@ namespace ASF.UI.Process
 
         }
 
-        private static  IList<T> CallHttpGetAll<T>(Dictionary<string, object> parametros = null) where  T : EntityBase
+        private static  IList<T> CallHttpGetAll<T>(string Url = null,Dictionary < string, object> parametros = null) where  T : EntityBase
         {
             var nombreclase = typeof(T).Name;
-            var response = HttpGet<AllResponse<T>>( $"rest/{nombreclase}/All", parametros ?? new Dictionary<string, object>(), MediaType.Json);
+            var response = HttpGet<AllResponse<T>>(Url ?? $"rest/{nombreclase}/All", parametros ?? new Dictionary<string, object>(), MediaType.Json);
             return response.Result;
 
         }
@@ -163,9 +163,22 @@ namespace ASF.UI.Process
             return response;
         }
 
+
+
+
         public IList<T> SelectList()
         {
             return CallHttpGetAll<T>();
+        }
+
+        public IList<T> SelectList(string URL, string id)
+        {
+            return CallHttpGetAll<T>(URL, new Dictionary<string, object>(){{"id", id}});
+        }
+
+        public IList<T> SelectList(string URL, int id)
+        {
+            return CallHttpGetAll<T>(URL, new Dictionary<string, object>() { { "id", id } });
         }
 
         public T Edit(T entity)

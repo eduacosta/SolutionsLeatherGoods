@@ -11,17 +11,18 @@ using Bitacora.Excepciones;
 
 namespace ASF.Services.Http.Services
 {
-
+    
     [RoutePrefix("rest/Product")]
     [ExcepcionHttp]
     public class ProductService : HtppBase<Product>
     {
 
+        [HttpGet]
         [Route("ProductXDealer")]
-        public AllResponse<Product> ProductosXDealer(Dealer dealer)
+        public AllResponse<Product> ProductosXDealer(int id)
         {
             var _response = new AllResponse<Product>();
-            _response.Result = FachadaBLL.ProductBusiness.ListaProductosXDealer(dealer);
+            _response.Result = FachadaBLL.ProductBusiness.ListaProductosXDealer(new Dealer(){Id = id});
             return _response;
 
         }

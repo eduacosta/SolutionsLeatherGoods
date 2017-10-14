@@ -16,6 +16,10 @@ namespace ASF.UI.Process
 
         IList<T> SelectList();
 
+        IList<T> SelectList(string URL, string id);
+
+        IList<T> SelectList(string URL, int id);
+
         T Edit(T entity);
 
 

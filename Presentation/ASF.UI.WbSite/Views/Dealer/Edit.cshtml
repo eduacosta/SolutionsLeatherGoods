@@ -94,7 +94,13 @@
     </div>
 }
 
-@Html.RenderPartial("_ListProducts", )
+@{
+    
+    var listaproductos = new ProcessComponent<Product>().SelectList("rest/Product/ProductXDealer", Model.Id);
+
+}
+
+@Html.Partial("_ListProducts", listaproductos);
 
 
 <div>
