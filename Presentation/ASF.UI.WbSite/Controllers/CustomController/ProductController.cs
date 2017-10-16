@@ -32,7 +32,22 @@ namespace ASF.UI.WbSite.Controllers
 
         public ActionResult Edit(object id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                int _id = int.Parse(id.ToString());
+                var _datos = _processComponent.GetById(_id);
+
+                return View(_datos);
+
+            }
+            catch (Exception ex)
+            {
+                return RedirectToAction("badrequest", "Error", new
+                {
+                    mensaje = ex.Message
+                });
+
+            }
         }
 
         [HttpPost]
@@ -51,25 +66,23 @@ namespace ASF.UI.WbSite.Controllers
         public ActionResult Create(Product entity)
         {
 
+
+            throw new NotImplementedException();
+
+
+        }
+
+
+        [HttpPost]
+        public ActionResult CreateFile(Product entity, HttpPostedFileBase file)
+        {
+
             try
             {
-               
-                //string pic = System.IO.Path.GetFileName(entity.Image);
-                //string path = System.IO.Path.Combine(
-                //    Server.MapPath("~/images/profile"), pic);
-                //// file is uploaded
-                //System.IO.File.Create(path);
-
-                //// save the image path path to the database or you can send image 
-                //// directly to database
-                //// in-case if you want to store byte[] ie. for DB
-                //using (MemoryStream ms = new MemoryStream())
-                //{
-                //    file.InputStream.CopyTo(ms);
-                //    byte[] array = ms.GetBuffer();
-                //}
 
 
+                entity.Image = ConvertToBytes(file);
+                           
                 var _dealerid = TempData["DealerId"];
                 entity.Dealer = new Dealer()
                 {
@@ -97,6 +110,7 @@ namespace ASF.UI.WbSite.Controllers
 
         }
 
+
         public ActionResult Delete(object id)
         {
             throw new NotImplementedException();
@@ -107,5 +121,16 @@ namespace ASF.UI.WbSite.Controllers
         {
             throw new NotImplementedException();
         }
+
+
+        public byte[] ConvertToBytes(HttpPostedFileBase image)
+        {
+            byte[] imageBytes = null;
+            BinaryReader reader = new BinaryReader(image.InputStream);
+            imageBytes = reader.ReadBytes((int)image.ContentLength);
+            return imageBytes;
+        }
+
+       
     }
 }

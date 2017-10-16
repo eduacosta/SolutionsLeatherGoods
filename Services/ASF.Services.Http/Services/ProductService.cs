@@ -44,7 +44,11 @@ namespace ASF.Services.Http.Services
 
         public override FindResponse<Product> Find(int id)
         {
-            throw new NotImplementedException();
+            var _response = new FindResponse<Product>();
+            _response.Result = FachadaBLL.ProductBusiness.GetByID(new Product() {Id = id});
+
+            return _response;
+
         }
 
         public override FindResponse<Product> Find(string id)

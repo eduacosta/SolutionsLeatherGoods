@@ -13,8 +13,8 @@
     <property name="Description">
       <column name="Description" sql-type="nvarchar(250)" not-null="false" />
     </property>
-    <property name="Image">
-      <column name="Image" sql-type="nvarchar(30)" not-null="true" />
+    <property name="Image" type="BinaryBlob">
+      <column name="Image" sql-type="varbinary(MAX)" not-null="true" />
     </property>
     <property name="Price">
       <column name="Price" sql-type="float" precision="53" not-null="true" />

@@ -29,9 +29,9 @@ namespace ASF.Entities {
         [DataMember]
         public virtual string Description { get; set; }
         [NotNull(Message="Se debe cargar algún valor para el campo Image, no puede estar vacío")]
-        [Length(Max=30, Message="La longitud del campo Image no debe ser mayor a 30 caracteres")]
+
         [DataMember]
-        public virtual string Image { get; set; }
+        public virtual byte[] Image { get; set; }
         [NotNull(Message="Se debe cargar algún valor para el campo Price, no puede estar vacío")]
         [DataMember]
         public virtual float Price { get; set; }

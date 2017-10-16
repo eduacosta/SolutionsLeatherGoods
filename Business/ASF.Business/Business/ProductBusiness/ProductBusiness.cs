@@ -38,7 +38,8 @@ namespace ASF.Business.Business.ProductBusiness
                     Id = c.Id,
                     Description = c.Description,
                     Price = c.Price,
-                    Title = c.Title
+                    Title = c.Title,
+                    Image = c.Image
 
 
                 })
@@ -90,7 +91,29 @@ namespace ASF.Business.Business.ProductBusiness
 
         public Product GetByID(Product entity)
         {
-            throw new NotImplementedException();
+            using (var repo = _UnitOfWork)
+            {
+
+                repo.BeginTransaction();
+                var _listaproductos = repo.Entidad.GetAll().Where(c => c == entity).Select(c => new Product()
+                    {
+
+                        Id = c.Id,
+                        Description = c.Description,
+                        Price = c.Price,
+                        Title = c.Title,
+                        Image = c.Image
+
+
+                    })
+                    .FirstOrDefault();
+
+
+                repo.Commit();
+
+                return _listaproductos;
+
+            }
         }
     }
 }

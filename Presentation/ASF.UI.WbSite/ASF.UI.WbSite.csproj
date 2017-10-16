@@ -614,6 +614,7 @@
     <Content Include="Views\Shared\_ListProducts.cshtml" />
     <Content Include="Views\Dealer\Edit.cshtml" />
     <Content Include="Views\Product\Create.cshtml" />
+    <Content Include="Views\Product\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
