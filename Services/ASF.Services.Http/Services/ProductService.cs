@@ -29,7 +29,7 @@ namespace ASF.Services.Http.Services
 
         public override Product Add(Product entidad)
         {
-            throw new NotImplementedException();
+           return FachadaBLL.ProductBusiness.Add(entidad);
         }
 
         public override AllResponse<Product> All()

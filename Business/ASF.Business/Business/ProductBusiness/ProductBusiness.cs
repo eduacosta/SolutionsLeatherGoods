@@ -4,10 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ASF.Entities;
+using Bitacora;
 using DAL;
 
 namespace ASF.Business.Business.ProductBusiness
 {
+
+    [ExceptionAspect]
     class ProductBusiness : IProductBusiness
     {
 
@@ -53,5 +56,41 @@ namespace ASF.Business.Business.ProductBusiness
         }
 
 
+        public IList<Product> All()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Product Add(Product entity)
+        {
+            using (var repo = _UnitOfWork)
+            {
+                repo.BeginTransaction();
+                entity.ChangedOn = DateTime.Now;
+                int _id = (int)repo.Entidad.Create(entity);
+                repo.Commit();
+
+                return new Product()
+                {
+                    Id = _id
+                };
+
+            }
+        }
+
+        public void Edit(Product entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Delete(Product entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Product GetByID(Product entity)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -95,8 +95,9 @@
 }
 
 @{
-    
+
     var listaproductos = new ProcessComponent<Product>().SelectList("rest/Product/ProductXDealer", Model.Id);
+    TempData["DealerId"] = Model.Id;
 
 }
 

@@ -277,7 +277,7 @@
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\CustomController\ProductController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -613,13 +613,13 @@
     <Content Include="Views\Dealer\Create.cshtml" />
     <Content Include="Views\Shared\_ListProducts.cshtml" />
     <Content Include="Views\Dealer\Edit.cshtml" />
+    <Content Include="Views\Product\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Category\Views\Shared\" />
     <Folder Include="Areas\Client\Controllers\" />
     <Folder Include="Areas\Client\Models\" />
-    <Folder Include="Views\Product\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
