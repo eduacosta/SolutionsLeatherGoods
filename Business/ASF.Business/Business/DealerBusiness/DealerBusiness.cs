@@ -114,5 +114,32 @@ namespace ASF.Business.DealerBusiness
 
             }
         }
+
+
+        public IList<Dealer> DealerXCategory(Category category)
+        {
+
+            using (var repo= _unitOfWorkDealer)
+            {
+                
+                repo.BeginTransaction();
+
+                var _lista = repo.Entidad.GetAll().Where(c => c.Category == category)
+                    .Select(c => new Dealer() {Id = c.Id}).ToList();
+
+
+                repo.Commit();
+
+                return _lista;
+
+
+                    
+
+
+            }
+
+
+        }
+
     }
 }

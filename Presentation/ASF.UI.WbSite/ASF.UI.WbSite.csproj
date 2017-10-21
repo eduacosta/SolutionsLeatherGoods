@@ -615,6 +615,9 @@
     <Content Include="Views\Dealer\Edit.cshtml" />
     <Content Include="Views\Product\Create.cshtml" />
     <Content Include="Views\Product\Edit.cshtml" />
+    <Content Include="Views\Product\Delete.cshtml" />
+    <Content Include="Views\Product\ProductosXCategoria.cshtml" />
+    <None Include="Views\Shared\_Categorias.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

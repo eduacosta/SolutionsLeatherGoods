@@ -56,6 +56,42 @@ namespace ASF.Business.Business.ProductBusiness
 
         }
 
+        public IList<Product> ListaProductosXListaDealer(IList<Dealer> dealer)
+        {
+            using (var repo= _UnitOfWork)
+            {
+                repo.BeginTransaction();
+                var lista = repo.Entidad.GetAll().Where(f => dealer.Contains(f.Dealer)).Select(c => new Product()
+                    {
+
+                        Id = c.Id,
+                        Description = c.Description,
+                        Price = c.Price,
+                        Title = c.Title,
+                        Image = c.Image,
+                        Dealer = new Dealer()
+                        {
+                            Id = c.Dealer.Id,
+                            Description = c.Dealer.Description,
+                            FirstName = c.Dealer.FirstName
+
+                        }
+
+
+                    })
+                    .ToList();
+
+
+                repo.Commit();
+
+                return lista;
+
+
+
+
+            }
+        }
+
 
         public IList<Product> All()
         {
@@ -81,12 +117,39 @@ namespace ASF.Business.Business.ProductBusiness
 
         public void Edit(Product entity)
         {
-            throw new NotImplementedException();
+            using (var repo = _UnitOfWork)
+            {
+                repo.BeginTransaction();
+                var _product = repo.Entidad.GetById(entity.Id);
+                if (entity.Image != null)
+                {
+                    _product.Image = entity.Image;
+                }
+                _product.Title = entity.Title;
+                _product.Description = entity.Description;
+                _product.Price = entity.Price;
+                _product.ChangedBy = entity.ChangedBy;
+                _product.ChangedOn = DateTime.Now;
+
+                repo.Entidad.Update(_product);
+
+                repo.Commit();
+
+
+
+
+            }
         }
 
         public void Delete(Product entity)
         {
-            throw new NotImplementedException();
+            using (var repo = _UnitOfWork)
+            {
+                repo.BeginTransaction();
+                repo.Entidad.Delete(entity.Id);
+                repo.Commit();
+
+            }
         }
 
         public Product GetByID(Product entity)

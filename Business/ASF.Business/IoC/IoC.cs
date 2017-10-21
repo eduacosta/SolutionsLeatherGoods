@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ASF.Business.Business.CartBusiness;
 using ASF.Business.Business.LanguajeBusiness;
 using ASF.Business.Business.ProductBusiness;
 using ASF.Business.CategoryBusines;
 using ASF.Business.ClientBusiness;
 using ASF.Business.CountryBusiness;
 using ASF.Business.DealerBusiness;
+using ASF.Business.Patrones;
 using ASF.Entities;
 using DAL;
 using Microsoft.Practices.Unity;
@@ -37,17 +39,26 @@ namespace ASF.Business.IoC
 
                     container.RegisterType<ICategoryBusiness, CategoryBusines.CategoryBusiness>(
                         new InjectionConstructor(container.Resolve<FachadaDAL.FachadaDAL>("_fachadal")));
+
                     container.RegisterType<IClientBusiness, ClientBusiness.ClientBusiness>(
                         new InjectionConstructor(container.Resolve<FachadaDAL.FachadaDAL>("_fachadal")));
+
                     container.RegisterType<IDealerBusiness, DealerBusiness.DealerBusiness>(
                         new InjectionConstructor(container.Resolve<FachadaDAL.FachadaDAL>("_fachadal")));
+
                     container.RegisterType<ICountryBusiness, CountryBusiness.CountryBusiness>(
                         new InjectionConstructor(container.Resolve<FachadaDAL.FachadaDAL>("_fachadal")));
+
                     container.RegisterType<ILanguajesBusiness, LanguajesBusiness>(
                         new InjectionConstructor(container.Resolve<FachadaDAL.FachadaDAL>("_fachadal")));
+
                     container.RegisterType<IProductBusiness, ProductBusiness>(
                         new InjectionConstructor(container.Resolve<FachadaDAL.FachadaDAL>("_fachadal")));
 
+                    container.RegisterType<ICartBusiness, CartBusiness>(
+                        new InjectionConstructor(container.Resolve<FachadaDAL.FachadaDAL>("_fachadal")));
+
+                    container.RegisterType<IBuscarProductosXCategoria, BuscarProductosXCategoria>();
 
 
 

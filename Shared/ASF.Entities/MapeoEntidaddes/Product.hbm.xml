@@ -40,6 +40,10 @@
     <property name="ChangedBy">
       <column name="ChangedBy" sql-type="nvarchar(128)" precision="10" not-null="false" />
     </property>
+    <bag name="CartItem" inverse="true">
+      <key column="ProductId" />
+      <one-to-many class="CartItem" />
+    </bag>
     <bag name="OrderDetail" inverse="true">
       <key column="ProductId" />
       <one-to-many class="OrderDetail" />

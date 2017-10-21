@@ -7,9 +7,9 @@
     <many-to-one name="Cart">
       <column name="CartId" sql-type="int" precision="10" not-null="true" />
     </many-to-one>
-    <property name="ProductId">
+    <many-to-one name="Product">
       <column name="ProductId" sql-type="int" precision="10" not-null="true" />
-    </property>
+    </many-to-one>
     <property name="Price">
       <column name="Price" sql-type="float" precision="53" not-null="true" />
     </property>

@@ -21,8 +21,8 @@ namespace ASF.Entities {
         public virtual Cart Cart { get; set; }
         [DataMember]
         [DisplayName("Product Id")]
-        [NotNull(Message="Se debe cargar algún valor para el campo Product Id, no puede estar vacío")]
-        public virtual int ProductId { get; set; }
+        [NotNull(Message="Se debe cargar algún valor para el campo Product Id, no puede estar vacío")]        
+        public virtual Product Product { get; set; }
         [DataMember]
         [DisplayName("Price")]
         [NotNull(Message="Se debe cargar algún valor para el campo Price, no puede estar vacío")]

@@ -71,6 +71,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Business\CartBusiness\CartBusiness.cs" />
+    <Compile Include="Business\CartBusiness\ICartBusiness.cs" />
+    <Compile Include="Business\CartItemBusiness\CartItemBusiness.cs" />
+    <Compile Include="Business\CartItemBusiness\ICartItemBusiness.cs" />
     <Compile Include="Business\CategoryBusiness\CategoryBusiness.cs" />
     <Compile Include="Business\CategoryBusiness\ICategoryBusiness.cs" />
     <Compile Include="Business\ClientBusiness\ClientBusiness.cs" />
@@ -87,6 +91,8 @@
     <Compile Include="FachadaDAL\FachadaDAL.cs" />
     <Compile Include="IABM\IABM.cs" />
     <Compile Include="IoC\IoC.cs" />
+    <Compile Include="Patrones\BuscarProductosXCategoria.cs" />
+    <Compile Include="Patrones\IBuscarProductosXCategoria.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

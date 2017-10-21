@@ -27,6 +27,17 @@ namespace ASF.Services.Http.Services
 
         }
 
+
+        [HttpGet]
+        [Route("ProductXCategoria")]
+        public AllResponse<Product> ProductosXCategoria(int id)
+        {
+            var _response = new AllResponse<Product>();
+            _response.Result = FachadaBLL.BuscarProductosXCategoria.ListaProductosXCategoria(new Category() { Id = id });
+            return _response;
+
+        }
+
         public override Product Add(Product entidad)
         {
            return FachadaBLL.ProductBusiness.Add(entidad);
@@ -39,7 +50,7 @@ namespace ASF.Services.Http.Services
 
         public override void Edit(Product entidad)
         {
-            throw new NotImplementedException();
+           FachadaBLL.ProductBusiness.Edit(entidad);
         }
 
         public override FindResponse<Product> Find(int id)
@@ -58,7 +69,7 @@ namespace ASF.Services.Http.Services
 
         public override void Remove(Product entidad)
         {
-            throw new NotImplementedException();
+           FachadaBLL.ProductBusiness.Delete(entidad);
         }
     }
 }

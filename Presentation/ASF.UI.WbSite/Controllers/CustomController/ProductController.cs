@@ -22,6 +22,30 @@ namespace ASF.UI.WbSite.Controllers
         }
 
 
+        [HttpGet]
+        public ActionResult ProductosXCategoria(int id)
+        {
+
+            try
+            {
+
+                var _lista = _processComponent.SelectList("rest/Product/ProductXCategoria", id).ToList();
+                return View(_lista);
+
+            }
+            catch (Exception ex)
+            {
+                return RedirectToAction("badrequest", "Error", new
+                {
+                    mensaje = ex.Message
+                });
+
+            }
+
+
+        }
+           
+
 
 
         // GET: Product
@@ -56,6 +80,36 @@ namespace ASF.UI.WbSite.Controllers
             throw new NotImplementedException();
         }
 
+        [HttpPost]
+        public ActionResult EditFile(Product entity, HttpPostedFileBase file)
+        {
+            try
+            {
+
+                if (file != null)
+                {
+                    entity.Image = ConvertToBytes(file);
+                }
+                else
+                {
+                  
+                }
+
+                entity.ChangedBy = User.Identity.GetUserId();
+                _processComponent.Edit(entity);
+
+                return RedirectToAction("Edit", "Dealer", new { id = User.Identity.GetUserId() });
+            }
+            catch (Exception ex)
+            {
+                return RedirectToAction("badrequest", "Error", new
+                {
+                    mensaje = ex.Message
+                });
+
+            }
+        }
+
         public ActionResult Create()
         {
 
@@ -82,7 +136,7 @@ namespace ASF.UI.WbSite.Controllers
 
 
                 entity.Image = ConvertToBytes(file);
-                           
+
                 var _dealerid = TempData["DealerId"];
                 entity.Dealer = new Dealer()
                 {
@@ -113,13 +167,42 @@ namespace ASF.UI.WbSite.Controllers
 
         public ActionResult Delete(object id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                int _id = int.Parse(id.ToString());
+                var _datos = _processComponent.GetById(_id);
+
+                return View(_datos);
+            }
+            catch (Exception ex)
+            {
+                return RedirectToAction("badrequest", "Error", new
+                {
+                    mensaje = ex.Message
+                });
+
+            }
         }
 
         [HttpPost]
         public ActionResult Delete(Product entity)
         {
-            throw new NotImplementedException();
+            try
+            {
+
+                _processComponent.Remove(entity);
+                return RedirectToAction("Edit", "Dealer", new { id = User.Identity.GetUserId() });
+            }
+            catch (Exception ex)
+            {
+                return RedirectToAction("badrequest", "Error", new
+                {
+                    mensaje = ex.Message
+                });
+
+            }
+
+
         }
 
 
@@ -131,6 +214,6 @@ namespace ASF.UI.WbSite.Controllers
             return imageBytes;
         }
 
-       
+
     }
 }

@@ -79,6 +79,16 @@ namespace ASF.Business.FachadaDAL
             return _DAL.Entidades<Product>();
         }
 
+        public IUnitOfWork<Cart> CartDAL()
+        {
 
+            return _DAL.Entidades<Cart>();
+        }
+
+        public IUnitOfWork<CartItem> CartItemDAL()
+        {
+
+            return _DAL.Entidades<CartItem>();
+        }
     }
 }

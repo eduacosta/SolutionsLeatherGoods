@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using ASF.Entities
+@using ASF.UI.Process
+<!DOCTYPE html>
 @{
     ViewBag.Title = "Carrito de Compra";
     //Layout = null;
@@ -84,9 +86,14 @@
     <div class="container-fluid text-center">
         <div class="row content" style="margin-top:52px !important">
             <div class="col-sm-2 sidenav">
+                @*<p><a href="#">Link</a></p>
                 <p><a href="#">Link</a></p>
-                <p><a href="#">Link</a></p>
-                <p><a href="#">Link</a></p>
+                <p><a href="#">Link</a></p>*@
+                @{
+
+                    var listacategorias = new ProcessComponent<Category>().SelectList().ToList();
+                }
+                @Html.Partial("_Categorias", listacategorias)
             </div>
             <div class="col-sm-8 text-left">
                 @*<h1>Welcome</h1>

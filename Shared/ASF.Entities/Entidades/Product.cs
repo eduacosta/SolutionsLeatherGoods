@@ -11,7 +11,8 @@ namespace ASF.Entities {
     public class Product : EntityBase
     {
         public Product() {
-			OrderDetail = new List<OrderDetail>();
+            CartItem = new List<CartItem>();
+            OrderDetail = new List<OrderDetail>();
 			Rating = new List<Rating>();
         }
 
@@ -52,6 +53,10 @@ namespace ASF.Entities {
         public virtual DateTime ChangedOn { get; set; }
         [DataMember]
         public virtual string ChangedBy { get; set; }
+
+        [DataMember]
+        public virtual int Cantidad { get; set; }
+        public virtual IList<CartItem> CartItem { get; set; }
         public virtual IList<OrderDetail> OrderDetail { get; set; }
         public virtual IList<Rating> Rating { get; set; }
     }

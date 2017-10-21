@@ -7,5 +7,7 @@ namespace ASF.Business.Business.ProductBusiness
     public interface IProductBusiness : IABM<Product>
     {
         IList<Product> ListaProductosXDealer(Dealer dealer);
+
+        IList<Product> ListaProductosXListaDealer(IList<Dealer> dealer);
     }
 }

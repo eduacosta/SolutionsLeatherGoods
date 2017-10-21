@@ -12,8 +12,12 @@
             <li>
                 @Html.ActionLink("LogOff ", "LogOff", "Account", new { Area = "" }, htmlAttributes: new { title = "LogOff" })
             </li>
+            
+           
             @if (Context.User.IsInRole("User"))
             {
+               
+
                 <li><a href="/Cliente/Edit/@User.Identity.GetUserId()">Comprador</a></li>
 
                 <li><a href="/Dealer/Edit/@User.Identity.GetUserId()">Vendedor</a></li>
@@ -26,7 +30,11 @@
 else
 {
     <ul class="nav navbar-nav navbar-right">
-        <li>@Html.ActionLink("Register", "Register", "Account", new { area = "" }, htmlAttributes: new { id = "registerLink" })</li>
-        <li>@Html.ActionLink("Log in", "Login", "Account", new { area = "" }, htmlAttributes: new { id = "loginLink" })</li>
+        
+        <li> <a href="#" class="fa fa-shopping-cart"></a> </li>
+
+        <li>@Html.ActionLink("Register", "Register", "Account", new {area = ""}, htmlAttributes: new {id = "registerLink"})</li>
+
+        <li>@Html.ActionLink("Log in", "Login", "Account", new {area = ""}, htmlAttributes: new {id = "loginLink"})</li>
     </ul>
 }
