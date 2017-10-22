@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ASF.Business.Business.CartBusiness;
+using ASF.Business.Business.CartItemBusiness;
 using ASF.Business.Business.LanguajeBusiness;
 using ASF.Business.Business.ProductBusiness;
 using ASF.Business.CategoryBusines;
@@ -11,6 +12,8 @@ using ASF.Business.ClientBusiness;
 using ASF.Business.CountryBusiness;
 using ASF.Business.DealerBusiness;
 using ASF.Business.Patrones;
+using ASF.Business.Patrones.TMAñadirAlCarrito;
+using ASF.Business.Patrones.TMCart;
 using ASF.Entities;
 using DAL;
 using Microsoft.Practices.Unity;
@@ -58,7 +61,12 @@ namespace ASF.Business.IoC
                     container.RegisterType<ICartBusiness, CartBusiness>(
                         new InjectionConstructor(container.Resolve<FachadaDAL.FachadaDAL>("_fachadal")));
 
+                    container.RegisterType<ICartItemBusiness, CartItemBusiness>(
+                        new InjectionConstructor(container.Resolve<FachadaDAL.FachadaDAL>("_fachadal")));
+
                     container.RegisterType<IBuscarProductosXCategoria, BuscarProductosXCategoria>();
+
+                    container.RegisterType<ITMAñadirAlCarrito, TMAñadirAlCarrito>();
 
 
 

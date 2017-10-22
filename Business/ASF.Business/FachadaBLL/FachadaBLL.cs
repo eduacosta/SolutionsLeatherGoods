@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ASF.Business.Business.CartBusiness;
+using ASF.Business.Business.CartItemBusiness;
 using ASF.Business.Business.LanguajeBusiness;
 using ASF.Business.Business.ProductBusiness;
 using ASF.Business.CategoryBusines;
@@ -10,6 +12,7 @@ using ASF.Business.ClientBusiness;
 using ASF.Business.CountryBusiness;
 using ASF.Business.DealerBusiness;
 using ASF.Business.Patrones;
+using ASF.Business.Patrones.TMCart;
 
 namespace ASF.Business.FachadaBLL
 {
@@ -30,5 +33,10 @@ namespace ASF.Business.FachadaBLL
         public static IProductBusiness ProductBusiness { get { return IoC.IoC.Resolve<IProductBusiness>(); } }
 
         public static IBuscarProductosXCategoria BuscarProductosXCategoria { get { return IoC.IoC.Resolve<IBuscarProductosXCategoria>(); } }
+        public static ITMAñadirAlCarrito AñadirProductosAlCarrito { get { return IoC.IoC.Resolve<ITMAñadirAlCarrito>(); } }
+
+        public static ICartBusiness CartBusiness { get { return IoC.IoC.Resolve<ICartBusiness>(); } }
+
+        public static ICartItemBusiness CartItemBusiness { get { return IoC.IoC.Resolve<ICartItemBusiness>(); } }
     }
 }

@@ -247,6 +247,7 @@
     <Compile Include="Areas\Category\Controllers\CategoryController.cs" />
     <Compile Include="Areas\Category\Models\CategoryDTO.cs" />
     <Compile Include="Areas\Client\ClientAreaRegistration.cs" />
+    <Compile Include="Controllers\CustomController\CarritoController.cs" />
     <Compile Include="Controllers\CustomController\ClienteController.cs" />
     <Compile Include="Controllers\CustomController\CountryController.cs" />
     <Compile Include="Controllers\CustomController\DealerController.cs" />
