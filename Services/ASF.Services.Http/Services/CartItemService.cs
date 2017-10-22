@@ -3,17 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Http;
 using ASF.Business.FachadaBLL;
 using ASF.Entities;
 using ASF.Services.Contracts;
 
 namespace ASF.Services.Http.Services
 {
-    public class AñadirCarritoService : HtppBase<CartItem>
+
+    [RoutePrefix("rest/CartItem")]
+    public class CartItemService : HtppBase<CartItem>
     {
         public override CartItem Add(CartItem entidad)
         {
-          return  FachadaBLL.AñadirProductosAlCarrito.AñadirProductoAlCarrito(entidad);
+            FachadaBLL.AñadirProductosAlCarrito.AñadirProductoAlCarrito(entidad);
+
+            return new CartItem();
         }
 
         public override AllResponse<CartItem> All()

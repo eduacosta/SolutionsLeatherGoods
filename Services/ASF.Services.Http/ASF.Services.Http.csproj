@@ -59,7 +59,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Services\AñadirCarritoService.cs" />
+    <Compile Include="Services\CartItemService.cs" />
     <Compile Include="Services\CategoryService.cs" />
     <Compile Include="HtppBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

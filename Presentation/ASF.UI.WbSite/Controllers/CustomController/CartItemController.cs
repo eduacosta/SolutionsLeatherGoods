@@ -1,35 +1,57 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
+using System.Web.Http.Results;
 using System.Web.Mvc;
 using System.Web.Routing;
 using ASF.Entities;
 using ASF.UI.Process;
 using ASF.UI.WbSite.Constants.CarritoCompra;
+using ASF.UI.WbSite.Models.CustomModel;
 using ASF.UI.WbSite.Services.Cache;
 
 namespace ASF.UI.WbSite.Controllers
 {
    
-    public class CarritoController : Controller, IABMControlador<CartItem>
+    public class CartItemController : Controller, IABMControlador<CartItem>
     {
 
         private readonly IABMProcess<CartItem> _abmProcess;
         // GET: Carrito
 
-        public CarritoController()
+        public CartItemController()
         {
             this._abmProcess = new ProcessComponent<CartItem>();
 
         }
 
-        public ActionResult AñadirCarrito(int id)
+        [HttpGet]
+        public ActionResult Carrito(int ProductId)
         {
             try
             {
+                string _cookievalue = null;
+                 var cookie = Request.Cookies["Carrito"];
+                if (cookie != null)
+                {
+                    _cookievalue = cookie.Value;
+                }
+                else
+                {
+                    var _cookie = new HttpCookie("Carrito");
+                    _cookie.Value = DateTime.Now.ToString();
+                    _cookievalue = _cookie.Value;
+                    Response.AppendCookie(_cookie);
+                }
+               
 
-                _abmProcess.Create()
+                var _cart = new Cart() {CartDate = DateTime.Now, Cookie = _cookievalue };
+                _abmProcess.Create(new CartItem() {Cart = _cart , Product = new Product() {Id = ProductId} });
+
+                
+                return new HttpStatusCodeResult(HttpStatusCode.OK);
 
             }
             catch (Exception ex)

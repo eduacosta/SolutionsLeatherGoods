@@ -16,7 +16,7 @@ namespace ASF.Business.Patrones.TMCart
         protected abstract CartItem AñadirDetalleCarrito(CartItem cariItem);
 
 
-        public CartItem AñadirProductoAlCarrito(CartItem cartItem)
+        public  void AñadirProductoAlCarrito(CartItem cartItem)
         {
 
             using (var tran = new TransactionScope(TransactionScopeOption.RequiresNew))
@@ -28,7 +28,7 @@ namespace ASF.Business.Patrones.TMCart
 
                 tran.Complete();
 
-                return _cartitem;
+                
 
             }
 

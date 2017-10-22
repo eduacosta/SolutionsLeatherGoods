@@ -31,7 +31,18 @@ namespace ASF.Business.Business.CartItemBusiness
 
                 repo.BeginTransaction();
                 entity.CreatedOn = DateTime.Now;
-                
+
+                if (repo.Entidad.GetAll().Any(c => c.Cart.Cookie == entity.Cart.Cookie && c.Product == entity.Product))
+                {
+
+                    var _entidad = repo.Entidad.GetById(entity.Id);
+                    int _cantidad = _entidad.Quantity + 1;
+                    _entidad.Quantity = _cantidad;
+                    Edit(entity);
+
+
+                }
+
                 var _id = (int)repo.Entidad.Create(entity);
 
 
@@ -47,7 +58,18 @@ namespace ASF.Business.Business.CartItemBusiness
 
         public void Edit(CartItem entity)
         {
-            throw new NotImplementedException();
+            using (var repo = _unitOfWork)
+            {
+                repo.BeginTransaction();
+                var _entidad = repo.Entidad.GetById(entity.Id);
+                _entidad.Quantity = entity.Quantity;
+                _entidad.ChangedOn = DateTime.Now;
+                repo.Entidad.Update(_entidad);
+
+                repo.Commit();
+
+
+            }
         }
 
         public void Delete(CartItem entity)

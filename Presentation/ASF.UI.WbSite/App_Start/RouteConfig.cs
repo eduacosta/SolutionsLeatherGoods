@@ -36,6 +36,11 @@
             // this route in place. So we include this but look out on these pages for a fix:
             // https://github.com/alexbeletsky/elmah-mvc/issues/60
             // https://github.com/ASP-NET-Core-Boilerplate/Templates/issues/8
+            //routes.MapRoute(
+            //    name: "Carrito",
+            //    url: "{CartItem}/{Carrito}/{ProductId}/{Cantidad}",
+            //    defaults: new { controller = "CartItem", action = "Carrito"});
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

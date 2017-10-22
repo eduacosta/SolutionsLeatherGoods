@@ -1,4 +1,5 @@
-﻿@model IEnumerable<ASF.Entities.Product>
+﻿@using ASF.UI.WbSite.Models.CustomModel
+@model IEnumerable<ASF.Entities.Product>
 
 @if (ViewBag.Comprar == null)
 {
@@ -29,13 +30,13 @@
         <th>
             @Html.DisplayNameFor(model => model.AvgStars)
         </th>
-        @if (ViewBag.Comprar == true)
+        @*@if (ViewBag.Comprar == true)
         {
             <th>
                 Cantidad
             </th>
 
-        }
+        }*@
 
         <th></th>
     </tr>
@@ -63,13 +64,13 @@
                 @Html.DisplayFor(modelItem => item.AvgStars)
             </td>
             
-            @if (ViewBag.Comprar == true)
+            @*@if (ViewBag.Comprar == true)
             {
                 <th>
-                    <input type="number" value="@item.Cantidad"/>
+                    <input type="number" value="@item.Cantidad" name="Cantidad"/>
                 </th>
-
-            }
+                
+            }*@
 
             @if (ViewBag.Comprar == null)
             {
@@ -82,7 +83,7 @@
             else
             {
                 <td>
-                    @Html.ActionLink("Añadir al Carrito", "Edit", "Product", new { id = item.Id }, null)
+                    @Html.ActionLink("Añadir al Carrito", "Carrito", "CartItem", new {ProductId  = item.Id},null)
 
                 </td>
             }
