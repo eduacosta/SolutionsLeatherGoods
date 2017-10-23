@@ -32,14 +32,23 @@ namespace ASF.Business.Business.CartBusiness
             using (var repo = _cartUnitOfWork)
             {
 
-                repo.BeginTransaction();
-                entity.CreatedOn = DateTime.Now;
-                entity.CartDate = DateTime.Now;
-                var _id = (int)repo.Entidad.Create(entity);
-                repo.Commit();
-                return new Cart() { Id = _id };
+                
 
+                Cart _cart = repo.Entidad.GetAll().Where(c => c.Cookie == entity.Cookie)
+                    .Select(c => new Cart() {Id = c.Id, Cookie = c.Cookie}).FirstOrDefault();
+                if (_cart == null)
+                {
+                    repo.BeginTransaction();
+                    entity.CreatedOn = DateTime.Now;
+                    entity.CartDate = DateTime.Now;
+                    var _id = (int) repo.Entidad.Create(entity);
+                    _cart = new Cart() { Id = _id, Cookie = entity.Cookie };
+                    repo.Commit();
+                }
+               
+                
 
+                return _cart;
             }
         }
 

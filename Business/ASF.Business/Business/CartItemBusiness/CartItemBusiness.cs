@@ -29,26 +29,36 @@ namespace ASF.Business.Business.CartItemBusiness
             using (var repo = _unitOfWork)
             {
 
-                repo.BeginTransaction();
+                
                 entity.CreatedOn = DateTime.Now;
 
-                if (repo.Entidad.GetAll().Any(c => c.Cart.Cookie == entity.Cart.Cookie && c.Product == entity.Product))
+                CartItem _cartItem = repo.Entidad.GetAll()
+                    .Where(c => c.Cart.Cookie == entity.Cart.Cookie && c.Product == entity.Product)
+                    .Select(c => new CartItem() {Id = c.Id, Quantity = c.Quantity}).FirstOrDefault();
+               
+                if (_cartItem == null)
                 {
-
-                    var _entidad = repo.Entidad.GetById(entity.Id);
-                    int _cantidad = _entidad.Quantity + 1;
-                    _entidad.Quantity = _cantidad;
-                    Edit(entity);
-
+                    repo.BeginTransaction();
+                   
+                    var _id = (int)repo.Entidad.Create(entity);
+                    repo.Commit();
+                    _cartItem = new CartItem(){Id = _id};
+                    
 
                 }
+                else
+                {
+                    _cartItem.Quantity = _cartItem.Quantity + 1;
+                    Edit(_cartItem);
+                }
 
-                var _id = (int)repo.Entidad.Create(entity);
 
 
-                repo.Commit();
+                
 
-                return new CartItem(){Id = _id};
+
+                return _cartItem;
+               
 
 
 
