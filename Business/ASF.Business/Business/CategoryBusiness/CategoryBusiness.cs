@@ -12,19 +12,12 @@ namespace ASF.Business.CategoryBusines
     [ExceptionAspect]
     internal class CategoryBusiness : ICategoryBusiness
     {
-        private readonly IUnitOfWork<Category> _unitOfWorkcategory;
-
-        public CategoryBusiness(FachadaDAL.FachadaDAL unitOfWorkcategory)
-        {
-
-            this._unitOfWorkcategory = unitOfWorkcategory.CategoryDAL();
-
-        }
+        
 
         public IList<Category> All()
         {
 
-            using (var repo = _unitOfWorkcategory)
+            using (var repo = FachadaDAL.FachadaDAL.CategoryDAL())
             {
                 IList<Category> _liscategory;
                 repo.BeginTransaction();
@@ -42,7 +35,7 @@ namespace ASF.Business.CategoryBusines
         public Category Add(Category entity)
         {
 
-            using (var repo = _unitOfWorkcategory)
+            using (var repo = FachadaDAL.FachadaDAL.CategoryDAL())
 
             {
                 repo.BeginTransaction();
@@ -60,7 +53,7 @@ namespace ASF.Business.CategoryBusines
 
         public void Edit(Category entity)
         {
-            using (var repo = _unitOfWorkcategory)
+            using (var repo = FachadaDAL.FachadaDAL.CategoryDAL())
             {
                 repo.BeginTransaction();
                 var _category = repo.Entidad.GetById(entity.Id);
@@ -74,7 +67,7 @@ namespace ASF.Business.CategoryBusines
 
         public void Delete(Category entity)
         {
-            using (var repo = _unitOfWorkcategory)
+            using (var repo = FachadaDAL.FachadaDAL.CategoryDAL())
             {
                 repo.BeginTransaction();
                 repo.Entidad.Delete(entity.Id);
@@ -85,7 +78,7 @@ namespace ASF.Business.CategoryBusines
 
         public Category GetByID(Category entity)
         {
-            using (var repo = _unitOfWorkcategory)
+            using (var repo = FachadaDAL.FachadaDAL.CategoryDAL())
             {
                 repo.BeginTransaction();
                 var _category = repo.Entidad.GetAll().Where(c => c.Id == entity.Id).Select(c => new Category()

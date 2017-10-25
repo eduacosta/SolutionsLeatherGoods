@@ -13,16 +13,9 @@ namespace ASF.Business.CountryBusiness
     class CountryBusiness : ICountryBusiness
     {
 
-        private IUnitOfWork<Country> _unitOfWorkCountry;
-        public CountryBusiness(FachadaDAL.FachadaDAL fachadadal)
-        {
-
-            this._unitOfWorkCountry = fachadadal.CountryDAL();
-        }
-
         public IList<Country> All()
         {
-            using (var repo = _unitOfWorkCountry)
+            using (var repo = FachadaDAL.FachadaDAL.CountryDAL())
             {
                 repo.BeginTransaction();
                 var _lista = repo.Entidad.GetAll().Select(c => new Country() { Id = c.Id, Name = c.Name }).ToList();
@@ -34,7 +27,7 @@ namespace ASF.Business.CountryBusiness
 
         public Country Add(Country entity)
         {
-            using (var repo = _unitOfWorkCountry)
+            using (var repo = FachadaDAL.FachadaDAL.CountryDAL())
             {
                 repo.BeginTransaction();
                 entity.CreatedOn = DateTime.Now;               
@@ -51,7 +44,7 @@ namespace ASF.Business.CountryBusiness
 
         public void Edit(Country entity)
         {
-            using (var repo = _unitOfWorkCountry)
+            using (var repo = FachadaDAL.FachadaDAL.CountryDAL())
             {
                 repo.BeginTransaction();
                 var _country = repo.Entidad.GetById(entity.Id);
@@ -68,7 +61,7 @@ namespace ASF.Business.CountryBusiness
 
         public void Delete(Country entity)
         {
-            using (var repo = _unitOfWorkCountry)
+            using (var repo = FachadaDAL.FachadaDAL.CountryDAL())
             {
                 repo.BeginTransaction();
                 repo.Entidad.Delete(entity.Id);
@@ -78,7 +71,7 @@ namespace ASF.Business.CountryBusiness
 
         public Country GetByID(Country entity)
         {
-            using (var repo = _unitOfWorkCountry)
+            using (var repo = FachadaDAL.FachadaDAL.CountryDAL())
             {
                 repo.BeginTransaction();
                 var _country = repo.Entidad.GetAll().Where(c => c.Id == entity.Id).Select(c => new Country()

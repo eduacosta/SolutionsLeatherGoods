@@ -14,21 +14,13 @@ namespace ASF.Business.Business.ProductBusiness
     class ProductBusiness : IProductBusiness
     {
 
-        public IUnitOfWork<Product> _UnitOfWork;
-
-
-        public ProductBusiness(FachadaDAL.FachadaDAL fachadaDal)
-        {
-
-            _UnitOfWork = fachadaDal.ProductDAL();
-
-        }
+       
 
 
         public IList<Product> ListaProductosXDealer(Dealer dealer)
         {
 
-            using (var repo = _UnitOfWork)
+            using (var repo = FachadaDAL.FachadaDAL.ProductDAL())
             {
 
                 repo.BeginTransaction();
@@ -58,7 +50,7 @@ namespace ASF.Business.Business.ProductBusiness
 
         public IList<Product> ListaProductosXListaDealer(IList<Dealer> dealer)
         {
-            using (var repo= _UnitOfWork)
+            using (var repo= FachadaDAL.FachadaDAL.ProductDAL())
             {
                 repo.BeginTransaction();
                 var lista = repo.Entidad.GetAll().Where(f => dealer.Contains(f.Dealer)).Select(c => new Product()
@@ -100,7 +92,7 @@ namespace ASF.Business.Business.ProductBusiness
 
         public Product Add(Product entity)
         {
-            using (var repo = _UnitOfWork)
+            using (var repo = FachadaDAL.FachadaDAL.ProductDAL())
             {
                 repo.BeginTransaction();
                 entity.ChangedOn = DateTime.Now;
@@ -117,7 +109,7 @@ namespace ASF.Business.Business.ProductBusiness
 
         public void Edit(Product entity)
         {
-            using (var repo = _UnitOfWork)
+            using (var repo = FachadaDAL.FachadaDAL.ProductDAL())
             {
                 repo.BeginTransaction();
                 var _product = repo.Entidad.GetById(entity.Id);
@@ -143,7 +135,7 @@ namespace ASF.Business.Business.ProductBusiness
 
         public void Delete(Product entity)
         {
-            using (var repo = _UnitOfWork)
+            using (var repo = FachadaDAL.FachadaDAL.ProductDAL())
             {
                 repo.BeginTransaction();
                 repo.Entidad.Delete(entity.Id);
@@ -154,7 +146,7 @@ namespace ASF.Business.Business.ProductBusiness
 
         public Product GetByID(Product entity)
         {
-            using (var repo = _UnitOfWork)
+            using (var repo = FachadaDAL.FachadaDAL.ProductDAL())
             {
 
                 repo.BeginTransaction();

@@ -14,17 +14,11 @@ namespace ASF.Business.ClientBusiness
     class ClientBusiness : IClientBusiness
     {
 
-        private IUnitOfWork<Client> _unitOfClient;
-        public ClientBusiness(FachadaDAL.FachadaDAL fachadal)
-        {
-            _unitOfClient = fachadal.ClientDAL();
-
-        }
-
+       
 
         public IList<Client> All()
         {
-            using (var repo = _unitOfClient)
+            using (var repo = FachadaDAL.FachadaDAL.ClientDAL())
             {
                 repo.BeginTransaction();
                 var _lista = repo.Entidad.GetAll()
@@ -47,7 +41,7 @@ namespace ASF.Business.ClientBusiness
 
         public Client Add(Client entity)
         {
-            using (var repo = _unitOfClient)
+            using (var repo = FachadaDAL.FachadaDAL.ClientDAL())
             {
                 repo.BeginTransaction();
                 int _id = (int)repo.Entidad.Create(entity);
@@ -60,7 +54,7 @@ namespace ASF.Business.ClientBusiness
 
         public void Edit(Client entity)
         {
-            using (var repo =_unitOfClient)
+            using (var repo = FachadaDAL.FachadaDAL.ClientDAL())
             {
                 
                 repo.BeginTransaction();
@@ -84,7 +78,7 @@ namespace ASF.Business.ClientBusiness
 
         public void Delete(Client entity)
         {
-            using (var repo = _unitOfClient)
+            using (var repo = FachadaDAL.FachadaDAL.ClientDAL())
             {
                 repo.BeginTransaction();
                 repo.Entidad.Delete(entity.Id);
@@ -95,7 +89,7 @@ namespace ASF.Business.ClientBusiness
 
         public Client GetByID(Client entity)
         {
-            using (var repo = _unitOfClient)
+            using (var repo = FachadaDAL.FachadaDAL.ClientDAL())
             {
                 repo.BeginTransaction();
                 var _lista = repo.Entidad.GetAll()

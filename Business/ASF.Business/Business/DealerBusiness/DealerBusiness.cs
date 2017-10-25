@@ -12,19 +12,11 @@ namespace ASF.Business.DealerBusiness
     [ExceptionAspect]
     class DealerBusiness : IDealerBusiness
     {
-        private IUnitOfWork<Dealer> _unitOfWorkDealer;
-
-
-        public DealerBusiness(FachadaDAL.FachadaDAL fachadaDal)
-        {
-
-            this._unitOfWorkDealer = fachadaDal.DealerDAL();
-
-        }
+        
 
         public IList<Dealer> All()
         {
-            using (var repo = _unitOfWorkDealer)
+            using (var repo = FachadaDAL.FachadaDAL.DealerDAL())
             {
                 repo.BeginTransaction();
                 var _lista = repo.Entidad.GetAll()
@@ -45,7 +37,7 @@ namespace ASF.Business.DealerBusiness
 
         public Dealer Add(Dealer entity)
         {
-            using (var repo = _unitOfWorkDealer)
+            using (var repo = FachadaDAL.FachadaDAL.DealerDAL())
             {
                 repo.BeginTransaction();
                 entity.ChangedOn = DateTime.Now;
@@ -62,7 +54,7 @@ namespace ASF.Business.DealerBusiness
 
         public void Edit(Dealer entity)
         {
-            using (var repo = _unitOfWorkDealer)
+            using (var repo = FachadaDAL.FachadaDAL.DealerDAL())
             {
                 repo.BeginTransaction();
                 var _delaer = repo.Entidad.GetById(entity.Id);
@@ -81,7 +73,7 @@ namespace ASF.Business.DealerBusiness
 
         public void Delete(Dealer entity)
         {
-            using (var repo = _unitOfWorkDealer)
+            using (var repo = FachadaDAL.FachadaDAL.DealerDAL())
             {
                 repo.BeginTransaction();
                 repo.Entidad.Delete(entity);
@@ -92,7 +84,7 @@ namespace ASF.Business.DealerBusiness
 
         public Dealer GetByID(Dealer entity)
         {
-            using (var repo = _unitOfWorkDealer)
+            using (var repo = FachadaDAL.FachadaDAL.DealerDAL())
             {
                 repo.BeginTransaction();
                 var _dealer = repo.Entidad.GetAll().Where(c => c.AsPNetUsers == entity.AsPNetUsers)
@@ -119,7 +111,7 @@ namespace ASF.Business.DealerBusiness
         public IList<Dealer> DealerXCategory(Category category)
         {
 
-            using (var repo= _unitOfWorkDealer)
+            using (var repo= FachadaDAL.FachadaDAL.DealerDAL())
             {
                 
                 repo.BeginTransaction();

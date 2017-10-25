@@ -12,19 +12,12 @@ namespace ASF.Business.Business.LanguajeBusiness
     class LanguajesBusiness : ILanguajesBusiness
     {
 
-        private readonly IUnitOfWork<LocaleStringResource> _unitOfWorkLocaleStringResource;
-
-        public LanguajesBusiness(FachadaDAL.FachadaDAL fachadaDal)
-        {
-
-            this._unitOfWorkLocaleStringResource = fachadaDal.LocaleStringResourceDAL();
-
-        }
+       
 
         public IList<LocaleStringResource> GetLenguajesResourceByLanguaje()
         {
 
-            using (var repo = _unitOfWorkLocaleStringResource)
+            using (var repo = FachadaDAL.FachadaDAL.LocaleStringResourceDAL())
             {
                 repo.BeginTransaction();
                 var _resource = repo.Entidad.GetAll().Select(c => new LocaleStringResource()

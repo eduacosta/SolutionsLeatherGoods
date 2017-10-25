@@ -12,44 +12,58 @@ namespace ASF.Business.Business.CartBusiness
     class CartBusiness : ICartBusiness
     {
 
-        private readonly IUnitOfWork<Cart> _cartUnitOfWork;
-
-
-        public CartBusiness(FachadaDAL.FachadaDAL fachadal)
-        {
-
-            _cartUnitOfWork = fachadal.CartDAL();
-
-        }
+       
 
         public IList<Cart> All()
         {
             throw new NotImplementedException();
         }
 
+
+        private Cart CartXCookie(string cookie)
+        {
+            using (var repo = FachadaDAL.FachadaDAL.CartDAL())
+            {
+                repo.BeginTransaction();
+
+                Cart _cart = repo.Entidad.GetAll().Where(c => c.Cookie == cookie)
+                    .Select(c => new Cart() { Id = c.Id, Cookie = c.Cookie }).FirstOrDefault();
+
+
+                repo.Commit();
+
+                return _cart;
+
+            }
+
+
+
+        }
+
+
         public Cart Add(Cart entity)
         {
-            using (var repo = _cartUnitOfWork)
+
+            Cart _cart = CartXCookie(entity.Cookie);
+
+            if (_cart == null)
             {
-
-                
-
-                Cart _cart = repo.Entidad.GetAll().Where(c => c.Cookie == entity.Cookie)
-                    .Select(c => new Cart() {Id = c.Id, Cookie = c.Cookie}).FirstOrDefault();
-                if (_cart == null)
+                using (var repo = FachadaDAL.FachadaDAL.CartDAL())
                 {
+
                     repo.BeginTransaction();
                     entity.CreatedOn = DateTime.Now;
                     entity.CartDate = DateTime.Now;
-                    var _id = (int) repo.Entidad.Create(entity);
+                    var _id = (int)repo.Entidad.Create(entity);
                     _cart = new Cart() { Id = _id, Cookie = entity.Cookie };
                     repo.Commit();
-                }
-               
-                
 
-                return _cart;
+                }
             }
+
+
+            return _cart;
+
         }
 
         public void Edit(Cart entity)

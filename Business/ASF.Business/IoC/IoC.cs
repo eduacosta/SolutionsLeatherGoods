@@ -33,36 +33,32 @@ namespace ASF.Business.IoC
             {
                 try
                 {
-                    FachadaDAL.FachadaDAL _fachadal = new FachadaDAL.FachadaDAL();
+                    //FachadaDAL.FachadaDAL _fachadal = new FachadaDAL.FachadaDAL();
                     var container = new UnityContainer();
                    
-                    container.RegisterInstance<FachadaDAL.FachadaDAL>("_fachadal", _fachadal, new TransientLifetimeManager());
+                    //container.RegisterInstance<FachadaDAL.FachadaDAL>("_fachadal", _fachadal, new TransientLifetimeManager());
                  
 
 
-                    container.RegisterType<ICategoryBusiness, CategoryBusines.CategoryBusiness>(
-                        new InjectionConstructor(container.Resolve<FachadaDAL.FachadaDAL>("_fachadal")));
+                    //container.RegisterType<ICategoryBusiness, CategoryBusines.CategoryBusiness>(
+                    //    new InjectionConstructor(container.Resolve<FachadaDAL.FachadaDAL>()));
 
-                    container.RegisterType<IClientBusiness, ClientBusiness.ClientBusiness>(
-                        new InjectionConstructor(container.Resolve<FachadaDAL.FachadaDAL>("_fachadal")));
 
-                    container.RegisterType<IDealerBusiness, DealerBusiness.DealerBusiness>(
-                        new InjectionConstructor(container.Resolve<FachadaDAL.FachadaDAL>("_fachadal")));
+                    container.RegisterType<ICategoryBusiness, CategoryBusines.CategoryBusiness>();
 
-                    container.RegisterType<ICountryBusiness, CountryBusiness.CountryBusiness>(
-                        new InjectionConstructor(container.Resolve<FachadaDAL.FachadaDAL>("_fachadal")));
+                    container.RegisterType<IClientBusiness, ClientBusiness.ClientBusiness>();
 
-                    container.RegisterType<ILanguajesBusiness, LanguajesBusiness>(
-                        new InjectionConstructor(container.Resolve<FachadaDAL.FachadaDAL>("_fachadal")));
+                    container.RegisterType<IDealerBusiness, DealerBusiness.DealerBusiness>();
 
-                    container.RegisterType<IProductBusiness, ProductBusiness>(
-                        new InjectionConstructor(container.Resolve<FachadaDAL.FachadaDAL>("_fachadal")));
+                    container.RegisterType<ICountryBusiness, CountryBusiness.CountryBusiness>();
 
-                    container.RegisterType<ICartBusiness, CartBusiness>(
-                        new InjectionConstructor(container.Resolve<FachadaDAL.FachadaDAL>("_fachadal")));
+                    container.RegisterType<ILanguajesBusiness, LanguajesBusiness>();
 
-                    container.RegisterType<ICartItemBusiness, CartItemBusiness>(
-                        new InjectionConstructor(container.Resolve<FachadaDAL.FachadaDAL>("_fachadal")));
+                    container.RegisterType<IProductBusiness, ProductBusiness>();
+
+                    container.RegisterType<ICartBusiness, CartBusiness>();
+
+                    container.RegisterType<ICartItemBusiness, CartItemBusiness>();
 
                     container.RegisterType<IBuscarProductosXCategoria, BuscarProductosXCategoria>();
 

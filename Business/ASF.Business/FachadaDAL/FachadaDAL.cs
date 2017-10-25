@@ -26,66 +26,66 @@ namespace ASF.Business.FachadaDAL
 
      
 
-        public  IUnitOfWork<Category> CategoryDAL()
+        public static IUnitOfWork<Category> CategoryDAL()
         {
 
             return _DAL.Entidades<Category>();
         }
 
-        public IUnitOfWork<Client> ClientDAL()
+        public static IUnitOfWork<Client> ClientDAL()
         {
 
             return _DAL.Entidades<Client>();
         }
 
-        public IUnitOfWork<Country> CountryDAL()
+        public static IUnitOfWork<Country> CountryDAL()
         {
 
             return _DAL.Entidades<Country>();
         }
 
 
-        public IUnitOfWork<Language> LanguegeDAL()
+        public static IUnitOfWork<Language> LanguegeDAL()
         {
 
             return _DAL.Entidades<Language>();
         }
 
 
-        public IUnitOfWork<LocaleResourceKey> LocaleResourceKeyDAL()
+        public static IUnitOfWork<LocaleResourceKey> LocaleResourceKeyDAL()
         {
 
             return _DAL.Entidades<LocaleResourceKey>();
         }
 
 
-        public IUnitOfWork<LocaleStringResource> LocaleStringResourceDAL()
+        public static IUnitOfWork<LocaleStringResource> LocaleStringResourceDAL()
         {
 
             return _DAL.Entidades<LocaleStringResource>();
         }
 
 
-        public IUnitOfWork<Dealer> DealerDAL()
+        public static IUnitOfWork<Dealer> DealerDAL()
         {
 
             return _DAL.Entidades<Dealer>();
         }
 
 
-        public IUnitOfWork<Product> ProductDAL()
+        public static IUnitOfWork<Product> ProductDAL()
         {
 
             return _DAL.Entidades<Product>();
         }
 
-        public IUnitOfWork<Cart> CartDAL()
+        public static IUnitOfWork<Cart> CartDAL()
         {
 
             return _DAL.Entidades<Cart>();
         }
 
-        public IUnitOfWork<CartItem> CartItemDAL()
+        public static IUnitOfWork<CartItem> CartItemDAL()
         {
 
             return _DAL.Entidades<CartItem>();
