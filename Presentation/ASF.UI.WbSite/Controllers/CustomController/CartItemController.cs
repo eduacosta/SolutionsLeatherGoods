@@ -14,6 +14,15 @@ using ASF.UI.WbSite.Services.Cache;
 
 namespace ASF.UI.WbSite.Controllers
 {
+
+    public class Producto
+    {
+
+        public int ProductId { get; set; }
+
+        public float Precio { get; set; }
+
+    }
    
     public class CartItemController : Controller, IABMControlador<CartItem>
     {
@@ -27,39 +36,45 @@ namespace ASF.UI.WbSite.Controllers
 
         }
 
-        [HttpGet]
-        public ActionResult Carrito(int ProductId)
+        [HttpPost]
+        public JsonResult Carrito(Producto producto)
         {
             try
             {
                 string _cookievalue = null;
-                 var cookie = Request.Cookies["Carrito"];
+                 var cookie = Request.Cookies["Carritos"];
                 if (cookie != null)
                 {
                     _cookievalue = cookie.Value;
                 }
                 else
                 {
-                    var _cookie = new HttpCookie("Carrito");
-                    _cookie.Value = DateTime.Now.ToString();
-                    _cookievalue = _cookie.Value;
-                    Response.AppendCookie(_cookie);
+                    lock (this)
+                    {
+
+               
+                        var _cookie = new HttpCookie("Carritos");
+                        _cookie.Value = Guid.NewGuid().ToString();
+                        _cookie.Expires = DateTime.MaxValue;
+                        _cookievalue = _cookie.Value;
+                        Response.AppendCookie(_cookie);
+
+                    }
                 }
                
 
                 var _cart = new Cart() {CartDate = DateTime.Now, Cookie = _cookievalue };
-                _abmProcess.Create(new CartItem() {Cart = _cart , Product = new Product() {Id = ProductId} });
+                _abmProcess.Create(new CartItem() {Cart = _cart, Price = producto.Precio, Product = new Product() {Id = producto.ProductId, Price = producto.Precio} });
 
-                
-                return new HttpStatusCodeResult(HttpStatusCode.OK);
+
+                return Json("Producto Añadido Correctamente", JsonRequestBehavior.AllowGet);
 
             }
             catch (Exception ex)
             {
-                return RedirectToAction("badrequest", "Error", new
-                {
-                    mensaje = ex.Message
-                });
+                
+
+                return Json(ex.Message, JsonRequestBehavior.AllowGet);
 
             }
 
@@ -67,6 +82,41 @@ namespace ASF.UI.WbSite.Controllers
 
         }
 
+
+        [HttpPost]
+        public ActionResult FinalizarCompra(CartItem[] carttime)
+        {
+
+
+            throw new NotImplementedException();
+        }
+
+
+        [HttpGet]
+        public ActionResult CartItemXCookie()
+        {
+
+            try
+            {
+                string _cookievalue = null;
+                var cookie = Request.Cookies["Carritos"];
+                if (cookie != null)
+                {
+                    _cookievalue = cookie.Value;
+                }
+                var _cartitem = _abmProcess.SelectList("rest/CartItem/ListaCarritoXCookie", _cookievalue).ToList();
+                return View(_cartitem.ToArray());
+
+
+            }
+            catch (Exception ex)
+            {
+                return RedirectToAction("badrequest", "Error", new { mensaje = ex.Message });
+
+            }
+
+
+        }
 
         public ActionResult Index()
         {
@@ -93,9 +143,34 @@ namespace ASF.UI.WbSite.Controllers
             throw new NotImplementedException();
         }
 
+       
         public ActionResult Delete(object id)
         {
             throw new NotImplementedException();
+        }
+
+        [HttpGet]
+        public JsonResult Eliminar(object id)
+        {
+            try
+            {
+
+
+
+                _abmProcess.Remove(new CartItem() { Id = int.Parse(id.ToString()) });
+                return Json("Producto eliminado Correctamente", JsonRequestBehavior.AllowGet);
+
+               
+
+
+            }
+            catch (Exception ex)
+            {
+
+
+                return Json(ex.Message, JsonRequestBehavior.AllowGet);
+
+            }
         }
 
         public ActionResult Delete(CartItem entity)

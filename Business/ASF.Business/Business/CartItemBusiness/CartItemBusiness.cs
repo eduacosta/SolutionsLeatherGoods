@@ -18,6 +18,43 @@ namespace ASF.Business.Business.CartItemBusiness
         }
 
 
+        public IList<CartItem> ListaCarritoXCookie(string cookie)
+        {
+
+            using (var repo = FachadaDAL.FachadaDAL.CartItemDAL())
+            {
+                repo.BeginTransaction();
+                var _lista = repo.Entidad.GetAll().Where(c => c.Cart.Cookie == cookie).Select(c => new CartItem()
+                {
+                    Id = c.Id,
+                    Product = new Product()
+                    {
+                        
+                        Id = c.Product.Id,
+                        Image = c.Product.Image,
+                        Description = c.Product.Description,
+                        Price = c.Product.Price
+
+                    },
+                    Price = c.Price,
+                    Quantity = c.Quantity
+
+
+                }).ToList();
+
+
+                repo.Commit();
+
+                return _lista;
+
+
+            }
+
+
+
+        }
+
+
         private CartItem CartItemXCookie_Product(CartItem cartItem)
         {
             using (var repo = FachadaDAL.FachadaDAL.CartItemDAL())
@@ -97,12 +134,33 @@ namespace ASF.Business.Business.CartItemBusiness
 
         public void Delete(CartItem entity)
         {
-            throw new NotImplementedException();
+            using (var repo = FachadaDAL.FachadaDAL.CartItemDAL())
+            {
+                repo.BeginTransaction();
+
+                repo.Entidad.Delete(entity.Id);
+
+
+                repo.Commit();
+
+            }
         }
 
         public CartItem GetByID(CartItem entity)
         {
-            throw new NotImplementedException();
+            using (var repo = FachadaDAL.FachadaDAL.CartItemDAL())
+            {
+                repo.BeginTransaction();
+
+                var _cartitem = repo.Entidad.GetById(entity.Id);
+
+                repo.Commit();
+
+                return _cartitem;
+
+
+
+            }
         }
     }
 }

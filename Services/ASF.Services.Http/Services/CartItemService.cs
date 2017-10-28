@@ -17,9 +17,21 @@ namespace ASF.Services.Http.Services
         public override CartItem Add(CartItem entidad)
         {
             FachadaBLL.AñadirProductosAlCarrito.AñadirProductoAlCarrito(entidad);
-
             return new CartItem();
         }
+
+
+
+        [HttpGet]
+        [Route("ListaCarritoXCookie")]
+        public AllResponse<CartItem> ListaCarritoXCookie(string id)
+        {
+            var _response = new AllResponse<CartItem>();
+            _response.Result = FachadaBLL.CartItemBusiness.ListaCarritoXCookie(id);
+            return _response;
+
+        }
+
 
         public override AllResponse<CartItem> All()
         {
@@ -43,7 +55,7 @@ namespace ASF.Services.Http.Services
 
         public override void Remove(CartItem entidad)
         {
-            throw new NotImplementedException();
+            FachadaBLL.CartItemBusiness.Delete(entidad);
         }
     }
 }

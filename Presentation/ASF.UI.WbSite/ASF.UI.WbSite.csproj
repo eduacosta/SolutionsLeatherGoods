@@ -619,6 +619,7 @@
     <Content Include="Views\Product\Edit.cshtml" />
     <Content Include="Views\Product\Delete.cshtml" />
     <Content Include="Views\Product\ProductosXCategoria.cshtml" />
+    <Content Include="Views\CartItem\CartItemXCookie.cshtml" />
     <None Include="Views\Shared\_Categorias.cshtml" />
   </ItemGroup>
   <ItemGroup>

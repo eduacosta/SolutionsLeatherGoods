@@ -2,6 +2,7 @@ using System;
 using System.Text;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using NHibernate.Validator.Constraints;
 
@@ -29,6 +30,7 @@ namespace ASF.Entities {
         public virtual float Price { get; set; }
         [DataMember]
         [DisplayName("Quantity")]
+       
         [NotNull(Message="Se debe cargar algún valor para el campo Quantity, no puede estar vacío")]
         public virtual int Quantity { get; set; }
         [NotNull(Message="Se debe cargar algún valor para el campo Created On, no puede estar vacío")]
