@@ -83,13 +83,7 @@ namespace ASF.UI.WbSite.Controllers
         }
 
 
-        [HttpPost]
-        public ActionResult FinalizarCompra(CartItem[] carttime)
-        {
-
-
-            throw new NotImplementedException();
-        }
+       
 
 
         [HttpGet]

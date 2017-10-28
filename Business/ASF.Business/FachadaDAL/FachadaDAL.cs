@@ -96,5 +96,18 @@ namespace ASF.Business.FachadaDAL
 
             return _DAL.Entidades<OrderNumber>();
         }
+
+        public static IUnitOfWork<Order> OrderDAL()
+        {
+
+            return _DAL.Entidades<Order>();
+        }
+
+        public static IUnitOfWork<OrderDetail> OrderDetailDAL()
+        {
+
+            return _DAL.Entidades<OrderDetail>();
+        }
+
     }
 }

@@ -12,11 +12,11 @@
             <li>
                 @Html.ActionLink("LogOff ", "LogOff", "Account", new { Area = "" }, htmlAttributes: new { title = "LogOff" })
             </li>
-            
-           
+
+
             @if (Context.User.IsInRole("User"))
             {
-               
+
 
                 <li><a href="/Cliente/Edit/@User.Identity.GetUserId()">Comprador</a></li>
 
@@ -27,14 +27,18 @@
         </ul>
     }
 }
+
+
 else
 {
     <ul class="nav navbar-nav navbar-right">
-        
-        <li> <a href="/CartItem/CartItemXCookie" class="fa fa-shopping-cart"></a> </li>
 
-        <li>@Html.ActionLink("Register", "Register", "Account", new {area = ""}, htmlAttributes: new {id = "registerLink"})</li>
 
-        <li>@Html.ActionLink("Log in", "Login", "Account", new {area = ""}, htmlAttributes: new {id = "loginLink"})</li>
+
+        <li>@Html.ActionLink("Register", "Register", "Account", new { area = "" }, htmlAttributes: new { id = "registerLink" })</li>
+
+        <li>@Html.ActionLink("Log in", "Login", "Account", new { area = "" }, htmlAttributes: new { id = "loginLink" })</li>
     </ul>
 }
+
+<li> <a href="/CartItem/CartItemXCookie" class="fa fa-shopping-cart"></a> </li>

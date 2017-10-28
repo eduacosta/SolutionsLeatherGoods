@@ -87,6 +87,8 @@
     <Compile Include="Business\LanguajeBusiness\LanguajesBusiness.cs" />
     <Compile Include="Business\OrderBusiness\IOrderBusiness.cs" />
     <Compile Include="Business\OrderBusiness\OrderBusiness.cs" />
+    <Compile Include="Business\OrderDetailBusiness\IOrderDetailsBusiness.cs" />
+    <Compile Include="Business\OrderDetailBusiness\OrderDetailsBusiness.cs" />
     <Compile Include="Business\OrderNumberBusiness\IOrderNumberBusiness.cs" />
     <Compile Include="Business\OrderNumberBusiness\OrderNumberBusiness.cs" />
     <Compile Include="Business\ProductBusiness\IProductBusiness.cs" />
@@ -96,6 +98,8 @@
     <Compile Include="IABM\IABM.cs" />
     <Compile Include="IoC\IoC.cs" />
     <Compile Include="Patrones\TMAñadirAlCarrito\TMAñadirAlCarrito.cs" />
+    <Compile Include="Patrones\TMConfirmarCompra\ITMConfirmarCompra.cs" />
+    <Compile Include="Patrones\TMConfirmarCompra\TMConfirmarCompra.cs" />
     <Compile Include="Patrones\TMProductoxXCategoria\BuscarProductosXCategoria.cs" />
     <Compile Include="Patrones\TMProductoxXCategoria\IBuscarProductosXCategoria.cs" />
     <Compile Include="Patrones\TMAñadirAlCarrito\ITMAñadirAlCarrito.cs" />

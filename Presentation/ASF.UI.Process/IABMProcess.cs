@@ -12,7 +12,7 @@ namespace ASF.UI.Process
     {
 
 
-       
+        void AddCustom(string URL, object objeto);
 
         IList<T> SelectList();
 

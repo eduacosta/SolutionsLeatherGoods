@@ -275,6 +275,7 @@
     <Compile Include="Constants\ResponseHttp.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CustomController\CategoriasController.cs" />
+    <Compile Include="Controllers\CustomController\OrderDetailController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -627,6 +628,7 @@
     <Folder Include="Areas\Category\Views\Shared\" />
     <Folder Include="Areas\Client\Controllers\" />
     <Folder Include="Areas\Client\Models\" />
+    <Folder Include="Views\OrderDetail\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">

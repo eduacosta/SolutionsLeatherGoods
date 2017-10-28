@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DTO\CartItemDTO.cs" />
     <Compile Include="Entidades\Cart.cs" />
     <Compile Include="Entidades\CartItem.cs" />
     <Compile Include="Entidades\Category.cs" />

@@ -64,6 +64,7 @@
     <Compile Include="HtppBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ClientServices.cs" />
+    <Compile Include="Services\ConfirmarCompraService.cs" />
     <Compile Include="Services\CountryService.cs" />
     <Compile Include="Services\DealerServices.cs" />
     <Compile Include="Services\IdiomasService.cs" />

@@ -7,7 +7,7 @@
 <h2>CartItemXCookie</h2>
 
 
-@using (Html.BeginForm("FinalizarCompra", "CartItem", FormMethod.Post))
+@using (Html.BeginForm("FinalizarCompra", "OrderDetail", FormMethod.Post))
 {
 
 <table class="table">
@@ -46,6 +46,7 @@
             </td>
 
             <td>
+                @Html.HiddenFor(modelItem => Model[i].Product.Price)
                 @Html.DisplayFor(modelItem => Model[i].Product.Price)
             </td>
             <td>

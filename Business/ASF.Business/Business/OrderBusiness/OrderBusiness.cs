@@ -16,7 +16,20 @@ namespace ASF.Business.Business.OrderBusiness
 
         public Order Add(Order entity)
         {
-            throw new NotImplementedException();
+            using (var repo = FachadaDAL.FachadaDAL.OrderDAL())
+            {
+                
+                repo.BeginTransaction();
+                var _id = (int)repo.Entidad.Create(entity);
+                repo.Commit();
+
+                return new Order()
+                {
+                    Id = _id
+                };
+
+
+            }
         }
 
         public void Edit(Order entity)

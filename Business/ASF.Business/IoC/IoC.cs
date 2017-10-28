@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 using ASF.Business.Business.CartBusiness;
 using ASF.Business.Business.CartItemBusiness;
 using ASF.Business.Business.LanguajeBusiness;
+using ASF.Business.Business.OrderBusiness;
+using ASF.Business.Business.OrderDetailBusiness;
+using ASF.Business.Business.OrderNumberBusiness;
 using ASF.Business.Business.ProductBusiness;
 using ASF.Business.CategoryBusines;
 using ASF.Business.ClientBusiness;
@@ -14,6 +17,7 @@ using ASF.Business.DealerBusiness;
 using ASF.Business.Patrones;
 using ASF.Business.Patrones.TMAñadirAlCarrito;
 using ASF.Business.Patrones.TMCart;
+using ASF.Business.Patrones.TMConfirmarCompra;
 using ASF.Entities;
 using DAL;
 using Microsoft.Practices.Unity;
@@ -64,9 +68,13 @@ namespace ASF.Business.IoC
 
                     container.RegisterType<ITMAñadirAlCarrito, TMAñadirAlCarrito>();
 
+                    container.RegisterType<ITMConfirmarCompra, TMConfirmarCompra>();
 
+                    container.RegisterType<IOrderBusiness, OrderBusiness>();
 
+                    container.RegisterType<IOrderNumberBusiness, OrderNumberBusiness>();
 
+                    container.RegisterType<IOrderDetailsBusiness, OrderDetailsBusiness>();
 
                     Container = container;
                 }

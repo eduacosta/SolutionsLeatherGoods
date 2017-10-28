@@ -163,7 +163,18 @@ namespace ASF.UI.Process
             return response;
         }
 
+        private static void CallHttpPostAdd(string url ,object value) 
+        {
+           
+             HttpPost(url, value, MediaType.Json);
+           
+        }
 
+        public void AddCustom(string URL, object objeto)
+        {
+             CallHttpPostAdd(URL, objeto);
+        
+        }
 
 
         public IList<T> SelectList()
