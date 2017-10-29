@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using ASF.Entities;
 using ASF.Entities.DTO;
 using ASF.UI.Process;
+using ASF.UI.WbSite.Models.CustomModel;
 using Microsoft.AspNet.Identity;
 
 namespace ASF.UI.WbSite.Controllers.CustomController
@@ -31,14 +32,14 @@ namespace ASF.UI.WbSite.Controllers.CustomController
 
         [HttpPost]
         [Authorize]
-        public ActionResult FinalizarCompra(CartItem[] carttime)
+        public ActionResult FinalizarCompra(ViewModelCarItem_Order carttime)
         {
 
 
             try
             {
 
-                IList<CartItem> _cartItems = carttime.ToList();
+                IList<CartItem> _cartItems = carttime.CartItems.ToList();
                 CartItemDTO _cartItemDto = new CartItemDTO()
                 {
                     ListaCartItem = _cartItems,
@@ -48,9 +49,9 @@ namespace ASF.UI.WbSite.Controllers.CustomController
                     }
 
                 };
-                _AbmProcess.AddCustom("rest/ConfirmarCompra/AddList", _cartItemDto);
+                 _AbmProcess.AddCustom("rest/ConfirmarCompra/AddList", _cartItemDto);
 
-                return View();
+                return RedirectToAction("CartItemXCookie","CartItem");
             }
             catch (Exception ex)
             {

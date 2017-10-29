@@ -18,7 +18,7 @@ namespace ASF.Test.TestLanguaje
         public void TestLenguajes()
         {
 
-            var _datos = FachadaBLL.LanguajeBusiness.GetLenguajesResourceByLanguaje(new Language() {Id = 2});
+            //var _datos = FachadaBLL.LanguajeBusiness.GetLenguajesResourceByLanguaje(new Language() {Id = 2});
 
 
 

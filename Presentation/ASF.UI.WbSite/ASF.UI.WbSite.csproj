@@ -285,6 +285,7 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CustomModel\ProductoModel.cs" />
+    <Compile Include="Models\CustomModel\ViewModelCarItem_Order.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MensajeError.cs" />
@@ -621,14 +622,16 @@
     <Content Include="Views\Product\Delete.cshtml" />
     <Content Include="Views\Product\ProductosXCategoria.cshtml" />
     <Content Include="Views\CartItem\CartItemXCookie.cshtml" />
+    <Content Include="Views\OrderDetail\FinalizarCompra.cshtml" />
+    <Content Include="Views\Shared\_FinalizarCompras.cshtml" />
     <None Include="Views\Shared\_Categorias.cshtml" />
+    <Content Include="Views\Shared\_OrderDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Category\Views\Shared\" />
     <Folder Include="Areas\Client\Controllers\" />
     <Folder Include="Areas\Client\Models\" />
-    <Folder Include="Views\OrderDetail\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">

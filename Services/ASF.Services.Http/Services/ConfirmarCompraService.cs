@@ -18,10 +18,12 @@ namespace ASF.Services.Http.Services
 
         [Route("AddList")]
         [HttpPost]
-        public void AddList(CartItemDTO cartItemDto)
+        public FindResponse<Order> AddList(CartItemDTO cartItemDto)
         {
-            
-            FachadaBLL.ConfirmarCompra.ConfirmarCompra(cartItemDto);
+            var reponse = new FindResponse<Order>();
+            reponse.Result =  FachadaBLL.ConfirmarCompra.ConfirmarCompra(cartItemDto);
+
+            return reponse;
 
         }
 

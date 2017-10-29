@@ -1,0 +1,56 @@
+﻿@model IEnumerable<ASF.Entities.Order>
+
+
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ItemCount)
+        </th>
+       
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrderDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TotalPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrderNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ItemCount)
+        </td>
+       
+        
+    </tr>
+
+    @Html.Partial("_OrderDetails", item.OrderDetail)
+
+}
+
+</table>
+
+<div class="row">
+
+    <div class="col-md-4">
+
+        <input type="submit" class="btn btn-default" value="Confirmar Compra" />
+
+    </div>
+
+
+</div>

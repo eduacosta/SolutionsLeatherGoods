@@ -10,31 +10,31 @@
     <property name="OrderDate">
       <column name="OrderDate" sql-type="datetime" not-null="true" />
     </property>
-    <property name="TotalPrice" insert="false">
+    <property name="TotalPrice">
       <column name="TotalPrice" sql-type="float" precision="53" default="0" not-null="true" />
     </property>
-    <property name="State">
-      <column name="State" sql-type="int" precision="10" not-null="false" />
+    <property name="State" type="NHibernate.Type.EnumStringType`1[[ASF.Entities.Status, ASF.Entities]], NHibernate">
+      <column name="State" sql-type="varchar(50)"  not-null="false" />
     </property>
-    <property name="OrderNumber" insert="false">
+    <property name="OrderNumber">
       <column name="OrderNumber" sql-type="int" precision="10" default="0" not-null="true" />
     </property>
-    <property name="ItemCount" insert="false">
+    <property name="ItemCount" >
       <column name="ItemCount" sql-type="int" precision="10" default="0" not-null="true" />
     </property>
     <property name="Rowid" insert="false">
       <column name="Rowid" sql-type="uniqueidentifier" default="newsequentialid" not-null="false" />
     </property>
-    <property name="CreatedOn" insert="false">
+    <property name="CreatedOn">
       <column name="CreatedOn" sql-type="datetime" default="getdate" not-null="true" />
     </property>
     <property name="CreatedBy">
       <column name="CreatedBy" sql-type="nvarchar(128)" precision="10" not-null="false" />
     </property>
     <property name="ChangedOn" insert="false">
-      <column name="ChangedOn" sql-type="datetime" default="getdate" not-null="true" />
+      <column name="ChangedOn" sql-type="datetime" default="getdate" not-null="false" />
     </property>
-    <property name="ChangedBy">
+    <property name="ChangedBy" insert="false">
       <column name="ChangedBy" sql-type="nvarchar(128)" precision="10" not-null="false" />
     </property>
     <bag name="OrderDetail" inverse="true">

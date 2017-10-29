@@ -11,6 +11,7 @@ using ASF.UI.Process;
 using ASF.UI.WbSite.Constants.CarritoCompra;
 using ASF.UI.WbSite.Models.CustomModel;
 using ASF.UI.WbSite.Services.Cache;
+using Microsoft.AspNet.Identity;
 
 namespace ASF.UI.WbSite.Controllers
 {
@@ -99,7 +100,22 @@ namespace ASF.UI.WbSite.Controllers
                     _cookievalue = cookie.Value;
                 }
                 var _cartitem = _abmProcess.SelectList("rest/CartItem/ListaCarritoXCookie", _cookievalue).ToList();
-                return View(_cartitem.ToArray());
+
+                ViewModelCarItem_Order _modelCarItemOrder = new ViewModelCarItem_Order();
+                _modelCarItemOrder.CartItems = _cartitem.ToArray();
+
+
+                if (User.Identity.IsAuthenticated)
+                {
+                   
+                    var _orderlist = new ProcessComponent<Order>().SelectList("rest/Order/AllXCliente", User.Identity.GetUserId()).ToList();
+                    _modelCarItemOrder.Order = _orderlist.ToArray();
+
+                }
+
+
+
+                return View(_modelCarItemOrder);
 
 
             }

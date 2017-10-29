@@ -10,8 +10,10 @@ namespace ASF.Entities {
     [DataContract]
     public class OrderNumber : EntityBase
     {
+        [DataMember]
         public virtual int Id { get; set; }
-        [NotNull(Message="Se debe cargar algún valor para el campo Number, no puede estar vacío")]
+        [NotNull(Message="Se debe cargar algún  [DataMember]valor para el campo Number, no puede estar vacío")]
+        [DataMember]
         public virtual int Number { get; set; }
         [NotNull(Message="Se debe cargar algún valor para el campo Created On, no puede estar vacío")]
         public virtual DateTime CreatedOn { get; set; }

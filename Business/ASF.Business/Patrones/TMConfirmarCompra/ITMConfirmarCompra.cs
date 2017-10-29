@@ -22,20 +22,20 @@ namespace ASF.Business.Patrones.TMConfirmarCompra
 
         protected abstract Client ClientXAspUser(Client client);
 
-        public void ConfirmarCompra(CartItemDTO cartItemsdto)
+        public Order ConfirmarCompra(CartItemDTO cartItemsdto)
         {
             using (var _tran = new TransactionScope())
             {
                 OrderNumber _orderNumber = GenerarOrderNumber();
+                int  _clientid = ClientXAspUser(new Client() {AspNetUsers = cartItemsdto.Client.AspNetUsers}).Id;
                 Order _order = GenerarOrden(new Order()
                 {
                     OrderNumber = _orderNumber.Number,
-                    Client = ClientXAspUser(new Client(){AspNetUsers = cartItemsdto.Client.AspNetUsers}),
+                    Client = new Client(){Id = _clientid },
                     ItemCount = cartItemsdto.ListaCartItem.Count,
-                    TotalPrice = cartItemsdto.ListaCartItem.Count * cartItemsdto.ListaCartItem.Sum(f => f.Product.Price),
+                    TotalPrice = (cartItemsdto.ListaCartItem.Count * cartItemsdto.ListaCartItem.Sum(f => f.Product.Price)),
                     OrderDate = DateTime.Now,
-                    State = 0,
-                    
+                    State  = Status.Reviewed,
                     CreatedBy = cartItemsdto.Client.AspNetUsers,
                     CreatedOn = DateTime.Now
 
@@ -45,7 +45,7 @@ namespace ASF.Business.Patrones.TMConfirmarCompra
                 var _orderdetails = cartItemsdto.ListaCartItem.Select(c => new OrderDetail()
                 {
                     Product = c.Product,
-                    Price = c.Price,
+                    Price = c.Product.Price,
                     Order = _order,
                     Quantity = c.Quantity
 
@@ -57,6 +57,8 @@ namespace ASF.Business.Patrones.TMConfirmarCompra
                 GenerarOrderDetails(_orderdetails);
 
                 _tran.Complete();
+                return _order;
+
             }
 
 
