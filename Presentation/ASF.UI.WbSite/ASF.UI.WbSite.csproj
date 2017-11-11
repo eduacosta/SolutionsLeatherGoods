@@ -275,6 +275,7 @@
     <Compile Include="Constants\ResponseHttp.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CustomController\CategoriasController.cs" />
+    <Compile Include="Controllers\CustomController\OrderController.cs" />
     <Compile Include="Controllers\CustomController\OrderDetailController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -315,6 +316,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AngularControllers\ControladorCategoria.js" />
+    <Content Include="AngularControllers\ControladorPagoTarjeta.js" />
     <Content Include="AngularControllers\ControladorPrincipal.js" />
     <Content Include="AngularControllers\Principal.js" />
     <Content Include="Built\3c1e366328a749b4063b2ebe0d587904.ttf" />
@@ -446,6 +448,7 @@
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Content\Estilos.css" />
+    <Content Include="Views\Shared\TarjetaCredito.html" />
     <Content Include="webpack.config.js" />
     <Content Include="Built\fonts\ui-grid.eot" />
     <Content Include="Areas\Category\Views\Category\ListEntity.cshtml" />
@@ -465,6 +468,7 @@
       <SubType>Designer</SubType>
     </None>
     <Content Include="package.json" />
+    <None Include="Properties\PublishProfiles\MCGA - Web Deploy.pubxml" />
     <None Include="ReadMe.html" />
     <Content Include="Scripts\angular.min.js.map" />
     <None Include="Scripts\jquery-2.2.3.intellisense.js" />
@@ -572,7 +576,6 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
@@ -624,14 +627,15 @@
     <Content Include="Views\CartItem\CartItemXCookie.cshtml" />
     <Content Include="Views\OrderDetail\FinalizarCompra.cshtml" />
     <Content Include="Views\Shared\_FinalizarCompras.cshtml" />
-    <None Include="Views\Shared\_Categorias.cshtml" />
     <Content Include="Views\Shared\_OrderDetails.cshtml" />
+    <Content Include="Views\Shared\_Category.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Category\Views\Shared\" />
     <Folder Include="Areas\Client\Controllers\" />
     <Folder Include="Areas\Client\Models\" />
+    <Folder Include="Views\Order\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">

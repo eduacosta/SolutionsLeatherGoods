@@ -49,6 +49,9 @@ namespace ASF.Entities
         public virtual string ChangedBy { get; set; }
         [DataMember]
         public virtual IList<OrderDetail> OrderDetail { get; set; }
+        [DataMember]
+        public virtual bool? Eliminado { get; set; }
+
     }
 
    

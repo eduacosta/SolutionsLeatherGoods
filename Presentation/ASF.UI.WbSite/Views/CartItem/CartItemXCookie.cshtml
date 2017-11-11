@@ -11,99 +11,100 @@
 @using (Html.BeginForm("FinalizarCompra", "OrderDetail", FormMethod.Post))
 {
 
-<table class="table">
-    <tr>
-        <th>
-            
-        </th>
-        <th>
-            Precio
-        </th>
-        <th>
-            Cantidad
-        </th>
-        <th>
-            Descripcion
-        </th>
-        <th>
-            Imagen
-        </th>
-        @*<th>
-                @Html.DisplayNameFor(model => model.ChangedOn)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ChangedBy)
-            </th>*@
-        <th></th>
-    </tr>
-    
-
-
-    @for (var i = 0; i < Model.CartItems.Length; i++) 
+    if (Model.CartItems.ToArray().Length > 0)
     {
-        <tr>
-            <td>
-                @Html.HiddenFor(modelItem => Model.CartItems[i].Id)
-                @Html.HiddenFor(modelItem => Model.CartItems[i].Product.Id)
-            </td>
 
-            <td>
-             
-                @Html.HiddenFor(modelItem => Model.CartItems[i].Product.Price)
-                @Html.DisplayFor(modelItem => Model.CartItems[i].Product.Price)
-            </td>
-            <td>
-                @Html.EditorFor(modelItem => Model.CartItems[i].Quantity)      
-              
-                
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => Model.CartItems[i].Product.Description)
-            </td>
-            <td>
-                <img src="@string.Format("data:image/jpeg;base64,{0}", Convert.ToBase64String(Model.CartItems[i].Product.Image))" alt="" height=100 width=200/>
-            </td>
-            @*<td>
-                    @Html.DisplayFor(modelItem => item.ChangedOn)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ChangedBy)
-                </td>*@
-            <td>
-                <a href="/CartItem/Eliminar/@Model.CartItems[i].Id " class="Carrito">Eliminar del Carrito</a>
+        <table class="table">
+            <tr>
+                <th>
 
-            </td>
-        </tr>
+                </th>
+                <th>
+                    Precio
+                </th>
+                <th>
+                    Cantidad
+                </th>
+                <th>
+                    Descripcion
+                </th>
+                <th>
+                    Imagen
+                </th>
 
-        
-      
+                <th></th>
+            </tr>
+
+
+
+            @for (var i = 0; i < Model.CartItems.ToArray().Length; i++)
+            {
+                <tr>
+                    <td>
+                        @Html.HiddenFor(modelItem => Model.CartItems[i].Id)
+                        @Html.HiddenFor(modelItem => Model.CartItems[i].Product.Id)
+                    </td>
+
+                    <td>
+
+                        @Html.HiddenFor(modelItem => Model.CartItems[i].Product.Price)
+                        @Html.DisplayFor(modelItem => Model.CartItems[i].Product.Price)
+                    </td>
+                    <td>
+                        @Html.EditorFor(modelItem => Model.CartItems[i].Quantity)
+                        @*<input type="number" name="Model.CartItems[i].Quantity" value="Model.CartItems[i].Quantity"/>*@
+
+
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => Model.CartItems[i].Product.Description)
+                    </td>
+                    <td>
+                        <img src="@string.Format("data:image/jpeg;base64,{0}", Convert.ToBase64String(Model.CartItems[i].Product.Image))" alt="" height=100 width=200 />
+                    </td>
+                    @*<td>
+                            @Html.DisplayFor(modelItem => item.ChangedOn)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ChangedBy)
+                        </td>*@
+
+                    <td>
+                        <a href="/CartItem/Eliminar/@Model.CartItems[i].Id " class="Carrito">Eliminar del Carrito</a>
+
+                    </td>
+                </tr>
+
+
+
+            }
+
+
+
+
+
+
+        </table>
+
+
+
+        <div class="row">
+
+            <div class="col-md-4">
+
+                <input type="submit" class="btn btn-default" value="Finalizar Compra" />
+
+            </div>
+
+
+        </div>
     }
-    
-  
-   
-
-  
-
-</table>
-
-<div class="row">
-
-    <div class="col-md-4">
-
-        <input type="submit" class="btn btn-default" value ="Finalizar Compra" />
-
-    </div>
-
-
-</div>
-
 }
 
 
 @{
 
     var _order = Model.Order;
-
 
 }
 

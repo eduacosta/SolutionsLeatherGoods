@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<ASF.Entities.OrderDetail>
 
 
-<table class="table">
+<table class="table" style="margin-left: 5%">
     <tr>
         
         <th>
@@ -14,7 +14,7 @@
             @Html.DisplayNameFor(model => model.Product.Price)
         </th>
        
-        <th></th>
+        
     </tr>
 
 @foreach (var item in Model) {

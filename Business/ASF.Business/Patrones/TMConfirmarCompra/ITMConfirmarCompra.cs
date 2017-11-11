@@ -33,7 +33,7 @@ namespace ASF.Business.Patrones.TMConfirmarCompra
                     OrderNumber = _orderNumber.Number,
                     Client = new Client(){Id = _clientid },
                     ItemCount = cartItemsdto.ListaCartItem.Count,
-                    TotalPrice = (cartItemsdto.ListaCartItem.Count * cartItemsdto.ListaCartItem.Sum(f => f.Product.Price)),
+                    TotalPrice = (cartItemsdto.ListaCartItem.Sum(g => g.Quantity) * cartItemsdto.ListaCartItem.Sum(f => f.Product.Price)),
                     OrderDate = DateTime.Now,
                     State  = Status.Reviewed,
                     CreatedBy = cartItemsdto.Client.AspNetUsers,

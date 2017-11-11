@@ -13,7 +13,7 @@
     <property name="Price">
       <column name="Price" sql-type="float" precision="53" not-null="true" />
     </property>
-    <property name="Quantity" insert="false">
+    <property name="Quantity" >
       <column name="Quantity" sql-type="int" precision="10" default="1" not-null="true" />
     </property>
     <property name="CreatedOn" insert="false">

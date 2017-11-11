@@ -25,11 +25,12 @@ namespace ASF.Business.Business.OrderBusiness
                 repo.BeginTransaction();
                 var _order = repo.Entidad.GetAll().Where(f => f.Client == _client).Select(c => new Order()
                 {
-
+                    Id = c.Id,
                     ItemCount = c.ItemCount,
                     State = c.State,
                     OrderDate = c.OrderDate,
                     TotalPrice = c.TotalPrice,
+                    OrderNumber = c.OrderNumber,
                     OrderDetail = new List<OrderDetail>(c.OrderDetail.Select(f => new OrderDetail()
                     {
                         Product = f.Product,
@@ -77,12 +78,34 @@ namespace ASF.Business.Business.OrderBusiness
 
         public void Edit(Order entity)
         {
-            throw new NotImplementedException();
+            using (var repo = FachadaDAL.FachadaDAL.OrderDAL())
+            {
+
+                repo.BeginTransaction();
+                var _id =repo.Entidad.GetById(entity.Id);
+                _id.State = entity.State;
+
+                repo.Entidad.Update(_id);
+
+                repo.Commit();
+
+              
+            }
         }
 
         public void Delete(Order entity)
         {
-            throw new NotImplementedException();
+            using (var repo = FachadaDAL.FachadaDAL.OrderDAL())
+            {
+
+                repo.BeginTransaction();
+                var _id = repo.Entidad.GetById(entity.Id);
+                _id.Eliminado = true;
+
+                repo.Commit();
+
+
+            }
         }
 
         public Order GetByID(Order entity)

@@ -9,7 +9,17 @@ namespace ASF.UI.WbSite.Models.CustomModel
     public class ViewModelCarItem_Order
     {
 
-        public CartItem[] CartItems { get; set; }
+        public ViewModelCarItem_Order()
+        {
+            this.CartItems = new List<CartItem>();
+            this.Order = new List<Order>();
+
+
+        }
+        
+        
+
+        public IList<CartItem> CartItems { get; set; }
 
 
         public IList<Order> Order { get; set; }

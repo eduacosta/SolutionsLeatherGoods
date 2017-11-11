@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Threading;
 using System.Web;
 using System.Web.Http.Results;
 using System.Web.Mvc;
@@ -23,8 +24,27 @@ namespace ASF.UI.WbSite.Controllers
 
         public float Precio { get; set; }
 
+
     }
-   
+
+    
+
+    public class PagoConTarjeta
+    {
+        public string holder_name { get; set; }
+        public string address { get; set; }
+        public int number { get; set; }
+        public int exp_year { get; set; }
+        public int exp_month { get; set; }
+
+        public int cvc { get; set; }
+
+        public int Id { get; set; }
+    }
+        
+
+
+
     public class CartItemController : Controller, IABMControlador<CartItem>
     {
 
@@ -95,14 +115,17 @@ namespace ASF.UI.WbSite.Controllers
             {
                 string _cookievalue = null;
                 var cookie = Request.Cookies["Carritos"];
+                ViewModelCarItem_Order _modelCarItemOrder = new ViewModelCarItem_Order();
                 if (cookie != null)
                 {
                     _cookievalue = cookie.Value;
-                }
-                var _cartitem = _abmProcess.SelectList("rest/CartItem/ListaCarritoXCookie", _cookievalue).ToList();
 
-                ViewModelCarItem_Order _modelCarItemOrder = new ViewModelCarItem_Order();
-                _modelCarItemOrder.CartItems = _cartitem.ToArray();
+                    var _cartitem = _abmProcess.SelectList("rest/CartItem/ListaCarritoXCookie", _cookievalue).ToList();
+
+                    
+                    _modelCarItemOrder.CartItems = _cartitem.ToArray();
+                }
+               
 
 
                 if (User.Identity.IsAuthenticated)
@@ -127,6 +150,36 @@ namespace ASF.UI.WbSite.Controllers
 
 
         }
+
+
+        [HttpPost]
+        public JsonResult PagarCompra(PagoConTarjeta pagarcontarjeta)
+
+        {
+            try
+            {
+                Thread.Sleep(2000);
+
+                Order _order = new Order();
+                _order.Id = pagarcontarjeta.Id;
+                _order.State = Status.Approved;
+                
+                new ProcessComponent<Order>().Edit( _order);
+                return Json("Producto pagado Correctamente", JsonRequestBehavior.AllowGet);
+
+            }
+            catch (Exception ex)
+            {
+
+
+                return Json(ex.Message, JsonRequestBehavior.AllowGet);
+
+            }
+
+
+
+        }
+
 
         public ActionResult Index()
         {

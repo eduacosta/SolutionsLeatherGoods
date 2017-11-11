@@ -6,9 +6,10 @@
     //Layout = null;
 }
 
-<html >
+<html ng-app="AngularModuloPrincipal">
 
 <head>
+    <base href="/">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @Styles.Render("~/Content/css")
     <meta name="x-font-awesome-stylesheet-fallback-test" class="fa">
@@ -17,13 +18,13 @@
     @RenderSection("styles", required: false)
     @*<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">*@
     @*<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>*@
-   @* <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>*@
+    @* <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>*@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-    <link href="~/Content/Estilos.css" rel="stylesheet" />
+    <link href="~/Content/Estilos.css" rel="stylesheet"/>
     @*<link href="~/Content/bootstrap.min.css" rel="stylesheet">
     <link href="~/Content/animate.min.css" rel="stylesheet">
     <link href="~/Content/jquery.countdown.min.css" rel="stylesheet">
@@ -92,8 +93,13 @@
                 @{
 
                     var listacategorias = new ProcessComponent<Category>().SelectList().ToList();
+
+                    //@Html.Partial("Categorias", new List<Category>())
+
+                    @Html.Partial("_Category", listacategorias)
+
                 }
-                @Html.Partial("_Categorias", listacategorias)
+
             </div>
             <div class="col-sm-8 text-left">
                 @*<h1>Welcome</h1>

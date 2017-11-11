@@ -41,7 +41,7 @@ namespace ASF.Services.Http.Services
 
         public override void Edit(Order entidad)
         {
-            throw new NotImplementedException();
+           FachadaBLL.OrderBusiness.Edit(entidad);
         }
 
         public override FindResponse<Order> Find(int id)
@@ -56,7 +56,7 @@ namespace ASF.Services.Http.Services
 
         public override void Remove(Order entidad)
         {
-            throw new NotImplementedException();
+            FachadaBLL.OrderBusiness.Delete(entidad);
         }
     }
 }
