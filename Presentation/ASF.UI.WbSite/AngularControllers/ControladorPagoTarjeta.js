@@ -40,9 +40,6 @@ tarjeta.controller("ControladorTarjetaCredito",
                    
                    
 
-
-
-
                 }, function myError(response) {
                     
 
