@@ -9,7 +9,7 @@
 <html ng-app="AngularModuloPrincipal">
 
 <head>
-    <base href="/">
+    @*<base href="/">*@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @Styles.Render("~/Content/css")
     <meta name="x-font-awesome-stylesheet-fallback-test" class="fa">
@@ -35,7 +35,7 @@
 
 @*<h2>Carrito de Compra</h2>*@
 
-<body style="padding-top: 0px !important" >
+<body style="padding-top: 0px !important" ng-controller="ControladorPrincipal" >
 
     <nav class="navbar navbar-inverse" style="position: fixed;width: 100%;z-index: 999 !important">
         <div class="container-fluid">
@@ -131,10 +131,10 @@
 
 
 @Scripts.Render("~/bundles/webpack")
-@Scripts.Render("~/bundles/jquery")
+@*@Scripts.Render("~/bundles/jquery")
 @Scripts.Render("~/bundles/jqueryval")
-@Scripts.Render("~/bundles/jqueryvalunobtrusive")
-@Scripts.Render("~/bundles/bootstrap")
+@Scripts.Render("~/bundles/jqueryvalunobtrusive")*@
+@*@Scripts.Render("~/bundles/bootstrap")*@
 
     
     

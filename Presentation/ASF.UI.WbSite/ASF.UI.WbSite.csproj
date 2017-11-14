@@ -315,6 +315,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AngularControllers\ControladorCarrito.js" />
     <Content Include="AngularControllers\ControladorCategoria.js" />
     <Content Include="AngularControllers\ControladorPagoTarjeta.js" />
     <Content Include="AngularControllers\ControladorPrincipal.js" />

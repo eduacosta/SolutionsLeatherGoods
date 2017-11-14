@@ -32,9 +32,10 @@
     "linqjs": "0.0.6",
     "jquery": "3.2.1",
     "bootstrap": "3.3.7",
+    "bootstrapjs": "3.3.7",
     "angular-material-icons": "0.7.1",
     "angular-credit-cards": "3.1.6"
-   
+
 
   },
 

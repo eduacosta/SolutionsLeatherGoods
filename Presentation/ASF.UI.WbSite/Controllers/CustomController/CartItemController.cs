@@ -58,7 +58,7 @@ namespace ASF.UI.WbSite.Controllers
         }
 
         [HttpPost]
-        public JsonResult Carrito(Producto producto)
+        public ActionResult Carrito(Producto pro)
         {
             try
             {
@@ -85,17 +85,17 @@ namespace ASF.UI.WbSite.Controllers
                
 
                 var _cart = new Cart() {CartDate = DateTime.Now, Cookie = _cookievalue };
-                _abmProcess.Create(new CartItem() {Cart = _cart, Price = producto.Precio, Product = new Product() {Id = producto.ProductId, Price = producto.Precio} });
-
-
-                return Json("Producto Añadido Correctamente", JsonRequestBehavior.AllowGet);
+                _abmProcess.Create(new CartItem() {Cart = _cart, Price = pro.Precio, Product = new Product() {Id = pro.ProductId, Price = pro.Precio} });
+                Json(HttpStatusCode.OK, "You are not authorised to view this.");
+                
+                //return Json("Producto Añadido Correctamente", JsonRequestBehavior.AllowGet);
 
             }
             catch (Exception ex)
             {
-                
 
-                return Json(ex.Message, JsonRequestBehavior.AllowGet);
+
+                return new HttpStatusCodeResult(HttpStatusCode.InternalServerError, ex.Message);
 
             }
 

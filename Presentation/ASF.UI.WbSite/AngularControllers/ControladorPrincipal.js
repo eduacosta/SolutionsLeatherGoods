@@ -1,7 +1,8 @@
 ﻿require('./ControladorCategoria');
 require('./ControladorPagoTarjeta');
+require('./ControladorCarrito');
 
-var app = angular.module("AngularModuloPrincipal", [require('angular-material'), require('angular-credit-cards'), require('angular-ui-grid'), require('angular-translate'), 'AngularModuloCategoria','AngularModuloTarjetaCredito']);
+var app = angular.module("AngularModuloPrincipal", [require('angular-material'), require('angular-credit-cards'), require('angular-ui-grid'), require('angular-translate'), 'AngularModuloCategoria','AngularModuloTarjetaCredito','AngularModuloCarrito']);
 
 app.config(function ($locationProvider) {
     $locationProvider.html5Mode(true);
