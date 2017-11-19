@@ -2,6 +2,20 @@
 @using ASF.UI.WbSite.Models.CustomModel
 @model IEnumerable<ASF.Entities.Product>
 
+<style type="text/css">
+
+    .parentimage:hover {
+        margin-top: 10px;
+        -moz-transform: scale(2);
+        -webkit-transform: scale(2);
+        -o-transform: scale(2);
+        -ms-transform: scale(2);
+        transform: scale(2);
+       
+    } 
+</style>
+
+
 @if (ViewBag.Comprar == null)
 {
 
@@ -11,136 +25,194 @@
 
 }
 
-<table class="table" ng-controller="ControladorCarrito as vm">
-    <tr>
-      
-        <th>
-            @Html.DisplayNameFor(model => model.Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Image)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Price)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.QuantitySold)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AvgStars)
-        </th>
-        @*@if (ViewBag.Comprar == true)
-        {
-            <th>
-                Cantidad
-            </th>
-
-        }*@
-
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
+    @*<table class="table" ng-controller="ControladorCarrito as vm">
         <tr>
-            
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
 
-                <img src="@string.Format("data:image/jpeg;base64,{0}", Convert.ToBase64String(item.Image))" alt="" height=100 width=200/>
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.QuantitySold)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AvgStars)
-            </td>
-
-            @*@if (ViewBag.Comprar == true)
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Image)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.QuantitySold)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AvgStars)
+            </th>
+            @if (ViewBag.Comprar == true)
             {
                 <th>
-                    <input type="number" value="@item.Cantidad" name="Cantidad"/>
+                    Cantidad
                 </th>
-                
-            }*@
-
-            @if (ViewBag.Comprar == null)
-            {
-                <td>
-                    @Html.ActionLink("Editar", "Edit", "Product", new {id = item.Id}, null) |
-                    @Html.ActionLink("Eliminar", "Delete", "Product", new {id = item.Id}, null)
-                </td>
 
             }
-            else
-            {
-                <td>
-                    @*@Html.ActionLink("Añadir al Carrito", "Carrito", "CartItem", new {id  = item.Id},null )*@
 
-                    <a href="#" ng-click="vm.AnadirCarrito(@item.Id, @item.Price, $event)">Añadir al Carrito</a>
+            <th></th>
+        </tr>*@
 
-                </td>
-            }
+    @if (ViewBag.Comprar == null)
+    {
+        @*<td>
+                @Html.ActionLink("Editar", "Edit", "Product", new { id = item.Id }, null) |
+                @Html.ActionLink("Eliminar", "Delete", "Product", new { id = item.Id }, null)
+            </td>*@
 
-
-
-        </tr>
     }
-    
-   
-
-</table>
-
-@*<script>
-
-    $(document).ready(function () {
-        $("table a.Carrito").click(function (event) {
-                event.preventDefault();
-                var link = this;
-
-                var productid = link.data('Producto');
-                var precio = link.data('Precio');
-
-                if (confirm("Esta seguro de agregar el producto al carrito?")) {
-                    $.ajax({
-                        url: link.href,
-                        dataType: "json",
-                        type: "POST",
-                        contentType: 'application/json; charset=utf-8',
-                        data: JSON.stringify({ pro: { ProductId: productid, Precio: precio}}),
-                        async: true,
-                        cache: false,
-                       
-                        success: function (data) {
-                            alert(data);
-                          
-                        },
-                        error: function (data) {
-                            alert("Error");
-                        }
-                    });
-                }
-            }
-        ); 
-
-
-     
-
-    });
+    else
+    {
+        <td>
+            @*@Html.ActionLink("Añadir al Carrito", "Carrito", "CartItem", new {id  = item.Id},null )*@
 
 
 
+        </td>
+    }
 
-</script>*@
+<div ng-controller="ControladorCarrito as vm">
 
+
+@foreach (var item in Model)
+    {
+        <div style="width: 30%; float: left; margin-right: 2px; ">
+
+
+            <md-card>
+               
+                    <img class="parentimage"  data-scale="1.1" ng-src="@string.Format("data:image/jpeg;base64,{0}", Convert.ToBase64String(item.Image))" class="md-card-image" alt="Washed Out">
+               
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">@Html.DisplayFor(modelItem => item.Title)</span>
+                    </md-card-title-text>
+
+                </md-card-title>
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">$@Html.DisplayFor(modelItem => item.Price)</span>
+                    </md-card-title-text>
+
+                </md-card-title>
+                <md-card-content>
+                    <p>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </p>
+
+                </md-card-content>
+                <md-card-actions layout="row" layout-align="end center">
+                    <md-button ng-click="vm.AnadirCarrito(@item.Id, @item.Price, $event)">Añadir al Carrito</md-button>
+
+                </md-card-actions>
+            </md-card>
+
+            @*<md-toolbar class="md-warn">*@
+            @*<div class="md-toolbar-tools">
+                    <h2 class="md-flex">Toolbar: md-warn</h2>
+                </div>*@
+            @*<div class="row">
+
+                            @Html.DisplayFor(modelItem => item.Description)
+
+
+                    </div>
+                </md-toolbar>*@
+
+            @*<md-content flex layout-padding style="max-height: 300px; height: 300px;">
+
+                <md-card  md-theme-watch>
+                    <md-card-title>
+                        <md-card-title-text>
+                            <span class="md-headline">Card with image</span>
+                            <span class="md-subhead">Extra Large</span>
+                        </md-card-title-text>
+                    </md-card-title>
+                    <md-card-content layout="row" layout-align="space-between">
+                        <div class="md-media-xl card-media">
+                            <img src="@string.Format("data:image/jpeg;base64,{0}", Convert.ToBase64String(item.Image))" alt="" style="height: 100%; width: 200px;" />
+                        </div>
+
+                        <md-card-actions layout="column">
+                            <md-button class="md-icon-button" aria-label="Favorite">
+                                <md-icon md-svg-icon="img/icons/favorite.svg"></md-icon>
+                            </md-button>
+                            <md-button class="md-icon-button" aria-label="Settings">
+                                <md-icon md-svg-icon="img/icons/menu.svg"></md-icon>
+                            </md-button>
+                            <md-button class="md-icon-button" aria-label="Share">
+                                <md-icon md-svg-icon="img/icons/share-arrow.svg"></md-icon>
+                            </md-button>
+                        </md-card-actions>
+                    </md-card-content>
+                </md-card>
+
+
+                @*<div class="row" style="text-align: center;">
+
+                    <img src="@string.Format("data:image/jpeg;base64,{0}", Convert.ToBase64String(item.Image))" alt="" style="height: 100%; width: 200px;" />
+
+                </div>
+
+                <div class="row">
+
+
+                    <div class="col-md-3">
+                        @Html.DisplayFor(modelItem => item.Price)
+
+                    </div>
+
+                    <div class="col-md-3">
+                        @Html.DisplayFor(modelItem => item.Title)
+
+                    </div>
+                    <div class="col-md-3">
+                        <a href="#" ng-click="vm.AnadirCarrito(@item.Id, @item.Price, $event)">Añadir al Carrito</a>
+                    </div>
+                </div>*@
+
+
+            @*</md-content>*@
+
+
+        </div>
+
+    }
+
+</div>
+
+    @* </table> *@
+
+    <script>
+
+        $('.tile')
+            // tile mouse actions
+            .on('mouseover', function () {
+                $(this).children('.photo').css({ 'transform': 'scale(' + $(this).attr('data-scale') + ')' });
+            })
+            .on('mouseout', function () {
+                $(this).children('.photo').css({ 'transform': 'scale(1)' });
+            })
+            .on('mousemove', function (e) {
+                $(this).children('.photo').css({ 'transform-origin': ((e.pageX - $(this).offset().left) / $(this).width()) * 100 + '% ' + ((e.pageY - $(this).offset().top) / $(this).height()) * 100 + '%' });
+            })
+            // tiles set up
+            .each(function () {
+                $(this)
+                    // add a photo container
+                    .append('<div class="photo"></div>')
+                    // some text just to show zoom level on current item in this example
+                    .append('<div class="txt"><div class="x">' + $(this).attr('data-scale') + 'x</div>ZOOM ON<br>HOVER</div>')
+                    // set up a background image for each tile based on data-image attribute
+                    .children('.photo').css({ 'background-image': 'url(' + $(this).attr('data-image') + ')' });
+            })
+
+
+
+
+
+    </script>

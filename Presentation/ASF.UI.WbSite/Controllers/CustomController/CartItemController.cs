@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Threading;
 using System.Web;
 using System.Web.Http.Results;
@@ -86,16 +87,19 @@ namespace ASF.UI.WbSite.Controllers
 
                 var _cart = new Cart() {CartDate = DateTime.Now, Cookie = _cookievalue };
                 _abmProcess.Create(new CartItem() {Cart = _cart, Price = pro.Precio, Product = new Product() {Id = pro.ProductId, Price = pro.Precio} });
-                Json(HttpStatusCode.OK, "You are not authorised to view this.");
-                
-                //return Json("Producto Añadido Correctamente", JsonRequestBehavior.AllowGet);
+                //return new HttpStatusCodeResult(HttpStatusCode.OK, "Hola");
+
+                Response.StatusCode = 200;                
+                return Content("Producto Añadido Correctamente");
+             
 
             }
             catch (Exception ex)
             {
 
-
-                return new HttpStatusCodeResult(HttpStatusCode.InternalServerError, ex.Message);
+                Response.StatusCode = 500;
+                return Content(ex.Message);
+               
 
             }
 
@@ -159,7 +163,6 @@ namespace ASF.UI.WbSite.Controllers
             try
             {
                 Thread.Sleep(2000);
-
                 Order _order = new Order();
                 _order.Id = pagarcontarjeta.Id;
                 _order.State = Status.Approved;
@@ -170,7 +173,6 @@ namespace ASF.UI.WbSite.Controllers
             }
             catch (Exception ex)
             {
-
 
                 return Json(ex.Message, JsonRequestBehavior.AllowGet);
 
@@ -212,15 +214,41 @@ namespace ASF.UI.WbSite.Controllers
             throw new NotImplementedException();
         }
 
+
+        [HttpGet]
+        public JsonResult EliminarPro(int id)
+        {
+            try
+            {
+
+                int _id = id;
+
+
+                _abmProcess.Remove(new CartItem() { Id = _id });
+                return Json("Producto eliminado Correctamente", JsonRequestBehavior.AllowGet);
+
+
+
+
+            }
+            catch (Exception ex)
+            {
+
+
+                return Json(ex.Message, JsonRequestBehavior.AllowGet);
+
+            }
+        }
+
+
         [HttpGet]
         public JsonResult Eliminar(object id)
         {
             try
             {
 
-
-
-                _abmProcess.Remove(new CartItem() { Id = int.Parse(id.ToString()) });
+                int _id = int.Parse(id.ToString());
+                _abmProcess.Remove(new CartItem() { Id = _id});
                 return Json("Producto eliminado Correctamente", JsonRequestBehavior.AllowGet);
 
                

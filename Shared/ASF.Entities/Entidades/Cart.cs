@@ -48,6 +48,8 @@ namespace ASF.Entities {
         [DataMember]
         [DisplayName("Changed By")]
         public virtual string ChangedBy { get; set; }
+
+        public virtual bool? Eliminado { get; set; }
         public virtual IList<CartItem> CartItem { get; set; }
     }
 }

@@ -21,21 +21,37 @@
     @* <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>*@
 
     @*<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>*@
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>*@
 
-    <link href="~/Content/Estilos.css" rel="stylesheet"/>
+    <link href="~/Content/Estilos.css" rel="stylesheet" />
     @*<link href="~/Content/bootstrap.min.css" rel="stylesheet">
-    <link href="~/Content/animate.min.css" rel="stylesheet">
-    <link href="~/Content/jquery.countdown.min.css" rel="stylesheet">
-    <link href="~/Content/font-awesome.min.css" rel="stylesheet">
-    <link href="~/Content/style.min.css" rel="stylesheet">*@
+        <link href="~/Content/animate.min.css" rel="stylesheet">
+        <link href="~/Content/jquery.countdown.min.css" rel="stylesheet">
+        <link href="~/Content/font-awesome.min.css" rel="stylesheet">
+        <link href="~/Content/style.min.css" rel="stylesheet">*@
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-109817056-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-109817056-1');
+    </script>
+
+    <meta property="og:url" content="http://mcga.azurewebsites.net" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="MCGA Eduardo Acosta" />
+    <meta property="og:description" content="MCGA" />
+    <meta property="og:image" content="http://www.your-domain.com/path/image.jpg" />
 
 </head>
 
 @*<h2>Carrito de Compra</h2>*@
 
-<body style="padding-top: 0px !important" ng-controller="ControladorPrincipal" >
+<body style="padding-top: 0px !important" ng-controller="ControladorPrincipal">
 
     <nav class="navbar navbar-inverse" style="position: fixed;width: 100%;z-index: 999 !important">
         <div class="container-fluid">
@@ -51,9 +67,9 @@
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="#">Home</a></li>
                     @*<li><a href="#">About</a></li>
-                    <li><a href="#">Projects</a></li>
-                    <li><a href="#">Contact</a></li>*@
-                    
+                        <li><a href="#">Projects</a></li>
+                        <li><a href="#">Contact</a></li>*@
+
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" id="drop2" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Idioma<span class="caret"></span> </a>
                         <ul class="dropdown-menu" area-labelledby="drop2">
@@ -64,22 +80,22 @@
                     @if (Context.User.IsInRole("Administrator"))
                     {
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" id="drop1" data-toggle="dropdown" role="button" >Administración <span class="caret"></span> </a>
+                            <a href="#" class="dropdown-toggle" id="drop1" data-toggle="dropdown" role="button">Administración <span class="caret"></span> </a>
                             <ul class="dropdown-menu" aria-labelledby="drop1">
-                               
+
                                 <li><a href="/Categorias">Categorias</a></li>
                                 <li><a href="/Country">Paises</a></li>
                             </ul>
                         </li>
                     }
-                    
+
 
 
                 </ul>
                 @Html.Partial("_LoginPartial")
                 @*<ul class="nav navbar-nav navbar-right">
-                   <a href="#" ng-click="Login($event)"><span class="glyphicon glyphicon-log-in" ></span> Login</a>
-                </ul>*@
+                       <a href="#" ng-click="Login($event)"><span class="glyphicon glyphicon-log-in" ></span> Login</a>
+                    </ul>*@
             </div>
         </div>
     </nav>
@@ -88,8 +104,8 @@
         <div class="row content" style="margin-top:52px !important">
             <div class="col-sm-2 sidenav">
                 @*<p><a href="#">Link</a></p>
-                <p><a href="#">Link</a></p>
-                <p><a href="#">Link</a></p>*@
+                    <p><a href="#">Link</a></p>
+                    <p><a href="#">Link</a></p>*@
                 @{
 
                     var listacategorias = new ProcessComponent<Category>().SelectList().ToList();
@@ -103,10 +119,10 @@
             </div>
             <div class="col-sm-8 text-left">
                 @*<h1>Welcome</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                <hr>
-                <h3>Test</h3>
-                <p>Lorem ipsum...</p>*@
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <hr>
+                    <h3>Test</h3>
+                    <p>Lorem ipsum...</p>*@
                 @RenderBody()
 
             </div>
@@ -119,25 +135,120 @@
                 </div>
             </div>
         </div>
-       
+
 
     </div>
 
     <footer class="container-fluid text-center">
-        <p>Footer Text</p>
+        <footer>
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-md-4 col-sm-4">
+                        <div class="fwidget">
+
+                            @*<h4>@UAIBay.WebSite.Content.Resources.Shared.About</h4>*@
+                            <hr />
+                            <p>
+                                UAIBay brinda servicio a miles de usuarios y crea un mercado online para la compra de productos
+                                alimenticios de una forma fácil, segura y eficiente.
+                            </p>
+                            <p>
+                                El sitio está entre los 500 sitios con mayores visitas del mundo en términos de páginas vistas y es la plataforma de
+                                consumo masivo con mayor cantidad de visitantes únicos en los países más importantes en donde opera.
+                            </p>
+                            <div class="social">
+                                <a href="https://www.facebook.com/uai.mcga.7" target="_blank" class="facebook"><i class="fa fa-facebook"></i></a>
+
+                                <a href="https://twitter.com/mcgamobilestor" class="twitter"><i class="fa fa-twitter"></i></a>
+
+                                @*<iframe src="https://www.facebook.com/plugins/share_button.php?href=http%3A%2F%2Fmcga.azurewebsites.net&layout=button&size=large&mobile_iframe=true&width=99&height=28&appId" width="99" height="28" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>*@
+
+                                <div id="fb-root"></div>
+                                <script>
+                                    (function (d, s, id) {
+                                        var js, fjs = d.getElementsByTagName(s)[0];
+                                        if (d.getElementById(id)) return;
+                                        js = d.createElement(s); js.id = id;
+                                        js.src = 'https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.11';
+                                        fjs.parentNode.insertBefore(js, fjs);
+                                    }(document, 'script', 'facebook-jssdk'));</script>
+                                <div class="fb-like" data-href="https://www.facebook.com/uai.mcga.7" data-layout="button_count" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div>
+
+
+                                
+                                @*<script>
+                                    (function (d, s, id) {
+                                        var js, fjs = d.getElementsByTagName(s)[0];
+                                        if (d.getElementById(id)) return;
+                                        js = d.createElement(s); js.id = id;
+                                        js.src = 'https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.11';
+                                        fjs.parentNode.insertBefore(js, fjs);
+                                    }(document, 'script', 'facebook-jssdk'));</script>
+                                <div class="fb-share-button" data-href="http://mcga.azurewebsites.net" data-layout="button" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fmcga.azurewebsites.net%2F&amp;src=sdkpreparse">Compartir</a></div>*@
+                                @*<a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a>
+                                    <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
+                                    <a href="#" class="pinterest"><i class="fa fa-pinterest"></i></a>*@
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4">
+                        <div class="fwidget">
+                            @*<h4>@UAIBay.WebSite.Content.Resources.Shared.Categories</h4>*@
+                            <hr />
+                            <ul>
+                                <li><a href="/Products/Buy/4">Carnes</a></li>
+                                <li><a href="/Products/Buy/6">Frutas y Verduras</a></li>
+                                <li><a href="/Products/Buy/7">Panadería y Dulces</a></li>
+                                <li><a href="/Products/Buy/3">Pastas y Legumbres</a></li>
+                                <li><a href="/Products/Buy/13">Bebidas</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 col-sm-4">
+                        <div class="fwidget">
+
+
+                            <hr />
+                            <div class="address">
+                                <p><i class="fa fa-home color contact-icon"></i> <a href="http://wwww.uai.edu.ar">Universidad Abierta Interamericana</a></p>
+                                <p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Bernardo de Irigoyen 685,</p>
+                                <p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Boulogne, Buenos Aires, Argentina.</p>
+                                <p><i class="fa fa-phone color contact-icon"></i> Buenos Aires: (+54) 11 4342-7788</p>
+                                <p>
+                                    <i class="fa fa-envelope color contact-icon"></i> <a href="mailto:mcga.eduardoacosta@gmail.com">mcga.eduardoacosta@gmail.com</a>
+                                    @*<a href="http://webmaster-tools.php5developer.com/antispam-protector.html"><img src="http://webmaster-tools.php5developer.com/hide.php?iv=n8%2B5iI2r6W2yUk1ccoqbqDQot58WP7v%2B8kLcc3gYYsk%3D&en=ACnnocU11%2FfOpJPzUTtTjNI4BLtyh04%3D&size=9&bg=000000&textbg=ffffff&family=arial" alt="Antispam" /></a>*@
+                                </p>
+                                <div id="map"></div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <div id="fb-root"></div>
+                <hr />
+
+                <div class="copy text-center">
+                    Copyright @DateTime.Today.Year &copy; - Eduardo Acosta
+                </div>
+            </div>
+        </footer>
     </footer>
 
 
 
 
-@Scripts.Render("~/bundles/webpack")
-@*@Scripts.Render("~/bundles/jquery")
-@Scripts.Render("~/bundles/jqueryval")
-@Scripts.Render("~/bundles/jqueryvalunobtrusive")*@
-@*@Scripts.Render("~/bundles/bootstrap")*@
+    @Scripts.Render("~/bundles/webpack")
+    @*@Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/jqueryval")
+        @Scripts.Render("~/bundles/jqueryvalunobtrusive")*@
+    @*@Scripts.Render("~/bundles/bootstrap")*@
 
-    
-    
-@RenderSection("scripts", required: false)
+
+
+    @RenderSection("scripts", required: false)
 </body>
 </html>

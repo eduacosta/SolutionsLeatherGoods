@@ -9,10 +9,6 @@ tarjeta.controller("ControladorTarjetaCredito",
 
         var vm = this;
 
-        
-
-     
-
 
         $scope.PagarConTarjeta = function(evento, item) {
 
@@ -94,7 +90,8 @@ tarjeta.controller("ControladorTarjetaCredito",
                     Dialogs.showAlert('Compra', response.data, event);
                     $mdDialog.cancel();
                         //window.location.pathname = response.data.redirect;
-
+                    var url = "../../CartItem/CartItemXCookie";
+                    window.location.href = url;
                     
 
 

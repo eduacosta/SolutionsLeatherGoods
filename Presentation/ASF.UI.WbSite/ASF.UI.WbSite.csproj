@@ -636,6 +636,7 @@
     <Folder Include="Areas\Category\Views\Shared\" />
     <Folder Include="Areas\Client\Controllers\" />
     <Folder Include="Areas\Client\Models\" />
+    <Folder Include="Imagenes\" />
     <Folder Include="Views\Order\" />
   </ItemGroup>
   <ItemGroup>

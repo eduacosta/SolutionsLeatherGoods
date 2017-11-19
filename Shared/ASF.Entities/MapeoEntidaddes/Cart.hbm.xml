@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <hibernate-mapping assembly="ASF.Entities" namespace="ASF.Entities" xmlns="urn:nhibernate-mapping-2.2">
-  <class name="Cart" table="Cart" lazy="true" schema="dbo" dynamic-insert="true" dynamic-update="true" >
+  <class name="Cart" table="Cart" lazy="true" schema="dbo" dynamic-insert="true" dynamic-update="true" where="Eliminado = 0 or Eliminado is null">
     <id name="Id" column="Id">
       <generator class="identity" />
     </id>
@@ -32,5 +32,10 @@
       <key column="CartId" />
       <one-to-many class="CartItem" />
     </bag>
+
+    <property name="Eliminado" insert="false">
+      <column name="Eliminado" sql-type="bit" default="0" not-null="false" />
+    </property>
+    
   </class>
 </hibernate-mapping>
