@@ -12,7 +12,7 @@ namespace ASF.Business.Business.LanguajeBusiness
     class LanguajesBusiness : ILanguajesBusiness
     {
 
-       
+
 
         public IList<LocaleStringResource> GetLenguajesResourceByLanguaje()
         {
@@ -23,15 +23,17 @@ namespace ASF.Business.Business.LanguajeBusiness
                 var _resource = repo.Entidad.GetAll().Select(c => new LocaleStringResource()
                 {
 
-                    Id = c.Id,
-                    ResourceValue = c.ResourceValue,
+                    Language = new Language()
+                    {
+                        LanguageCulture = c.Language.LanguageCulture,
+                        Name = c.Language.Name
+                    },
                     LocaleResourceKey = new LocaleResourceKey()
                     {
-                        Name = c.LocaleResourceKey.Name,
-                        Notes = c.LocaleResourceKey.Notes
+                        Name = c.LocaleResourceKey.Name 
+                    },
+                    ResourceValue = c.ResourceValue
 
-                    }
-                   
 
                 }).ToList();
 

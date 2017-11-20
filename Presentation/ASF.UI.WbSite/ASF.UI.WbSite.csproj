@@ -275,6 +275,7 @@
     <Compile Include="Constants\ResponseHttp.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CustomController\CategoriasController.cs" />
+    <Compile Include="Controllers\CustomController\IdiomasController.cs" />
     <Compile Include="Controllers\CustomController\OrderController.cs" />
     <Compile Include="Controllers\CustomController\OrderDetailController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
@@ -637,6 +638,7 @@
     <Folder Include="Areas\Client\Controllers\" />
     <Folder Include="Areas\Client\Models\" />
     <Folder Include="Imagenes\" />
+    <Folder Include="Views\Idiomas\" />
     <Folder Include="Views\Order\" />
   </ItemGroup>
   <ItemGroup>

@@ -13,16 +13,21 @@ namespace ASF.Entities {
         public Language() {
 			LocaleStringResource = new List<LocaleStringResource>();
         }
+        [DataMember]
         public virtual int Id { get; set; }
         [NotNull(Message="Se debe cargar algún valor para el campo Name, no puede estar vacío")]
         [Length(Max=100, Message="La longitud del campo Name no debe ser mayor a 100 caracteres")]
+        [DataMember]
         public virtual string Name { get; set; }
         [NotNull(Message="Se debe cargar algún valor para el campo Language Culture, no puede estar vacío")]
         [Length(Max=20, Message="La longitud del campo Language Culture no debe ser mayor a 20 caracteres")]
+        [DataMember]
         public virtual string LanguageCulture { get; set; }
         [Length(Max=50, Message="La longitud del campo Flag Image File Name no debe ser mayor a 50 caracteres")]
+        [DataMember]
         public virtual string FlagImageFileName { get; set; }
         [NotNull(Message="Se debe cargar algún valor para el campo Right To Left, no puede estar vacío")]
+        [DataMember]
         public virtual bool RightToLeft { get; set; }
         public virtual IList<LocaleStringResource> LocaleStringResource { get; set; }
     }
