@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using ASF.Business.Business.CartBusiness;
 using ASF.Business.Business.CartItemBusiness;
 using ASF.Business.Business.LanguajeBusiness;
+using ASF.Business.Business.LenguajesBusiness;
 using ASF.Business.Business.OrderBusiness;
 using ASF.Business.Business.OrderDetailBusiness;
 using ASF.Business.Business.OrderNumberBusiness;
@@ -31,7 +32,9 @@ namespace ASF.Business.FachadaBLL
 
         public static IDealerBusiness DealerBusiness { get { return IoC.IoC.Resolve<IDealerBusiness>(); } }
 
-        public static ILanguajesBusiness LanguajeBusiness { get { return IoC.IoC.Resolve<ILanguajesBusiness>(); } }
+        public static ILocaleStringResourceBusiness LocaleStringResourceBusiness { get { return IoC.IoC.Resolve<ILocaleStringResourceBusiness>(); } }
+
+        public static ILenguajeBussinnes LenguajeBusiness { get { return IoC.IoC.Resolve<ILenguajeBussinnes>(); } }
 
 
         public static IProductBusiness ProductBusiness { get { return IoC.IoC.Resolve<IProductBusiness>(); } }

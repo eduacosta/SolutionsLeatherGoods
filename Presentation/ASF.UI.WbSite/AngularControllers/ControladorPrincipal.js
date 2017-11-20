@@ -16,41 +16,12 @@ app.factory('customLoader', function ($http, $q) {
     // return loaderFn
     return function (options) {
         var deferred = $q.defer();
-        // do something with $http, $q and key to load localization files
-
-        //var _lenguajes = [];
-
-        //$http({
-        //    method: "GET",
-        //    url: "Idiomas/ListaIdiomas"
-        //}).then(function mySuccess(response) {
-        //    console.log(response.data);
-        //    _lenguajes = response.data;
-
-
-        //}, function myError(response) {
-
-        //});
-
-        //var data = {
-        //    'TEXT': 'Fooooo'
-        //};
-
-        //// resolve with translation data
-        //return deferred.resolve(data);
-        // or reject with language key
-        //return deferred.reject(options.key);
-
-        //if (!options || !options.url) {
-        //    throw new Error('Couldn\'t use urlLoader since no url is given!');
-        //}
-
+      
         var requestParams = {};
-
         requestParams[options.queryParameter || 'id'] = options.key;
 
         return $http(angular.extend({
-            url: 'Idiomas/ListaIdiomas',
+            url: '../../LocaleStringResource/ListaLocaleStringResource',
             params: requestParams,
             method: 'GET'
         }, options.$http))
@@ -67,39 +38,15 @@ app.config(function ($locationProvider, $translateProvider) {
     $locationProvider.html5Mode(true);
 
 
-
-
-    //$http({
-    //    method: "GET",
-    //    url: "Idiomas/ListaIdiomas"
-    //}).then(function mySuccess(response) {
-    //    console.log(response.data);
-
-
-
-
-    //}, function myError(response) {
-
-    //});
-
-
-
-
-    //for (var x in idiomas) {
-
-    //    $translateProvider.translations(idiomas[x].Idioma, idiomas[x].Propiedades);
-
-    //}
-
-    $translateProvider.useLoaderCache(false);
+    $translateProvider.useLoaderCache(true);
     $translateProvider.useLoader('customLoader');
     $translateProvider.preferredLanguage('en');
-    //$translateProvider.useLocalStorage();
+   
 });
 
 
 
-app.controller("ControladorPrincipal", function ($scope, Dialogs, $translate) {
+app.controller("ControladorPrincipal", function ($scope, Dialogs, $translate, $http) {
 
 
 
@@ -111,14 +58,33 @@ app.controller("ControladorPrincipal", function ($scope, Dialogs, $translate) {
     $scope.SetLenguaje = function (value) {
         $translate.use(value);
         console.log(value);
-        // Sets the active language to `en`
+        
     }
 
 
+    $scope.Lenguajes = [];
+
+    $scope.ListaLanguajes = function() {
 
 
+        $http({
+            method: "GET",
+            url: "../../Languaje/ListaLenguajes"
+        }).then(function mySuccess(response) {
+            console.log(response.data);
+
+            $scope.Lenguajes = response.data;
+           
 
 
+        }, function myError(response) {
+
+        });
+
+       
+    }
+
+    $scope.ListaLanguajes();
 
 
 });

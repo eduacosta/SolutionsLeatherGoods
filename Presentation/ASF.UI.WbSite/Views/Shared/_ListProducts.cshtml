@@ -3,7 +3,6 @@
 @model IEnumerable<ASF.Entities.Product>
 
 <style type="text/css">
-
     .parentimage:hover {
         margin-top: 10px;
         -moz-transform: scale(2);
@@ -11,8 +10,7 @@
         -o-transform: scale(2);
         -ms-transform: scale(2);
         transform: scale(2);
-       
-    } 
+    }
 </style>
 
 
@@ -25,68 +23,56 @@
 
 }
 
-    @*<table class="table" ng-controller="ControladorCarrito as vm">
-        <tr>
-
-            <th>
-                @Html.DisplayNameFor(model => model.Title)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Image)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Price)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.QuantitySold)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AvgStars)
-            </th>
-            @if (ViewBag.Comprar == true)
-            {
-                <th>
-                    Cantidad
-                </th>
-
-            }
-
-            <th></th>
-        </tr>*@
-
-    @if (ViewBag.Comprar == null)
-    {
-        @*<td>
-                @Html.ActionLink("Editar", "Edit", "Product", new { id = item.Id }, null) |
-                @Html.ActionLink("Eliminar", "Delete", "Product", new { id = item.Id }, null)
-            </td>*@
-
-    }
-    else
-    {
-        <td>
-            @*@Html.ActionLink("Añadir al Carrito", "Carrito", "CartItem", new {id  = item.Id},null )*@
 
 
 
-        </td>
-    }
 
 <div ng-controller="ControladorCarrito as vm">
 
+    <md-content layout-padding layout="column">
+        <form ng-submit="$event.preventDefault()">
+            
 
-@foreach (var item in Model)
+            <md-autocomplete ng-disabled="vm.isDisabled"
+                             md-no-cache="vm.noCache"
+                             md-selected-item="vm.selectedItem"
+                             md-search-text-change="vm.searchTextChange(vm.searchText)"
+                             md-search-text="vm.searchText"
+                             md-selected-item-change="vm.selectedItemChange(item)"
+                             md-items="item in vm.querySearch(vm.searchText)"
+                             md-item-text="item.name"
+                             md-min-length="0"
+                             placeholder="Buscar Productos"
+                             md-menu-class="autocomplete-custom-template">
+                <md-item-template>
+                    <span class="item-title">
+                        <md-icon md-svg-icon="img/icons/octicon-repo.svg"></md-icon>
+                        <span> {{item.name}} </span>
+                    </span>
+                    <span class="item-metadata">
+                        <span>
+                            <strong>{{item.watchers}}</strong> watchers
+                        </span>
+                        <span>
+                            <strong>{{item.forks}}</strong> forks
+                        </span>
+                    </span>
+                </md-item-template>
+            </md-autocomplete>
+
+        </form>
+    </md-content>
+
+
+    @foreach (var item in Model)
     {
         <div style="width: 30%; float: left; margin-right: 2px; ">
 
 
             <md-card>
-               
-                    <img class="parentimage"  data-scale="1.1" ng-src="@string.Format("data:image/jpeg;base64,{0}", Convert.ToBase64String(item.Image))" class="md-card-image" alt="Washed Out">
-               
+
+                <img class="parentimage" data-scale="1.1" ng-src="@string.Format("data:image/jpeg;base64,{0}", Convert.ToBase64String(item.Image))" class="md-card-image" alt="Washed Out">
+
                 <md-card-title>
                     <md-card-title-text>
                         <span class="md-headline">@Html.DisplayFor(modelItem => item.Title)</span>
@@ -106,7 +92,25 @@
 
                 </md-card-content>
                 <md-card-actions layout="row" layout-align="end center">
-                    <md-button ng-click="vm.AnadirCarrito(@item.Id, @item.Price, $event)">Añadir al Carrito</md-button>
+
+                    @if (ViewBag.Comprar == null)
+                    {
+                        <td>
+                            @Html.ActionLink("Editar", "Edit", "Product", new { id = item.Id }, null)
+                            @Html.ActionLink("Eliminar", "Delete", "Product", new { id = item.Id }, null)
+                        </td>
+
+                    }
+                    else
+                    {
+                        <td>
+                            <md-button ng-click="vm.AnadirCarrito(@item.Id, @item.Price, $event)">Añadir al Carrito</md-button>
+
+                        </td>
+                    }
+
+
+
 
                 </md-card-actions>
             </md-card>
@@ -184,35 +188,4 @@
     }
 
 </div>
-
-    @* </table> *@
-
-    <script>
-
-        $('.tile')
-            // tile mouse actions
-            .on('mouseover', function () {
-                $(this).children('.photo').css({ 'transform': 'scale(' + $(this).attr('data-scale') + ')' });
-            })
-            .on('mouseout', function () {
-                $(this).children('.photo').css({ 'transform': 'scale(1)' });
-            })
-            .on('mousemove', function (e) {
-                $(this).children('.photo').css({ 'transform-origin': ((e.pageX - $(this).offset().left) / $(this).width()) * 100 + '% ' + ((e.pageY - $(this).offset().top) / $(this).height()) * 100 + '%' });
-            })
-            // tiles set up
-            .each(function () {
-                $(this)
-                    // add a photo container
-                    .append('<div class="photo"></div>')
-                    // some text just to show zoom level on current item in this example
-                    .append('<div class="txt"><div class="x">' + $(this).attr('data-scale') + 'x</div>ZOOM ON<br>HOVER</div>')
-                    // set up a background image for each tile based on data-image attribute
-                    .children('.photo').css({ 'background-image': 'url(' + $(this).attr('data-image') + ')' });
-            })
-
-
-
-
-
-    </script>
+@* </table> *@

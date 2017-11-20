@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using ASF.Business.Business.CartBusiness;
 using ASF.Business.Business.CartItemBusiness;
 using ASF.Business.Business.LanguajeBusiness;
+using ASF.Business.Business.LenguajesBusiness;
 using ASF.Business.Business.OrderBusiness;
 using ASF.Business.Business.OrderDetailBusiness;
 using ASF.Business.Business.OrderNumberBusiness;
@@ -56,7 +57,7 @@ namespace ASF.Business.IoC
 
                     container.RegisterType<ICountryBusiness, CountryBusiness.CountryBusiness>();
 
-                    container.RegisterType<ILanguajesBusiness, LanguajesBusiness>();
+                    container.RegisterType<ILocaleStringResourceBusiness, LocaleStringResourceBusiness>();
 
                     container.RegisterType<IProductBusiness, ProductBusiness>();
 
@@ -75,6 +76,8 @@ namespace ASF.Business.IoC
                     container.RegisterType<IOrderNumberBusiness, OrderNumberBusiness>();
 
                     container.RegisterType<IOrderDetailsBusiness, OrderDetailsBusiness>();
+
+                    container.RegisterType<ILenguajeBussinnes, LenguajeBussinnes>();
 
                     Container = container;
                 }

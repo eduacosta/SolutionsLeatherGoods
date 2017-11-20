@@ -83,8 +83,10 @@
     <Compile Include="Business\CountryBusiness\ICountryBusiness.cs" />
     <Compile Include="Business\DealerBusiness\DealerBusiness.cs" />
     <Compile Include="Business\DealerBusiness\IDealerBusiness.cs" />
-    <Compile Include="Business\LanguajeBusiness\ILanguajesBusiness.cs" />
-    <Compile Include="Business\LanguajeBusiness\LanguajesBusiness.cs" />
+    <Compile Include="Business\LocaleStringResourceBusiness\ILocaleStringResourceBusiness.cs" />
+    <Compile Include="Business\LocaleStringResourceBusiness\LocaleStringResourceBusiness.cs" />
+    <Compile Include="Business\LenguajesBusiness\ILenguajeBussinnes.cs" />
+    <Compile Include="Business\LenguajesBusiness\LenguajeBussinnes.cs" />
     <Compile Include="Business\OrderBusiness\IOrderBusiness.cs" />
     <Compile Include="Business\OrderBusiness\OrderBusiness.cs" />
     <Compile Include="Business\OrderDetailBusiness\IOrderDetailsBusiness.cs" />

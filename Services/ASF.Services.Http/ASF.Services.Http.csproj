@@ -67,7 +67,8 @@
     <Compile Include="Services\ConfirmarCompraService.cs" />
     <Compile Include="Services\CountryService.cs" />
     <Compile Include="Services\DealerServices.cs" />
-    <Compile Include="Services\IdiomasService.cs" />
+    <Compile Include="Services\LanguajeServices.cs" />
+    <Compile Include="Services\LocaleStringResourceService.cs" />
     <Compile Include="Services\OrderServices.cs" />
     <Compile Include="Services\ProductService.cs" />
   </ItemGroup>

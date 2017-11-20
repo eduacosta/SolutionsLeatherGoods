@@ -9,7 +9,7 @@
 <html ng-app="AngularModuloPrincipal">
 
 <head>
-    @*<base href="/">*@
+    <base href="/">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @Styles.Render("~/Content/css")
     <meta name="x-font-awesome-stylesheet-fallback-test" class="fa">
@@ -74,12 +74,12 @@
                    
                    <li class="dropdown">
                         <a href="#" class="dropdown-toggle" id="drop2" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Idioma<span class="caret"></span> </a>
-                        <ul class="dropdown-menu" area-labelledby="drop2">
+                        <ul class="dropdown-menu" area-labelledby="drop2" >
                             @*<li>@Html.ActionLink("Español", "SetLanguage", "Home", new { @id = "es-es" }, new { })</li>
                             <li>@Html.ActionLink("English", "SetLanguage", "Home", new { @id = "en-us" }, new { })</li>*@
                            
-                            <li ng-click="SetLenguaje('es')" >Español</li>
-                            <li ng-click="SetLenguaje('en')">Ingles</li>
+                            <li ng-repeat="lenguajes in Lenguajes" ng-click="SetLenguaje(lenguajes.LanguageCulture)" >{{lenguajes.Name}}</li>
+                            @*<li ng-click="SetLenguaje('en')">Ingles</li>*@
                         </ul>
                     </li>
                     @if (Context.User.IsInRole("Administrator"))
