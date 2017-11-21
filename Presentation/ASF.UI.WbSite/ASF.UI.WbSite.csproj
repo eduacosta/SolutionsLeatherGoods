@@ -280,7 +280,6 @@
     <Compile Include="Controllers\CustomController\OrderController.cs" />
     <Compile Include="Controllers\CustomController\OrderDetailController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\CustomController\ProductController.cs" />
     <Compile Include="Global.asax.cs">
@@ -579,9 +578,6 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Error\NotFound.cshtml" />
     <Content Include="Views\Error\Unauthorized.cshtml" />
     <Content Include="Views\Error\Forbidden.cshtml" />

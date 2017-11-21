@@ -52,12 +52,12 @@ Carrito.controller("ControladorCarrito",
 
 
 
-       
+
         vm.simulateQuery = false;
         vm.isDisabled = false;
 
         // list of states to be displayed
-        vm.states = loadAll();
+        vm.prodcutos = [];
         vm.querySearch = querySearch;
         vm.selectedItemChange = selectedItemChange;
         vm.searchTextChange = searchTextChange;
@@ -69,16 +69,17 @@ Carrito.controller("ControladorCarrito",
 
         function querySearch(query) {
 
-            console.log(query);
-            var results = query ? vm.states.filter(createFilterFor(query)) :
-                    vm.states, deferred;
+
+            //console.log(query);
+            var results = query ? vm.prodcutos.filter(createFilterFor(query)) :
+                vm.prodcutos, deferred;
 
             if (vm.simulateQuery) {
                 deferred = $q.defer();
 
                 $timeout(function () {
-                        deferred.resolve(results);
-                    },
+                    deferred.resolve(results);
+                },
                     Math.random() * 1000, false);
                 return deferred.promise;
             } else {
@@ -87,64 +88,42 @@ Carrito.controller("ControladorCarrito",
         }
 
         function searchTextChange(text) {
-            $log.info('Text changed to ' + text);
+            //$log.info('Text changed to ' + text);
+
+
+            $http({
+                method: "GET",
+                url: "/Product/BuscarProductoPorNombre?id=" + text
+
+            }).then(function mySuccess(response) {
+                vm.prodcutos = response.data;
+
+                vm.prodcutos.map(function (repo) {
+                    repo.value = repo.Title.toLowerCase();
+                    return repo;
+                });
+
+            },
+                function myError(response) {
+                    $timeout(Dialogs.showAlert('Error', response.data), 500);
+                });
+
+
+
+
         }
 
         function selectedItemChange(item) {
             $log.info('Item changed to ' + JSON.stringify(item));
         }
 
-        //build list of states as map of key-value pairs
-        function loadAll() {
-            var repos = [
-                {
-                    'name': 'AngularJS',
-                    'url': 'https://github.com/angular/angular.js',
-                    'watchers': '3,623',
-                    'forks': '16,175',
-                },
-                {
-                    'name': 'Angular',
-                    'url': 'https://github.com/angular/angular',
-                    'watchers': '469',
-                    'forks': '760',
-                },
-                {
-                    'name': 'AngularJS Material',
-                    'url': 'https://github.com/angular/material',
-                    'watchers': '727',
-                    'forks': '1,241',
-                },
-                {
-                    'name': 'Angular Material',
-                    'url': 'https://github.com/angular/material2',
-                    'watchers': '727',
-                    'forks': '1,241',
-                },
-                {
-                    'name': 'Bower Material',
-                    'url': 'https://github.com/angular/bower-material',
-                    'watchers': '42',
-                    'forks': '84',
-                },
-                {
-                    'name': 'Material Start',
-                    'url': 'https://github.com/angular/material-start',
-                    'watchers': '81',
-                    'forks': '303',
-                }
-            ];
-            return repos.map(function (repo) {
-                repo.value = repo.name.toLowerCase();
-                return repo;
-            });
-        }
+        
 
         //filter function for search query
         function createFilterFor(query) {
             var lowercaseQuery = angular.lowercase(query);
-            return function filterFn(state) {
-                return (state.value.indexOf(lowercaseQuery) === 0);
+            return function filterFn(prodcutos) {
+                return (prodcutos.value.indexOf(lowercaseQuery) === 0);
             };
         }
 

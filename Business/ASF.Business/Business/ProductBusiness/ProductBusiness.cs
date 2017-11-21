@@ -14,7 +14,38 @@ namespace ASF.Business.Business.ProductBusiness
     class ProductBusiness : IProductBusiness
     {
 
-       
+
+        public IList<Product> ListaProductosXNombre(string nombre)
+        {
+
+            using (var repo = FachadaDAL.FachadaDAL.ProductDAL())
+            {
+
+                repo.BeginTransaction();
+                var _listaproductos = repo.Entidad.GetAll().Where(c => c.Title.Contains(nombre)).Select(c => new Product()
+                    {
+
+                        Id = c.Id,
+                        Description = c.Description,
+                        Price = c.Price,
+                        Title = c.Title,
+                       
+                        //Image = c.Image
+
+
+                    })
+                    .ToList();
+
+
+                repo.Commit();
+
+                return _listaproductos;
+
+            }
+
+
+
+        }
 
 
         public IList<Product> ListaProductosXDealer(Dealer dealer)

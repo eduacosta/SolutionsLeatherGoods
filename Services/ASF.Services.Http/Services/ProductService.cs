@@ -17,6 +17,17 @@ namespace ASF.Services.Http.Services
     public class ProductService : HtppBase<Product>
     {
 
+
+        [HttpGet]
+        [Route("ProductoXNombre")]
+        public AllResponse<Product> ProductosXNombre(string id)
+        {
+            var _response = new AllResponse<Product>();
+            _response.Result = FachadaBLL.ProductBusiness.ListaProductosXNombre(id);
+            return _response;
+
+        }
+
         [HttpGet]
         [Route("ProductXDealer")]
         public AllResponse<Product> ProductosXDealer(int id)

@@ -40,22 +40,22 @@
                              md-search-text="vm.searchText"
                              md-selected-item-change="vm.selectedItemChange(item)"
                              md-items="item in vm.querySearch(vm.searchText)"
-                             md-item-text="item.name"
+                             md-item-text="item.Title"
                              md-min-length="0"
                              placeholder="Buscar Productos"
                              md-menu-class="autocomplete-custom-template">
                 <md-item-template>
                     <span class="item-title">
                         <md-icon md-svg-icon="img/icons/octicon-repo.svg"></md-icon>
-                        <span> {{item.name}} </span>
+                        <span> {{item.Title}} </span>
                     </span>
                     <span class="item-metadata">
                         <span>
-                            <strong>{{item.watchers}}</strong> watchers
+                            <strong>${{item.Price}}</strong>
                         </span>
-                        <span>
-                            <strong>{{item.forks}}</strong> forks
-                        </span>
+                        @*<span>
+                            <img data-ng-src="data:image/png;base64,{{item.Image}}" />
+                        </span>*@
                     </span>
                 </md-item-template>
             </md-autocomplete>
@@ -96,7 +96,7 @@
                     @if (ViewBag.Comprar == null)
                     {
                         <td>
-                            @Html.ActionLink("Editar", "Edit", "Product", new { id = item.Id }, null)
+                            @Html.ActionLink("Editar", "Edit", "Product", new { id = item.Id }, null) | 
                             @Html.ActionLink("Eliminar", "Delete", "Product", new { id = item.Id }, null)
                         </td>
 

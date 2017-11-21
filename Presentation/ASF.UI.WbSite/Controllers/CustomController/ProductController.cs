@@ -23,14 +23,43 @@ namespace ASF.UI.WbSite.Controllers
 
 
         [HttpGet]
-        public ActionResult ProductosXCategoria(int id)
+        public JsonResult BuscarProductoPorNombre(string id)
         {
 
             try
             {
 
-                var _lista = _processComponent.SelectList("rest/Product/ProductXCategoria", id).ToList();
-                return View(_lista);
+                if (id.Length >= 3)
+                {
+
+                    return Json(_processComponent.SelectList("rest/Product/ProductoXNombre", id) , JsonRequestBehavior.AllowGet);
+                }
+                return Json(new List<Product>(), JsonRequestBehavior.AllowGet);
+
+            }
+            catch (Exception ex)
+            {
+                return Json(ex.Message, JsonRequestBehavior.AllowGet);
+
+
+            }
+
+
+        }
+
+
+        [HttpGet]
+        public ActionResult ProductosXCategoria(int id = 0)
+        {
+
+            try
+            {
+                IList<Product> _products =  new List<Product>();
+                if (id != 0)
+                {
+                    _products = _processComponent.SelectList("rest/Product/ProductXCategoria", id).ToList();
+                }
+                return View(_products);
 
             }
             catch (Exception ex)
