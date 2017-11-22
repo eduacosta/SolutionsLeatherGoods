@@ -3,6 +3,7 @@
 @using ASF.UI.WbSite.Constants.CategoryController
 @using ASF.UI.WbSite.Constants.ClientController
 @using ASF.UI.WbSite.Constants.HomeController
+
 <!DOCTYPE html >
 @* lang - The language of the page. *@
 @* no-js - The no JavaScript class is removed by modernizr if JavaScript is available. *@
@@ -153,7 +154,7 @@
         @* You can use the head section to render additional meta tags. *@
         @RenderSection("head", required: false)
 </head>
-<body>
+<body ng-controller="ControladorPrincipal">
     @* Skip to main content link for people who use screen readers. sr-only makes this only visible to screen readers.
         See http://a11yproject.com/posts/skip-nav-links/. *@
     <a href="#main" class="sr-only sr-only-focusable">Skip to main content</a>

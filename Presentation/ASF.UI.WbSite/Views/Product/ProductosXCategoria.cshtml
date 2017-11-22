@@ -1,4 +1,5 @@
-﻿@model IEnumerable<ASF.Entities.Product>
+﻿@using ASF.Entities
+@model IEnumerable<ASF.Entities.Product>
 
 @{
     ViewBag.Title = "Productos por Categoria";
@@ -9,55 +10,10 @@
 
 }
 
-<div ng-controller="ControladorCarrito as vm">
 
-    <md-content layout-padding layout="column">
-        <form ng-submit="$event.preventDefault()">
+   
 
-
-            <md-autocomplete ng-disabled="vm.isDisabled"
-                             md-no-cache="vm.noCache"
-                             md-selected-item="vm.selectedItem"
-                             md-search-text-change="vm.searchTextChange(vm.searchText)"
-                             md-search-text="vm.searchText"
-                             md-selected-item-change="vm.selectedItemChange(item)"
-                             @*md-selected-item-change="Product/ProductosXBuscador?id=item"*@
-                             md-items="item in vm.querySearch(vm.searchText)"
-                             md-item-text="item.Title"
-                             md-min-length="0"
-                             placeholder="Buscar Productos"
-                             md-menu-class="autocomplete-custom-template">
-                <md-item-template>
-                    <span class="item-title">
-                        <md-icon md-svg-icon="img/icons/octicon-repo.svg"></md-icon>
-                        <span> {{item.Title}} </span>
-                    </span>
-                    <span class="item-metadata">
-                        <span>
-                            <strong>${{item.Price}}</strong>
-                        </span>
-                        @*<span>
-                                <img data-ng-src="data:image/png;base64,{{item.Image}}" />
-                            </span>*@
-                    </span>
-                </md-item-template>
-            </md-autocomplete>
-
-        </form>
-    </md-content>
-
-
-    @if (ViewBag.MostrarXBuscador == null)
-    {
-        @Html.Partial("_ListProducts", Model)
-    }
-    else
-    {
-        <div ng-include="vm.include"></div>
-    }
-
-
-</div>
+@Html.Partial("_ProductoXCategoria", Model)
 
 
 

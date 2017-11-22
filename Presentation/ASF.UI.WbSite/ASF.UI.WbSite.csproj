@@ -280,6 +280,7 @@
     <Compile Include="Controllers\CustomController\OrderController.cs" />
     <Compile Include="Controllers\CustomController\OrderDetailController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\CustomController\ProductController.cs" />
     <Compile Include="Global.asax.cs">
@@ -628,6 +629,11 @@
     <Content Include="Views\Shared\_FinalizarCompras.cshtml" />
     <Content Include="Views\Shared\_OrderDetails.cshtml" />
     <Content Include="Views\Shared\_Category.cshtml" />
+    <Content Include="Views\Shared\_ProductoXCategoria.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

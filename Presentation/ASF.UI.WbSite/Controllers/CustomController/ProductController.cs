@@ -59,7 +59,7 @@ namespace ASF.UI.WbSite.Controllers
                 {
                     _products = _processComponent.SelectList("rest/Product/ProductXCategoria", id).ToList();
                 }
-                return View(_products);
+                return View("ProductosXCategoria",_products);
 
             }
             catch (Exception ex)
