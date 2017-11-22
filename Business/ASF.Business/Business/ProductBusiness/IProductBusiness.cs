@@ -11,5 +11,7 @@ namespace ASF.Business.Business.ProductBusiness
         IList<Product> ListaProductosXListaDealer(IList<Dealer> dealer);
 
         IList<Product> ListaProductosXNombre(string nombre);
+
+        IList<Product> ListaProductosXBuscador(string nombre);
     }
 }

@@ -55,7 +55,7 @@ Carrito.controller("ControladorCarrito",
 
         vm.simulateQuery = false;
         vm.isDisabled = false;
-
+        vm.include = '';
         // list of states to be displayed
         vm.prodcutos = [];
         vm.querySearch = querySearch;
@@ -89,7 +89,7 @@ Carrito.controller("ControladorCarrito",
 
         function searchTextChange(text) {
             //$log.info('Text changed to ' + text);
-
+            vm.include = '';
 
             $http({
                 method: "GET",
@@ -114,7 +114,27 @@ Carrito.controller("ControladorCarrito",
         }
 
         function selectedItemChange(item) {
-            $log.info('Item changed to ' + JSON.stringify(item));
+
+            console.log(item);
+
+            if (item !== undefined) {
+                vm.include = "Product/ProductosXBuscador/" + item.Title;
+
+            }
+            //$http({
+            //    method: "GET",
+            //    dataType : "html",
+            //    url: "/Product/ProductosXBuscador?id=" + item.Title
+
+            //}).then(function mySuccess(response) {
+                   
+
+            //    },
+            //    function myError(response) {
+                   
+            //    });
+
+            //$log.info('Item changed to ' + JSON.stringify(item));
         }
 
         

@@ -35,7 +35,7 @@ app.factory('customLoader', function ($http, $q) {
 });
 
 app.config(function ($locationProvider, $translateProvider) {
-    $locationProvider.html5Mode(true);
+    //$locationProvider.html5Mode(true);
 
 
     $translateProvider.useLoaderCache(true);

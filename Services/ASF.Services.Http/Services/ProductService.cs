@@ -28,6 +28,19 @@ namespace ASF.Services.Http.Services
 
         }
 
+
+        [HttpGet]
+        [Route("ProductosXBuscador")]
+        public AllResponse<Product> ProductoXNombre(string id)
+        {
+
+            var _response = new AllResponse<Product>();
+            _response.Result = FachadaBLL.ProductBusiness.ListaProductosXBuscador(id);
+            return _response;
+
+
+        }
+
         [HttpGet]
         [Route("ProductXDealer")]
         public AllResponse<Product> ProductosXDealer(int id)

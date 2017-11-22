@@ -75,8 +75,34 @@ namespace ASF.UI.WbSite.Controllers
         }
 
 
-    
-      
+
+
+        [HttpGet]
+        public ActionResult ProductosXBuscador(string id)
+        {
+
+            try
+            {
+                ViewBag.Comprar = true;
+                ViewBag.MostrarXBuscador = true;
+
+                var _producto = _processComponent.SelectList("rest/Product/ProductosXBuscador", id);
+                return PartialView("_ListProducts", _producto);
+            }
+            catch (Exception ex)
+            {
+                return RedirectToAction("badrequest", "Error", new
+                {
+                    mensaje = ex.Message
+                });
+
+            }
+
+
+
+
+        }
+
 
 
         // GET: Product
