@@ -280,7 +280,6 @@
     <Compile Include="Controllers\CustomController\OrderController.cs" />
     <Compile Include="Controllers\CustomController\OrderDetailController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\CustomController\ProductController.cs" />
     <Compile Include="Global.asax.cs">

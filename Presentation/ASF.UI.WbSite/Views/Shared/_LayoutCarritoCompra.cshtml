@@ -51,7 +51,7 @@
 
 @*<h2>Carrito de Compra</h2>*@
 
-<body style="padding-top: 0px !important" ng-controller="ControladorPrincipal">
+<body style="padding-top: 0px !important" ng-controller="ControladorPrincipal" ng-cloak>
 
     <nav class="navbar navbar-default" style="position: fixed; width: 100%;z-index: 999 !important">
         <div class="container-fluid">
@@ -87,7 +87,7 @@
 
                     </li>
 
-                    
+
 
                     @if (Context.User.IsInRole("Administrator"))
                     {
@@ -95,20 +95,20 @@
                             <a href="#" class="dropdown-toggle" id="drop1" data-toggle="dropdown" role="button">Administración <span class="caret"></span> </a>
                             <ul class="dropdown-menu" aria-labelledby="drop1">
 
-                                <li><a href="/Categorias">Categorias</a></li>
-                                <li><a href="/Country">Paises</a></li>
+                                <li><a href="/Categorias/Index">Categorias</a></li>
+                                <li><a href="/Country/Index">Paises</a></li>
                             </ul>
                         </li>
                     }
                     <li> <a href="/CartItem/CartItemXCookie" class="fa fa-shopping-cart"></a> </li>
 
-                    
-                    
+
+
 
                 </ul>
-                
-                
-                
+
+
+
 
                 @Html.Partial("_LoginPartial")
                 @*<ul class="nav navbar-nav navbar-right">
@@ -157,9 +157,9 @@
 
     </div>
 
-    <footer class="container-fluid text-center">
-        <footer>
-            <div class="container">
+    <footer class="container-fluid text-center" style="background-color: transparent !important; color: black !important">
+        <footer style="background-color: transparent !important; color: black !important">
+            <div class="container" >
 
                 <div class="row">
                     <div class="col-md-4 col-sm-4">
@@ -178,7 +178,7 @@
                             <div class="social">
                                 <a href="https://www.facebook.com/uai.mcga.7" target="_blank" class="facebook"><i class="fa fa-facebook"></i></a>
 
-                                <a href="https://twitter.com/mcgamobilestor" class="twitter"><i class="fa fa-twitter"></i></a>
+                                <a href="https://twitter.com/McgaEduacosta" class="twitter"><i class="fa fa-twitter"></i></a>
 
                                 @*<iframe src="https://www.facebook.com/plugins/share_button.php?href=http%3A%2F%2Fmcga.azurewebsites.net&layout=button&size=large&mobile_iframe=true&width=99&height=28&appId" width="99" height="28" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>*@
 
@@ -191,10 +191,8 @@
                                         js.src = 'https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.11';
                                         fjs.parentNode.insertBefore(js, fjs);
                                     }(document, 'script', 'facebook-jssdk'));</script>
-                                <div class="fb-like" data-href="https://www.facebook.com/uai.mcga.7" data-layout="button_count" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div>
 
-
-
+                                <div class="fb-share-button" data-href="https://www.facebook.com/uai.mcga.7" data-layout="button_count" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.facebook.com%2Fuai.mcga.7&amp;src=sdkpreparse">Compartir</a></div>
                                 @*<script>
                                         (function (d, s, id) {
                                             var js, fjs = d.getElementsByTagName(s)[0];

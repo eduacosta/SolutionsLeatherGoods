@@ -60,5 +60,26 @@ namespace ASF.UI.WbSite.Controllers.CustomController
             }
         }
 
+
+        [HttpGet]
+        [Authorize]
+        public ActionResult FinalizarCompra()
+        {
+
+
+            try
+            {
+
+                
+
+                return RedirectToAction("CartItemXCookie", "CartItem");
+            }
+            catch (Exception ex)
+            {
+                return RedirectToAction("badrequest", "Error", new { mensaje = ex.Message });
+
+            }
+        }
+
     }
 }
