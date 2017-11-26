@@ -117,6 +117,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="scripts\ngStorage.js" />
+    <Content Include="scripts\ngStorage.min.js" />
     <Content Include="web.config" />
   </ItemGroup>
   <ItemGroup>

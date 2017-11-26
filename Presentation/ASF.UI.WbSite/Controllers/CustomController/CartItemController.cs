@@ -74,9 +74,8 @@ namespace ASF.UI.WbSite.Controllers
                     lock (this)
                     {
 
-               
                         var _cookie = new HttpCookie("Carritos");
-                        _cookie.Value = Guid.NewGuid().ToString();
+                        _cookie.Value = Request.UserHostAddress;
                         _cookie.Expires = DateTime.MaxValue;
                         _cookievalue = _cookie.Value;
                         Response.AppendCookie(_cookie);

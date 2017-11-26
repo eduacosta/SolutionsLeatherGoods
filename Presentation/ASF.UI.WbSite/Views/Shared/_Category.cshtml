@@ -11,7 +11,8 @@
     @foreach (var item in Model) {
         <tr>
             <td>
-                <a href="/Product/ProductosXCategoria/@item.Id ">@Html.DisplayFor(modelItem => item.Name)</a> 
+                @*@Ajax.ActionLink(item.Name, "ProductosXCategoria", "Product", new{id = @item.Id }, null)*@  
+                <a href="/Product/ProductosXCategoria/@item.Id "> {{'@item.Name' | translate}} </a> 
             </td>
        
             @*<td>

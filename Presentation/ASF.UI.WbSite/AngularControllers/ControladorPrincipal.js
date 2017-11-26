@@ -1,6 +1,8 @@
 ﻿require('./ControladorCategoria');
 require('./ControladorPagoTarjeta');
 require('./ControladorCarrito');
+require('./../Scripts/ngStorage.min');
+
 
 var app = angular.module("AngularModuloPrincipal", [require('angular-material'),
 require('angular-credit-cards'),
@@ -9,6 +11,7 @@ require('angular-translate'),
     'AngularModuloCategoria',
     'AngularModuloTarjetaCredito',
     'AngularModuloCarrito',
+    'ngStorage',
 require('angular-translate')]);
 
 
@@ -16,7 +19,7 @@ app.factory('customLoader', function ($http, $q) {
     // return loaderFn
     return function (options) {
         var deferred = $q.defer();
-      
+
         var requestParams = {};
         requestParams[options.queryParameter || 'id'] = options.key;
 
@@ -37,16 +40,24 @@ app.factory('customLoader', function ($http, $q) {
 app.config(function ($locationProvider, $translateProvider) {
     //$locationProvider.html5Mode(true);
 
-
+    console.log($translateProvider);
     $translateProvider.useLoaderCache(true);
     $translateProvider.useLoader('customLoader');
-    $translateProvider.preferredLanguage('en');
-   
+    $translateProvider.preferredLanguage('es');
+
 });
 
+app.run(function ($rootScope, $translate, $localStorage) {
 
+    console.log($localStorage.Lenguaje);
+    if ($localStorage.Lenguaje !== '') {
 
-app.controller("ControladorPrincipal", function ($scope, Dialogs, $translate, $http) {
+        $translate.use($localStorage.Lenguaje);
+    }
+
+});
+
+app.controller("ControladorPrincipal", function ($scope, Dialogs, $translate, $http, $rootScope, $localStorage) {
 
 
 
@@ -54,17 +65,18 @@ app.controller("ControladorPrincipal", function ($scope, Dialogs, $translate, $h
     var doubled = arr.select(function (t) { return t * 2 });  // [2, 4, 6, 8, 10]
 
 
-
+    
     $scope.SetLenguaje = function (value) {
         $translate.use(value);
-        console.log(value);
-        
+        $localStorage.Lenguaje = value;
+        //console.log(value);
+
     }
 
 
     $scope.Lenguajes = [];
 
-    $scope.ListaLanguajes = function() {
+    $scope.ListaLanguajes = function () {
 
 
         $http({
@@ -74,14 +86,14 @@ app.controller("ControladorPrincipal", function ($scope, Dialogs, $translate, $h
             console.log(response.data);
 
             $scope.Lenguajes = response.data;
-           
+
 
 
         }, function myError(response) {
 
         });
 
-       
+
     }
 
     $scope.ListaLanguajes();

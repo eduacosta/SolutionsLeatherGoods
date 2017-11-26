@@ -1,4 +1,5 @@
-﻿@using ASF.UI.WbSite.Constants.HomeController
+﻿@using ASF.Entities
+@using ASF.UI.WbSite.Constants.HomeController
 @model ASF.UI.WbSite.Models.MensajeError
 @{
     ViewBag.Title = "Bad Request";
@@ -11,5 +12,5 @@
     </header>
     <p>@ViewBag.Description</p>
     <p>@Model.Mensaje</p>
-    <a class="btn btn-primary btn-lg" href="@Url.RouteUrl(HomeControllerRoute.GetIndex)"><span aria-hidden="true" class="fa fa-home"></span> Take me home</a>
+    <a class="btn btn-primary btn-lg" href="CartItem/CartItemXCookie"><span aria-hidden="true" class="fa fa-home"></span> Take me home</a>
 </div>

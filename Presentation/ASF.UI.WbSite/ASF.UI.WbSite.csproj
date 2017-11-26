@@ -450,6 +450,7 @@
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Content\Estilos.css" />
+    <Content Include="Scripts\ngStorage.min.js" />
     <Content Include="Views\Shared\TarjetaCredito.html" />
     <Content Include="webpack.config.js" />
     <Content Include="Built\fonts\ui-grid.eot" />
